@@ -17,6 +17,11 @@
    >
 <description trim="y">
 <![CDATA[
+
+FRET NOT CONCERNED IMM! THIS WILL ONLY BE CONVERTED IF I CAN FIGURE OUT A SOLID WAY TO STOP IC CROSS-CONTAMINATION!
+
+
+
 This will see the ships on the pad and stack them so that they are more readable.  Also, this will log the information when locating a ship so that the name is printed next to the ship when it is seen again.
 
 How to use:
