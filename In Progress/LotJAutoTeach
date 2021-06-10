@@ -1,0 +1,158 @@
+scienceList = {"advanced electronics", "chemistry", "construction", "data", "destruction", "edibles", "education", "electronics","enhancement","equipment","forensics","guidance","machines","medical","minerals","narcotics","spacecraft", "study", "transportation"}
+teachList = {}
+teachTarget = ""
+teachFinished = true
+scienceListPosition = 1
+
+
+function AddItemToList(matches)
+	if (matches[1] ~= nil) then
+		if (#teachList == 0) then
+			table.insert(teachList, 1, matches[1]) -- Make first entry
+			cecho("<lime>- ".. matches[1].. " ADDED TO TEACHING LIST")
+			teachFinished = false
+		else
+			table.insert(teachList, matches[1]) -- Make subsequent entries
+			cecho("<lime>- ".. matches[1].. " ADDED TO TEACHING LIST")
+		end -- if
+	else
+		Colourecho("red","black", "- Not Valid")
+	end -- if
+end -- function
+
+function AddSciencesToList(matches)
+	cecho("<lime>- ALL SCIENCES ADDED TO LIST")
+	for i, v in ipairs(scienceList) do
+		if (#teachList == 0) then
+			table.insert(teachList, 1, scienceList[i]) -- Make first entry
+			teachFinished = false
+		else
+			table.insert(teachList, scienceList[i]) -- Make subsequent entries
+		end -- if
+	end -- for	
+end -- function
+
+function ClearTeachList(matches)
+	teachList = {}
+	cecho("<red>- TEACHING LIST CLEARED")
+end -- function
+
+function IncrementSkillList(matches)
+	table.remove(teachList, 1)
+	if(#teachList < 1) then
+		cecho("<red>- LIST FINISHED")
+	else
+		TeachSkill()
+	end -- if
+end -- function
+
+function SetTeachAutoAccept(matches)
+table.load(getMudletHomeDir().."/ScriptFiles/AutoTech/teachautoaccept.lua", teachautoaccept)
+-- Auto Accept can either be on, off or in stand by.
+-- In off it will autodeny.
+-- In on it will autoaccept.
+-- In standby it will do nothing.
+	if (matches[1] ~= nil) then
+		if (matches[1] == "on") then
+			accept = true
+			cecho("<lime>- Auto Teach Accept Set to Accept")
+		elseif(matches[1] == "off") then
+			accept = false
+			cecho("<red>- Auto Teach Accept Set to Deny")
+		else
+			accept = nil
+			cecho("<yellow>- Auto Teach Accept Set to Standby")
+		end -- if
+	else
+		if (teachautoaccept) == "accept" then
+			accept = false
+			cecho("<red>- Auto Teach Accept Set to Deny")
+		elseif(teachautoaccept) == "deny" then
+			accept = nil
+			cecho("<yellow>- Auto Teach Accept Set to Standby")
+		elseif(teachautoaccept) == "neutral" then
+			accept = true
+			cecho("<lime>- Auto Teach Accept Set to Accept")
+		end -- if
+	end -- if
+	if (accept == nil) then
+		table.save(getMudletHomeDir().."/ScriptFiles/AutoTech/teachautoaccept.lua", "neutral")
+	else
+		if (accept == true) then
+			table.save(getMudletHomeDir().."/ScriptFiles/AutoTech/teachautoaccept.lua", "accept")
+		else
+			table.save(getMudletHomeDir().."/ScriptFiles/AutoTech/teachautoaccept.lua", "deny")
+		end -- if
+	end -- if
+end -- function
+
+function SetTeachTarget(matches)
+	if (matches[1] ~= nil) then
+		teachTarget = matches[1]
+		echo("- TEACHING TARGET SET TO ".. teachTarget)
+	end -- if
+end -- function
+
+function ShowTeachList(matches)
+	cecho("<grey>- THE TEACHING QUEUE CONTAINS: ")
+	for i, v in ipairs(teachList) do
+		cecho("<grey>"..v)
+	end -- for
+end -- function
+
+function ShowTeachTarget(matches)
+	if (teachTarget ~= nil) then
+		cecho("<grey>- TEACHING TARGET IS: ".. teachTarget)
+	end -- if
+end -- function
+
+function TeachAccept(matches)
+table.load(getMudletHomeDir().."/ScriptFiles/AutoTech/teachautoaccept.lua", teachautoaccept)
+	if(teachautoaccept) == "accept" then
+		Send("teach accept")
+	elseif(teachautoaccept) == "deny" then
+		Send("teach deny")
+	end -- if
+end -- function
+
+function TeachSkill(matches)
+	if (teachTarget ~= "") then
+		if (#teachList > 0) then
+			Send("teach ".. teachTarget.. " ".. teachList[1])
+		else
+			cecho("<red>- TEACHING LIST EMPTY")
+		end -- if
+	else
+		cecho("<red>- NO TARGET SPECIFIED")
+	end -- if
+end -- function
+
+
+
+function TeachStart(matches)
+	EnableTrigger("AlreadyKnowTrig", true)
+	EnableTrigger("NotReadyTrig", true)
+	EnableTrigger("TeachSuccess", true)
+	EnableTrigger("FailTeach", true)
+	cecho("<lime>- AUTOTEACHING ENABLED")
+end -- function
+
+function TeachStop(matches)
+	EnableTrigger("AlreadyKnowTrig", false)
+	EnableTrigger("NotReadyTrig", false)
+	EnableTrigger("TeachSuccess", false)
+	EnableTrigger("FailTeach", false)
+	cecho("<red>- AUTOTEACHING DISABLED")
+end -- function
+
+function ShowCommands(matches)
+	cecho("<grey>---AutoTeacher by @Ilyena---")
+	cecho("<grey>'teachtarget #' - Set the target to be taught.")
+	cecho("<grey>'teachshow' - Display which target is to be taught.")
+	cecho("<grey>'teachadd #' - Add an item to the teach queue.")
+	cecho("<grey>'teachlist' - Display the teaching queue.")
+	cecho("<grey>'teachscience' - Adds all the sciences to the teaching queue.")
+	cecho("<grey>'teachclear' - Clear the teach queue.")
+	cecho("<grey>'teachstop' - Stop the teaching queue.")
+	cecho("<grey>'teachauto (on/off/standby)' - Toggle. Set auto accept to accept, deny or standby.")
+end -- function
