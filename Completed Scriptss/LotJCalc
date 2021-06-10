@@ -1,0 +1,159 @@
+planets = {}
+planetname = ""
+systemname = ""
+coordX = 0
+coordY = 0
+coordZ = 0
+
+spaceCoords = {}
+
+function spaceCapStart()
+	enableTrigger(SpaceCap)
+	spaceCoords = {}
+	send("radar")
+end
+function spaceCapStop()
+	disableTrigger(SpaceCap)
+end
+
+function spaceCapStore(name, line, args, styles)
+	local body = {
+		name=string.trim(name),
+		x=tonumber(line),
+		y=tonumber(args),
+		z=tonumber(styles)
+	}
+	if (body.name ~= "Your Coordinates:" and body.name ~= "New course set, approaching" and not string.findPattern(body.name, "Speed:", 0, true)) then
+		spaceCoords[#spaceCoords + 1] = body
+		cecho("<silver>", #spaceCoords..") ")
+		for k, v in ipairs(body) do
+      Hyperlink("lcalc "..#spaceCoords, v.text, "Jump to "..spaceCoords[#spaceCoords].name, RGBColourToName(v.textcolour), RGBColourToName(v.backcolour), false)
+    end
+  else
+    for k, v in ipairs(body) do
+      cecho(RGBColourToName(v.textcolour), RGBColourToName(v.backcolour), v.text) 
+    end   
+  end
+  print("")
+end
+
+
+function spaceCapCalc(args)
+	for i, v in ipairs(spaceCoords) do
+		if ((tonumber(args) == i) or string.findPattern(string.lower(v.name), string.lower(args), 0, true)) then
+  		cecho("<green>Entering coordinates for "..v.name)
+	  	send("calc local "..v.x.." "..v.y.." "..v.z+500)
+	  	return
+		end
+	end
+	cecho("<red>Invalid argument given to lcalc: ".. args .. "\n")
+end
+
+function showPlanet(args)
+  if not args == "" then -- we entered "calc" with no args, so pass it through
+    send("calculate\n")
+    return
+  end
+  if args == "stop" then -- entered "calc stop", pass it through
+    planetname = ""
+    send("calculate stop\n")
+    return
+  end
+  if string.findPattern(args, "local", 0, true) then -- we entered calc local x y z, pass it through
+    planetname = "local"
+    send("calculate "..args .. "\n")
+    return
+  end
+  if string.findPattern(args, "%'[%d-]* [%d-]*%'", 0, false) then -- we entered an uncharted sector in 'x y' x y z format
+    -- set our planetname to the x y coordinates
+    local xstart, xend = string.findPattern(args, "%'[%d-]+", 0, false)
+    local xcoord = string.sub(args, xstart+1, xend)
+    local ystart, yend = string.findPattern(args, "[%d-]+%'", xend, false)
+    local ycoord = string.sub(args, ystart, yend-1)
+    --cecho("xstart: "..xstart.." xend: "..xend.." xcoord: "..xcoord)
+    --cecho("ystart: "..ystart.." yend: "..yend.." ycoord: "..ycoord)
+
+    --planetname = (..xcoord.., " ", ..ycoord..)
+    --cecho(GetVariable("planetname"))
+    send("calculate "..args)
+    return
+  end
+  -- add option to enter calc x y x y z for uncharted sectors here
+    if (args ~= nil and args ~= "stop") then -- we entered a standard planetname
+        planetname = string.trim(args)
+        enableTrigger("ShowplanetSuccess")    
+        enableTrigger("ShowplanetFailure")
+        send("showplanet '" .. planetname .. "'\n", false)
+    else
+		print("Invalid planet name!\n")
+	end
+end
+
+function showplanetSuccess()
+    enableTrigger("SystemCap")
+    enableTrigger("PlanetCap")
+    enableTrigger("CoordCap")
+    enableTrigger("CalcEnd")
+    enableTrigger("GagAll")
+end
+
+function showplanetFailure()
+	toggleFlightOff()
+	disableTrigger("GagAll")
+	cecho("<red>Planet lookup failed.\n")
+end
+
+function planetCheck(args)
+	if (args ~= nil) then
+		if (string.lower(planetname) == string.lower(args)) then
+			return true
+		end
+	end
+	cecho("red", "", "Invalid planet found.\n")
+    toggleFlightOff()
+	disableTrigger("GagAll")
+	return false
+end
+
+function calculate()
+	local newX = coordX + 500
+	toggleFlightOff()
+	disableTrigger("GagAll")
+	cecho("<green>System found: " .. systemname .. "\n")
+   cecho("<green>Coordinates found: " .. coordX .. ", " .. coordY .. ", " .. coordZ .. "\n")
+	send("calculate \"" .. systemname .. "\" " .. newX .. " " .. coordY .. " " .. coordZ, false)
+end
+
+function toggleFlightOff()
+   disableTrigger("SystemCap")
+   disableTrigger("PlanetCap")
+   disableTrigger("CoordCap")
+   disableTrigger("CalcEnd")
+   disableTrigger("ShowplanetSuccess")
+   disableTrigger("ShowplanetFailure")
+end
+
+function setSystem(args)
+	if (args ~= nil) then
+		systemname = args
+	else
+        disableTrigger("GagAll")
+		cecho("<red>\nInvalid system name!\n")
+	end
+
+end
+
+function clearPlanet()
+  planetname = ""
+end
+
+function setCoords(name, list, args)
+	if ((name ~= nil) and (list ~= nil) and (args ~= nil)) then
+		coordX = name
+		coordY = list
+		coordZ = args
+	else
+        disableTrigger("GagAll")
+		cecho("<red>Invalid number of coordinate arguments!\n")
+	end
+end
