@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>LotJCombatHelper</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>NewOutput</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>HitCounter</name>
+					<script>countHit()
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*?)(scratches|nicks|grazes|bruises|hits|injures|wounds|mauls|thrashes|decimates|devastates|maims|PULVERIZES|MUTILATES|DISEMBOWELS|EVISCERATES|MASSACRES|OBLITERATES|ANNIHILATES) you(.*?)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>DamageGrabber</name>
+					<script>countDamage()
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You do ([^0](.*)) points of damage\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>MissCounter</name>
+					<script>countMiss()
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You miss (.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>DodgeCounter</name>
+					<script>countDodge()
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You dodge (.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>StrikeCounter</name>
+					<script>countStrike()
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Your (.*) (scratches|nicks|grazes|bruises|hits|injures|wounds|mauls|thrashes|decimates|devastates|maims|PULVERIZES|MUTILATES|DISEMBOWELS|EVISCERATES|MASSACRES|OBLITERATES|ANNIHILATES) (.*)</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Squelches</name>
+					<script>deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*) misses you.$</string>
+						<string>^You do 0 points of damage\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>EnemyDodgeCounter</name>
+					<script>countEnemyDodge()
+deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*) dodges your attack\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>CombatRoundStop</name>
+				<script>displayCombatOutput()</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+	<TimerPackage />
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>LotJCombatHelper</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>CombatSpamEnabler</name>
+				<script>enableNewCombat()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^combathelper (on|off|)$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+	<ActionPackage />
+	<ScriptPackage>
+		<Script isActive="yes" isFolder="no">
+			<name>LotJCombatHelper</name>
+			<packageName></packageName>
+			<script>totalDamage = 0
+totalStrikes = 0
+missCounter = 0
+hitCounter = 0
+dodgeCounter = 0
+enemyDodgeCounter = 0
+firsthit = true
+startingHP = gmcp.Char.Vitals.hp
+
+function resetCounters()
+totalDamage = 0
+totalStrikes = 0
+missCounter = 0
+hitCounter = 0
+dodgeCounter = 0
+enemyDodgeCounter = 0
+firsthit = true
+startingHP = gmcp.Char.Vitals.hp
+end
+
+function enableNewCombat()
+    if matches[2] == "on" then
+        enableTrigger("NewOutput")
+        cecho("&lt;ansiLightGreen&gt;Combat helper on!\n")
+        resetCounters()
+    else
+        disableTrigger("NewOutput")
+        cecho("&lt;ansiLightRed&gt;Combat helper off!\n")
+    end
+end
+
+function displayCombatOutput()
+  local strDamage = tostring(totalDamage)
+  local strStrikes = tostring(totalStrikes)
+  local strMisses = tostring(missCounter)
+  local strHits = tostring(hitCounter)
+  local strDodges = tostring(dodgeCounter)
+  local enemyStrDodges = tostring(enemyDodgeCounter)
+  local finalHP = gmcp.Char.Vitals.hp
+  local HPloss = startingHP - finalHP
+  if (totalDamage &gt; 0) and (totalStrikes &gt; 0) then
+    cecho("&lt;ansiLightGreen&gt;\nDealt "..strDamage.." damage in "..strStrikes.." strikes\n")
+    cecho("&lt;yellow&gt;You missed "..strMisses.." times\n")
+  elseif (totalDamage == 0) and (totalStrikes &gt; 0) then
+    cecho("&lt;ansiLightGreen&gt;\nDealt an unknown amount of damage in "..strStrikes.." strikes\n")
+    cecho("&lt;yellow&gt;You missed "..strMisses.." times\n")
+  elseif (totalDamage == 0) and (totalStrikes == 0) then
+    cecho("&lt;yellow&gt;\nYou tried to connect, but you missed "..strMisses.." times\n")
+  end
+  if enemyDodgeCounter &gt; 0 then
+    cecho("&lt;yellow&gt;\nYour enemy dodged "..enemyStrDodges.." of your strikes!")
+  end
+  echo(" \n")
+  if HPloss &gt; 0 then
+      cecho("&lt;ansiLightRed&gt;\nYou took "..HPloss.." damage in "..strHits.." strikes\n")
+  elseif HPloss &lt; 0 then
+      local HPGain = 0 - HPloss
+      cecho("&lt;ansiLightGreen&gt;\nYou healed for "..HPGain.." despite "..strHits.." strikes\n")
+  end
+  if dodgeCounter &gt; 0 then
+    cecho("&lt;light_cyan&gt;\nYou dodged "..strDodges.." attacks\n")
+  end
+  echo(" \n")
+  disableTrigger("CombatRoundStop")
+  resetCounters()
+end
+
+function countHit()
+    enableTrigger("CombatRoundStop")
+    hitCounter =  hitCounter+1
+    if firsthit ==  true then
+        startingHP = gmcp.Char.Vitals.hp
+        firsthit = false
+    end
+end
+
+function countDamage()
+    enableTrigger("CombatRoundStop")
+    local damageDealt = tonumber(matches[2])
+    totalDamage = damageDealt + totalDamage
+end
+
+function countStrike()
+    totalStrikes = totalStrikes+1
+end
+
+function countDodge()  
+    enableTrigger("CombatRoundStop")
+    dodgeCounter = dodgeCounter+1
+end
+
+function countMiss()
+    enableTrigger("CombatRoundStop")
+    missCounter = missCounter+1
+end
+
+function countHit()
+    enableTrigger("CombatRoundStop")
+    hitCounter = hitCounter+1
+end
+
+function countEnemyDodge()
+  enableTrigger("CombatRoundStop")
+  enemyDodgeCounter = enemyDodgeCounter+1
+end</script>
+			<eventHandlerList />
+		</Script>
+	</ScriptPackage>
+	<KeyPackage />
+	<VariablePackage>
+		<HiddenVariables />
+		<VariableGroup>
+			<name>comlinkList</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+		</VariableGroup>
+		<Variable>
+			<name>autoTransition</name>
+			<keyType>4</keyType>
+			<value>false</value>
+			<valueType>1</valueType>
+		</Variable>
+		<VariableGroup>
+			<name>bestResult</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<Variable>
+				<name>about</name>
+				<keyType>4</keyType>
+				<value>0</value>
+				<valueType>3</valueType>
+			</Variable>
+			<Variable>
+				<name>head</name>
+				<keyType>4</keyType>
+				<value>0</value>
+				<valueType>3</valueType>
+			</Variable>
+		</VariableGroup>
+	</VariablePackage>
+</MudletPackage>
