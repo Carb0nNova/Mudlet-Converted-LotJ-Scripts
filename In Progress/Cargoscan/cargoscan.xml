@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+function toggleSystemCapOff(name, list, args)
+	EnableTriggerGroup("SystemCap", false)
+end
+
+function toggleBodyCapOff(name, list, args)
+	EnableTriggerGroup("BodyCap", false)
+end
+
+
+function scanNext(name, list, args)
+	toggleSystemCapOff()
+	toggleBodyCapOff()
+	if (scanned == "none") then
+		SendNoEcho("config -prompt")
+		clearTables()
+		ColourNote("silver","","Starting resource scan... this may take a few moments.")
+		scanned = "systems"
+		SendNoEcho("stars")
+		SendNoEcho("show")
+		toggleSystemCapOn()
+	elseif (scanned == "systems") then
+		scanned = "planet"
+		SendNoEcho("planets")
+		toggleBodyCapOn()
+	elseif (scanned == "planet") then
+		scanned = "moon"
+		SendNoEcho("moons")
+		toggleBodyCapOn()
+	elseif (scanned == "moon") then
+		scanned = "resources"
+		numBodies = 0
+			for k, v in pairs(systems) do
+				for ka, va in pairs(v.bodies) do
+					numBodies = numBodies + 1
+					tempPlanet = ""
+					tempSystem = ""
+					SendNoEcho("showplanet \"" .. va.name .. "\"")
+					SendNoEcho("showplanet \"" .. va.name .. "\" resources")
+					SendNoEcho("show")
+					EnableTriggerGroup("ResourceStart", true)
+				end
+			end
+	elseif (scanned == "resources") then
+		scanned = "none"
+		EnableTriggerGroup("ResourceStart", false)
+		SendNoEcho("config +prompt")
+		ColourNote("silver","","Finished scanning galaxy resources. Found ",cyan,"",#systems,"silver",""," systems with ",cyan,"",numBodies,"silver",""," planets.")
+		--listSystems()
+	end
+end
