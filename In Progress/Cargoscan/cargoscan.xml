@@ -1,57 +1,52 @@
+planets  = {}
 
-
-
-
-
-
-
-function toggleSystemCapOff(name, list, args)
-	EnableTriggerGroup("SystemCap", false)
+function scanCargo()
+  enableTrigger("Planets")
+  getPlanets()
 end
 
-function toggleBodyCapOff(name, list, args)
-	EnableTriggerGroup("BodyCap", false)
+function getPlanets()
+	planets = {}
+	send("planets", false)
+end
+
+function storePlanets(matches)
+  tempPlanetStorage = { name = "", resources = {} }
+  local capturedPlanet = string.gsub(matches[2], "%s$", "")
+  tempPlanetStorage.name = capturedPlanet
+  echo("Storing: "..capturedPlanet)
+	planets[#planets+1] = tempPlanetStorage
+end
+
+function getResources()
+	for i,v in pairs(planets) do
+		send("showplanet '"..v.name.."' resources")
+	end
+end
+
+function currentPlanet(matches)
+	currPlanet = matches[2]
 end
 
 
-function scanNext(name, list, args)
-	toggleSystemCapOff()
-	toggleBodyCapOff()
-	if (scanned == "none") then
-		SendNoEcho("config -prompt")
-		clearTables()
-		ColourNote("silver","","Starting resource scan... this may take a few moments.")
-		scanned = "systems"
-		SendNoEcho("stars")
-		SendNoEcho("show")
-		toggleSystemCapOn()
-	elseif (scanned == "systems") then
-		scanned = "planet"
-		SendNoEcho("planets")
-		toggleBodyCapOn()
-	elseif (scanned == "planet") then
-		scanned = "moon"
-		SendNoEcho("moons")
-		toggleBodyCapOn()
-	elseif (scanned == "moon") then
-		scanned = "resources"
-		numBodies = 0
-			for k, v in pairs(systems) do
-				for ka, va in pairs(v.bodies) do
-					numBodies = numBodies + 1
-					tempPlanet = ""
-					tempSystem = ""
-					SendNoEcho("showplanet \"" .. va.name .. "\"")
-					SendNoEcho("showplanet \"" .. va.name .. "\" resources")
-					SendNoEcho("show")
-					EnableTriggerGroup("ResourceStart", true)
-				end
-			end
-	elseif (scanned == "resources") then
-		scanned = "none"
-		EnableTriggerGroup("ResourceStart", false)
-		SendNoEcho("config +prompt")
-		ColourNote("silver","","Finished scanning galaxy resources. Found ",cyan,"",#systems,"silver",""," systems with ",cyan,"",numBodies,"silver",""," planets.")
-		--listSystems()
+
+function storeResource(matches)
+  local resourceName = string.gsub(matches[2], "%s", "")
+  local resourcePrice = string.gsub(matches[4], "%s", "")
+	local tempStorage = { name = resourceName, price = resourcePrice}
+	for i,v in pairs(planets) do
+		local scannedPlanet = v.name
+		if currPlanet == scannedPlanet then
+			v.resources[#v.resources+1] = tempStorage
+		end
+	end
+end
+
+function listSystems()
+	for i,v in pairs(planets) do
+    local listPlanet = string.gsub(v.name,"%s","")
+		for a, b in ipairs(v.resources) do
+			cecho("<light_grey>"..listPlanet..","..v.resources[a].name..","..v.resources[a].price.."<reset>,\n")
+		end
 	end
 end
