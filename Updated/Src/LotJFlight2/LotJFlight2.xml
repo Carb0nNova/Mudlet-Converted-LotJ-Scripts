@@ -1,0 +1,3843 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>LotJFlight</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<TriggerGroup isActive="no" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>LotJAutoFlight</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LaunchComp</name>
+					<script>lotj.flight.calcPlanet()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Launch complete\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>CalcDone</name>
+					<script>lotj.flight.calcDone()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*)Hyperspace calculations have been completed(.*)$</string>
+						<string>^You can't figure out which lever to use\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>HyperComp</name>
+					<script>lotj.flight.coursePlanet()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Hyperjump complete\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>OrbitObtained</name>
+					<script>lotj.flight.doLand()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You begin orbiting (.*)\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandStarted</name>
+					<script>lotj.flight.Landing()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You begin to land on (.*)\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandComp</name>
+					<script>lotj.flight.endFlight()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Landing sequence complete\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Proximity</name>
+					<script>lotj.flight.waitHyper()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You are too close to (.*) to make the jump to lightspeed\!$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandSiteLocked</name>
+					<script>lotj.flight.landNext()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Restricted Landing pad\. Limited to clans members and ships only\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LeftShip</name>
+					<script>lotj.flight.reenterCheck()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You exit the ship\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandGrabStart</name>
+					<script>lotj.flight.startLandGrab()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Possible choices for (.*)\:$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Squadron</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>SquadronLaunched</name>
+					<script>fighterGrab(matches[3])</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(?P&lt;fightertype&gt;.+?) '(?P&lt;fightername&gt;.+?)' launches from a hangar on (?P&lt;hangartype&gt;.+?) '(?P&lt;hangarname&gt;.+?)'\,(.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>SqudronView</name>
+					<script>fighterShow()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(L\[(.*)\]\:P\[(.*)\] )?(?P&lt;fightertype&gt;.+?) '(?P&lt;fightername&gt;.+?)'((\s+[\d-]+\s[\d-]+\s[\d-]+|\s+Prox\: \d+))?$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>LandGrab</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>MatchLine</name>
+					<script>lotj.flight.landGrab(matches)</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*) (\(Max: (.*)\)|\(All Sizes\))$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandGrabEnd</name>
+					<script>lotj.flight.endLandGrab()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>RefuelMessage</name>
+				<script>selectString(line, 1)
+replace( " Tank already full. " )</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^What would be the point of refuelling when your tanks are already full\?$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+	<TimerPackage />
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>LotJFlight</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyToArg</name>
+				<script>lotj.flight.beginFlight(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyto (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyFinish</name>
+				<script>lotj.flight.finishFlight(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyfinish (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyStatus</name>
+				<script>lotj.flight.flightStatus()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flystatus$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyAuto</name>
+				<script>lotj.flight.flyAuto(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyauto( +(.*))?$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyClear</name>
+				<script>lotj.flight.Clear()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyclear$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyHelp</name>
+				<script>lotj.flight.Help()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyhelp$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FighterClear</name>
+				<script>fighterClear()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^fighterclear$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>ExitDir</name>
+				<script>lotj.flight.setExitDirs(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^exitdir (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>EntryDir</name>
+				<script>lotj.flight.setEntryDirs(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^entrydir (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>LandingPref</name>
+				<script>lotj.flight.setLandingPref(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^landingpref (.*) (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>HatchCode</name>
+				<script>lotj.flight.setHatchCode(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^hatchcode (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>ShipName</name>
+				<script>lotj.flight.setShipName(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^shipname (.*)$</regex>
+			</Alias>
+			<AliasGroup isActive="yes" isFolder="yes">
+				<name>Daisychain Aliases</name>
+				<script></script>
+				<command></command>
+				<packageName></packageName>
+				<regex></regex>
+				<Alias isActive="yes" isFolder="no">
+					<name>AddChain</name>
+					<script>lotj.flight.addChain(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^flychain (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ClearChain</name>
+					<script>lotj.flight.clearChain()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^clearchain$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>RemChain</name>
+					<script>lotj.flight.remChain(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^remchain (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ListChain</name>
+					<script>lotj.flight.listChain()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^listchain$</regex>
+				</Alias>
+			</AliasGroup>
+			<AliasGroup isActive="yes" isFolder="yes">
+				<name>Profile Aliases</name>
+				<script></script>
+				<command></command>
+				<packageName></packageName>
+				<regex></regex>
+				<Alias isActive="yes" isFolder="no">
+					<name>SaveProfile</name>
+					<script>lotj.flight.saveProfile()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^saveflightprofile$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>LoadProfile</name>
+					<script>lotj.flight.loadProfile(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^loadflightprofile (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>RemProfile</name>
+					<script>lotj.flight.remProfile(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^remflightprofile (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ClearProfiles</name>
+					<script>lotj.flight.clearProfiles()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^clearflightprofiles$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ListProfiles</name>
+					<script>lotj.flight.listProfiles()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^listflightprofiles$</regex>
+				</Alias>
+			</AliasGroup>
+			<Alias isActive="yes" isFolder="no">
+				<name>List Landing Prefs</name>
+				<script>lotj.flight.listLandingPrefs()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^listprefs$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Flystart</name>
+				<script>lotj.flight.beginChain()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flystart$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+	<ActionPackage />
+	<ScriptPackage>
+		<Script isActive="yes" isFolder="no">
+			<name>LotJFlight2</name>
+			<packageName></packageName>
+			<script>lotj = lotj or {}
+lotj.flight = lotj.flight or {}
+--Updated by @Domovoi for Mudlet
+
+registerAnonymousEventHandler("sysInstall", "lotj.flight.Installed")
+
+--[[
+Ideas:
+Repeat daisychain] - Bus!
+Daisychain delay before launching again]
+
+]]
+
+function lotj.flight.Installed(_, name)
+  if name == "LotjFlight2" then
+    cecho("LotjFlight Installed! Running first time init!\m")
+    lotj.flight.Init()
+  end
+end
+  
+
+--Initializing Variables
+function lotj.flight.createFlightProfiles()
+  lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJFlight/")
+  echo("Flight profiles file doesn't exist. Attempting to create.\n")
+  local profileFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua")
+  if not profileFile then
+    file = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "w")
+    file:write("")
+    file:close()
+  end
+end
+
+function lotj.flight.createLandingPrefs()
+  lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJFlight/")
+  echo("Landing preferences file doesn't exist. Attempting to create.\n")
+  local profileFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua")
+  if not profileFile then
+    file = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", "w")
+    file:write("")
+    file:close()
+  end
+end
+
+function lotj.flight.saveProfileTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", lotj.flight.flightProfiles)
+end
+
+function lotj.flight.saveLandingPrefsTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.setVars()
+  lotj.flight.shipName = ""
+  lotj.flight.exitDirs = {}
+  lotj.flight.entryDirs = {}
+  lotj.flight.hatchCode = 0
+  lotj.flight.planetName = ""
+  lotj.flight.lastPlanet = ""
+  lotj.flight.planetChain = {}
+  lotj.flight.chainNum = 0
+  lotj.flight.autoFly = false
+  lotj.flight.landingSites = {}
+  lotj.flight.landingSiteNum = 0
+  lotj.flight.landgrabbing = false
+  lotj.flight.landPreference = -1
+  lotj.flight.hangars = {}
+  lotj.flight.reenterShip = false
+  lotj.flight.hypertries = 0
+  lotj.flight.reenterShip = false
+  lotj.flight.flightProfiles = {}
+  lotj.flight.landingPrefs = {}
+  local flightProfileFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "r")
+  local flightPrefsFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", "r")
+  if flightProfileFileCheck == nil then
+    lotj.flight.createFlightProfiles()
+  end 
+  if flightPrefsFileCheck == nil then
+    lotj.flight.createLandingPrefs()
+  end
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", lotj.flight.flightProfiles)
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.Init()
+  lotj.flight.setVars()
+  cecho("&lt;green&gt;LotJFlight Initialized.\n")
+end
+
+function lotj.flight.Clear()
+  lotj.flight.setVars()
+  cecho("&lt;tomato&gt;LotJFlight Cleared.\n")
+  lotj.flight.toggleOff()
+end
+
+--Setting ship information
+function lotj.flight.setShipName(matches)
+  lotj.flight.shipName = tostring(matches[2])
+  cecho("&lt;green&gt;Current ship set to "..lotj.flight.shipName.."\n")
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setEntryDirs(matches)
+  local rawEntryDirs = matches[2]
+  local splitDirs = ""
+  cecho("&lt;green&gt;Directions to enter the ship set to "..rawEntryDirs.."\n")
+  if string.find(rawEntryDirs, " ") then
+    splitDirs = string.split(rawEntryDirs, " ")
+  elseif string.find(rawEntryDirs, ",") then
+    splitDirs = string.split(rawEntryDirs, ",")
+  elseif string.find(rawEntryDirs, ";") then
+    splitDirs = string.split(rawEntryDirs, ";")
+  elseif string.lower(rawEntryDirs) == "none" then
+    cecho("&lt;green&gt;One room ship specified\n")
+    splitDirs = "none"
+  else
+    cecho("&lt;red&gt;Unrecognized directions given.\n")
+    lotj.flight.toggleOff()
+  end
+  lotj.flight.entryDirs = splitDirs
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setExitDirs(matches)
+  local rawExitDirs = matches[2]
+  local splitDirs = ""
+  cecho("&lt;green&gt;Directions to enter the ship set to "..rawExitDirs.."\n")
+  if string.find(rawExitDirs, " ") then
+    splitDirs = string.split(rawExitDirs, " ")
+  elseif string.find(rawExitDirs, ",") then
+    splitDirs = string.split(rawExitDirs, ",")
+  elseif string.find(rawExitDirs, ";") then
+    splitDirs = string.split(rawExitDirs, ";")
+  elseif string.lower(rawExitDirs) == "none" then
+    cecho("&lt;green&gt;One room ship specified\n")
+    splitDirs = "none"
+  else
+    cecho("&lt;red&gt;Unrecognized directions given.\n")
+    lotj.flight.toggleOff()
+  end
+  lotj.flight.exitDirs = splitDirs
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setHatchCode(matches)
+  lotj.flight.hatchCode = tonumber(matches[2])
+  cecho("&lt;green&gt;Hatch code set to "..lotj.flight.hatchCode)
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setLandingPref(matches)
+  local planetChoice = matches[2]
+  local padChoice = matches[3]
+  local matchFound = false
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    if string.match(v.planetName, planetChoice) then
+      lotj.flight.landingPrefs[i].padPref = padChoice
+      cecho("&lt;green&gt;Landing pad preference for "..planetChoice.." set to "..padChoice.."\n")
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("&lt;yellow&gt;Add planet "..planetChoice.." with landing preference pad "..padChoice.."\n")
+    local newPref = { planetName = planetChoice, padPref = padChoice }
+    lotj.flight.landingPrefs[#prefsTable+1] = newPref
+  end
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.listLandingPrefs()
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    cecho("&lt;green&gt;Planet: &lt;gray&gt;"..v.planetName.." &lt;green&gt;Pad: &lt;gray&gt;"..v.padPref.."\n")
+  end
+end
+
+function lotj.flight.checkSetup()
+  local ready = true
+  if lotj.flight.shipName == "" then
+    cecho("&lt;red&gt;No ship name specified. Please designate with 'shipname' alias.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif tonumber(lotj.flight.hatchCode) &lt; 0 and lotj.flight.hatchCode &gt; 99999 then
+    cecho("&lt;red&gt;Invalid hatch number specified. Please designate correct hatch number or use 0 for none with 'hatchcode' alias.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif lotj.flight.entryDirs == "" then
+    cecho("&lt;red&gt;No ship entrance path specified. Please designate entrance path with 'entrydir' alias. Use 'entrydir none' for a single room ship.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif lotj.flight.exitDirs == "" then
+    cecho("&lt;red&gt;No ship exit path specified. Please designate exit path with 'exitdir' alias. Use 'exitdir none' for a single room ship.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  end
+  if ready == false then
+    return false
+  else
+    return true
+  end
+end
+
+function lotj.flight.toggleReenter(matches)
+  if not matches or matches == "" then
+    if lotj.flight.reenterShip then
+      lotj.flight.reenterShip = false
+      cecho("&lt;yellow&gt;Will not re-enter ship upon arrival.\n")
+    else
+      lotj.flight.reenterShip = true
+      cecho("&lt;yellow&gt;Will re-enter ship upon arrival.\n")
+    end
+  elseif string.lower(matches[2]) == "on" then
+    lotj.flight.reenterShip = true
+    cecho("&lt;yellow&gt;Will re-enter ship upon arrival.\n")
+  elseif string.lower(matches[2]) == "off" then
+    lotj.flight.reenterShip = false
+    cecho("&lt;yellow&gt;Will not re-enter ship upon arrival.\n")
+  end
+end
+
+function lotj.flight.loadProfile(matches)
+  local shipChoice = tostring(matches[2])
+  local profileTable = lotj.flight.flightProfiles
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(shipChoice) then
+      cecho("&lt;green&gt;Loaded profile for "..v.shipName)
+      lotj.flight.shipName = v.shipName
+      lotj.flight.entryDirs = v.entryDirs
+      lotj.flight.exitDirs = v.exitDirs
+      lotj.flight.hatchCode = v.hatchCode
+      return
+    end
+  end
+  cecho("&lt;yellow&gt;Ship not found in profile list.\n")
+end
+
+function lotj.flight.saveProfile()
+  local newProfile = { shipName = "", entryDirs = {}, exitDirs = {}, hatchCode = 0 }
+  local profileTable = lotj.flight.flightProfiles
+  local matchFound = false
+  if not lotj.flight.checkSetup() then
+    return
+  end
+  newProfile.shipName = lotj.flight.shipName
+  newProfile.entryDirs = lotj.flight.entryDirs
+  newProfile.exitDirs = lotj.flight.exitDirs
+  newProfile.hatchCode = lotj.flight.hatchCode
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(newProfile.shipName) then
+      cecho("&lt;green&gt;Profile found for "..newProfile.shipName..". Updating with current info.\n")
+      profileTable[i] = newProfile
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("Saving new profile "..lotj.flight.shipName.."\n")
+    lotj.flight.flightProfiles[#profileTable+1] = newProfile
+  end
+  lotj.flight.saveProfileTable()
+end
+
+function lotj.flight.remProfile(matches)
+  local profileTable = lotj.flight.flightProfiles
+  local axedProfile = matches[2]
+  local matchFound = false
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(axedProfile) then
+      table.remove(i)
+      cecho("&lt;yellow&gt;Profile removed.")
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("&lt;yellow&gt;Profile not found.\n")
+  end
+end
+
+function lotj.flight.clearProfiles()
+  lotj.flight.flightProfiles = {}
+  lotj.flight.saveProfileTable()
+  cecho("&lt;red&gt;All flight profiles cleared.\n")
+end
+
+function lotj.flight.listProfiles()
+  cecho("&lt;green&gt;Listing all flight profiles:\n")
+  for i,v in pairs(lotj.flight.flightProfiles) do
+    if type(v.entryDirs) == "table" and type(v.exitDirs) == "table" then
+      cecho("&lt;green&gt;"..v.shipName..", &lt;yellow&gt;entry dirs: "..table.concat(v.entryDirs, ",")..", exit dirs: "..table.concat(v.exitDirs, ",").."\n")
+    elseif type(v.entryDirs) == "string" and type(v.exitDirs) == "string" then
+      cecho("&lt;green&gt;"..v.shipName..", &lt;yellow&gt;entry dirs: "..v.entryDirs..", exit dirs: "..v.exitDirs.."\n")
+    else
+      cecho("&lt;green&gt;"..v.shipName..", &lt;yellow&gt;Error displaying entry and exit dirs.\n")
+    end
+  end
+end
+    
+
+function lotj.flight.addChain(matches)
+  local newPlanet = matches[2]
+  local chainTable = lotj.flight.planetChain
+  lotj.flight.planetChain[#chainTable + 1] = newPlanet
+  cecho("&lt;green&gt;"..newPlanet.." added to daisychain list.\n")
+end
+
+function lotj.flight.remChain(matches)
+  local remPlanet = matches[2]
+  local chainTable = lotj.flight.planetChain
+  local matchFound = false
+  for i,v in pairs(chainTable) do
+    if string.match(string.lower(chainTable[i]), string.lower(remPlanet)) then
+      cecho("&lt;yellow&gt;"..remPlanet.." removed from chain.\n")
+      table.remove(lotj.flight.planetChain, i)
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("&lt;yellow&gt;"..remPlanet.." not found in chain.\n")
+  end
+end
+
+function lotj.flight.clearChain()
+  lotj.flight.planetChain = {}
+  cecho("&lt;yellow&gt;Planet daisychain cleared.\n")
+end
+
+function lotj.flight.listChain()
+  local chainTable = lotj.flight.planetChain
+  if #chainTable &gt; 0 then
+    cecho("&lt;green&gt;Currently daisychaining planets:\n")
+    for i,v in pairs(lotj.flight.planetChain) do
+      if i == lotj.flight.chainNum then
+        cecho("&lt;gray&gt;-&gt;"..v.."&lt;-\n")
+      else
+        cecho("&lt;yellow_green&gt;"..v.."\n")
+      end
+    end
+  else
+    cecho("&lt;green&gt;No planets in daisychain list.\n")
+  end
+end
+
+--Flying and landing
+function lotj.flight.beginFlight(matches)
+  lotj.flight.planetName = matches[2]
+  lotj.flight.Launch()
+end
+
+function lotj.flight.beginChain()
+  lotj.flight.chainNum = 1
+  lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+  lotj.flight.Launch()
+end
+
+function lotj.flight.Launch()
+  if not lotj.flight.checkSetup() then
+    return
+  end
+  send("refuel "..lotj.flight.shipName.." full")
+  lotj.flight.enterShip()
+  lotj.flight.toCockpit()
+  send("pilot")
+  send("autopilot off")
+  send("launch confirm")
+  send("shields on")
+  cecho("&lt;green&gt;Flying to "..lotj.flight.planetName.."\n")
+  for i,v in pairs(lotj.flight.landingPrefs) do
+    if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
+      if v.padChoice ~= nil then
+        cecho("&lt;green&gt;Using preferred pad number "..v.padChoice.."\n")
+        lotj.flight.landingPreference = v.padChoice
+      else
+        cecho("&lt;yellow&gt;No pad choice found.\n")
+      end
+    end
+  end
+  lotj.flight.toggleOn()
+end
+
+function lotj.flight.enterShip()
+  if hatchCode == 0 then
+    send("openhatch "..lotj.flight.shipName)
+  else
+    send("openhatch "..lotj.flight.shipName.." "..lotj.flight.hatchCode)
+  end
+  send("enter "..lotj.flight.shipName)
+  send("closehatch")
+end
+
+function lotj.flight.toCockpit()
+  if type(lotj.flight.entryDirs) == "string" then
+    --Do nothing
+  else
+    for i,v in pairs(lotj.flight.entryDirs) do
+      send(v)
+    end
+  end
+end
+
+function lotj.flight.calcPlanet()
+  expandAlias("calc "..lotj.flight.planetName, false)
+end
+
+function lotj.flight.calcDone()
+  lotj.flight.hyperTries = 1
+  send("hyperspace", false)
+end
+
+function lotj.flight.waitHyper()
+  lotj.flight.hyperTries = lotj.flight.hyperTries + 1
+  if lotj.flight.hyperTries &gt;= 20 then
+    local coords = {-50000, 0, 50000}
+    send("course "..coords[math.random(3)].." "..coords[math.random(3)].." "..coords[math.random(3)])
+    lotj.flight.hyperTries = 15
+  end
+  tempTimer(10, [[send("hyperspace",false)]])
+end
+
+function lotj.flight.coursePlanet()
+  send("course '"..planetName.."'")
+end
+
+function lotj.flight.startLandGrab()
+  lotj.flight.landingSites = {}
+  enableTrigger("MatchLine")
+  enableTrigger("LandGrabEnd")
+end
+
+function lotj.flight.doLand()
+  send("land '"..lotj.flight.planetName.."'")
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
+      lotj.flight.landPreference = prefsTable[i].padPref
+      cecho("&lt;green&gt;Using preferred pad: "..lotj.flight.landPreference.."\n")
+    end
+  end
+end
+
+function lotj.flight.landGrab(matches)
+  local squelch = string.find(matches[2], "Possible choices for")
+  local landingSites = lotj.flight.landingSites
+  if (matches[2] ~= "" and squelch == nil) then
+    lotj.flight.landingSites[#landingSites+1] = string.trim(matches[2])
+  end
+end
+
+function lotj.flight.endLandGrab()
+  if not (lotj.flight.landgrabbing) then
+    lotj.flight.landgrabbing = true
+    cecho("&lt;dodger_blue&gt;Grabbing landing sites...\n")
+    lotj.flight.landingSiteNum = 0
+  else
+    lotj.flight.landgrabbing = false
+    disableTrigger("MatchLine")
+    disableTrigger("LandGrabEnd")
+    cecho("&lt;green&gt;Land grab finished.")
+    lotj.flight.landingSiteNum = 0
+    local padPreference = tonumber(lotj.flight.landPreference)
+    if padPreference &gt; 0 then
+      lotj.flight.startLanding(padPreference)
+    else
+      lotj.flight.landNext()
+    end
+  end
+end
+
+function lotj.flight.landNext()
+  lotj.flight.landingSiteNum = lotj.flight.landingSiteNum + 1
+  lotj.flight.startLanding(lotj.flight.landingSiteNum)
+end
+
+
+function lotj.flight.startLanding(siteNum)
+  if tonumber(siteNum) &gt; #lotj.flight.landingSites then
+    cecho("&lt;yellow&gt;Invalid landing location. Starting from beginning.")
+    siteNum = 1
+  end
+  send("land '"..lotj.flight.planetName.."' "..lotj.flight.landingSites[siteNum])
+end
+
+function lotj.flight.Landing()
+  send("shields on")
+  send("autopilot on")
+end
+
+function lotj.flight.endFlight()
+  if type(lotj.flight.exitDirs) == "string" then
+    --Do nothing
+  else
+    for i,v in pairs(lotj.flight.exitDirs) do
+      send(v)
+    end
+  end
+  send("openhatch")
+  send("leaveship")
+  send("closehatch "..lotj.flight.shipName)
+  send("refuel "..lotj.flight.shipName.." full")
+  send("ships sale")
+  lotj.flight.landingSites = {}
+  lotj.flight.lastPlanet = lotj.flight.planetName
+  lotj.flight.reenterCheck()
+  if #lotj.flight.planetChain &gt; 0 then
+    lotj.flight.chainNum = lotj.flight.chainNum + 1
+    if lotj.flight.chainNum &gt; #lotj.flight.planetChain then
+      cecho("&lt;green&gt;Planet daisychain complete!\n")
+      lotj.flight.toggleOff()
+    else
+      lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+      cecho("&lt;yellow&gt;Continuing daisychain. Flying to "..lotj.flight.planetName.."\n")
+      lotj.flight.Launch()
+    end
+  else
+    lotj.flight.toggleOff()
+  end
+end
+
+function lotj.flight.finishFlight(matches)
+  lotj.flight.planetName = string.trim(matches[2])
+  cecho("Finishing flight to "..lotj.flight.planetName.."\n")
+  if lotj.flight.checkSetup() then
+    lotj.flight.toggleOn()
+  end
+end
+
+function lotj.flight.reenterCheck()
+  if (lotj.flight.reenterShip) then
+    lotj.flight.enterShip()
+  end
+end
+
+function lotj.flight.flightStatus()
+  cecho("&lt;gray&gt;Flight status: ".. ((lotj.flight.autoFly==true and "&lt;green&gt;Enabled\n") or "&lt;red&gt;Disabled\n"))
+  cecho("&lt;gray&gt;Flying '&lt;green&gt;"..lotj.flight.shipName.."&lt;gray&gt;' (Hatch code: &lt;ansi_cyan&gt;"..lotj.flight.hatchCode.."&lt;gray&gt;)\n")
+  if lotj.flight.autoFly == true then
+    if lastPlanet ~= "" then
+      cecho("&lt;yellow_green&gt; Flying from: "..lotj.flight.lastPlanet.."\n")
+    end
+    cecho("&lt;yellow_green&gt; Destination planet: "..lotj.flight.planetName.."\n")
+    echo("\n")
+  end
+  if #lotj.flight.entryDirs ~= 0 and #lotj.flight.exitDirs ~= 0 then
+    cecho("&lt;gray&gt;Entry directions: "..lotj.flight.entryDirs.."\n")
+    cecho("&lt;gray&gt;Exit directions: "..lotj.flight.exitDirs.."\n")
+  else
+    cecho("&lt;yellow&gt;Entry and/or exit directions not set.\n")
+  end
+  echo("\n")
+  if lotj.flight.reenterShip == true then
+    cecho("&lt;green&gt; Will re-enter ship when flight is complete.\n")
+  end
+  if #lotj.flight.planetChain &gt; 0 then
+    lotj.flight.listChain()
+  end
+end
+
+
+--Toggles for Off and On
+function lotj.flight.toggleOn()
+  lotj.flight.autoFly = true
+  enableTrigger("LotJAutoFlight")
+  cecho("&lt;green&gt;Auto Flight activated.\n")
+end
+
+function lotj.flight.toggleOff()
+  lotj.flight.autoFly = false
+  disableTrigger("LotJAutoFlight")
+  cecho("&lt;yellow&gt;Auto Flight deactivated.\n")
+end
+
+function lotj.flight.flyAuto(matches)
+  if (matches[2] == "on") then
+    lotj.flight.toggleOn()
+  elseif (matches[2] == "off") then
+    lotj.flight.toggleOff()
+  else
+    if(lotj.flight.autoFly == true) then
+      lotj.flight.toggleOff()
+    else
+      lotj.flight.toggleOn()
+    end
+  end
+end
+
+function lotj.flight.Help()
+  cecho("&lt;green&gt;Automatic flight commands:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;flyto &lt;planet&gt;                     - Begin a flight to given planet, while standing in front of ship\n")
+  cecho("&lt;yellow_green&gt;flyfinish &lt;planet&gt;                 - Finish a flight already in progress to given planet\n")
+  cecho("&lt;yellow_green&gt;flychain &lt;planet&gt;                  - Adds a planet to daisychain to in case your ship needs to land to refuel\n")
+  cecho("&lt;yellow_green&gt;clearchain                         - Clears the planet daisychain list\n")
+  cecho("&lt;yellow_green&gt;remchain &lt;planet&gt;                  - Removes a planet from the daisychain list\n")
+  cecho("&lt;yellow_green&gt;flystart                           - Begins flying the daisychain list\n")
+  echo("\n")
+  cecho("&lt;green&gt;Ship parameter commands:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;hatchcode &lt;#&gt;                      - Designates the hatch number. 0 for none\n")
+  cecho("&lt;yellow_green&gt;entrydir &lt;path&gt;                    - Designates the entry path. Can accept 'n n n', 'n,n,n' or 'n;n;n'\n")
+  cecho("&lt;yellow_green&gt;exitdir &lt;path&gt;                     - Designates the exit path. Can accept 'n n n', 'n,n,n' or 'n;n;n'\n")
+  cecho("&lt;yellow_green&gt;landingpref &lt;#&gt;                    - Designates the landing preference (top down, 0 for auto.)\n")
+  cecho("&lt;yellow_green&gt;shipname &lt;shipname&gt;                - Designates the ship's name\n")
+  echo("\n")
+  cecho("&lt;green&gt;Ship and landing preference profiles:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;saveflightprofile                  - Saves current ship's variables to disk for later loading\n")
+  cecho("&lt;yellow_green&gt;loadflightprofile &lt;shipname&gt;       - Loads a ship's variables\n")
+  cecho("&lt;yellow_green&gt;remflightprofile &lt;shipname&gt;        - Removes a ship from the profiles list\n")
+  cecho("&lt;yellow_green&gt;clearflightprofiles                - Removes all profiles from the profiles list\n")
+  cecho("&lt;yellow_green&gt;landpref &lt;planet&gt; &lt;pad #&gt;          - Specifies which pad you would prefer to land on for specified planet\n")
+  echo("\n")
+  cecho("&lt;green&gt;Various switches:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;flystatus                          - Display current status of flight\n")
+  cecho("&lt;yellow_green&gt;flyauto on/off                     - Enable or disable automatic flight\n")
+  cecho("&lt;yellow_green&gt;flyclear                           - Clears all current fly variables\n")
+  cecho("&lt;yellow_green&gt;flyreenter                         - Re-enter your ship at the end of a flight\n")
+  cecho("&lt;yellow_green&gt;flyhelp                            - Display this help menu\n")
+  cecho("\n")
+end
+
+registerAnonymousEventHandler("sysLoadEvent", lotj.flight.Init)</script>
+			<eventHandlerList />
+		</Script>
+	</ScriptPackage>
+	<KeyPackage />
+	<VariablePackage>
+		<HiddenVariables />
+		<Variable>
+			<name>autoTransition</name>
+			<keyType>4</keyType>
+			<value>false</value>
+			<valueType>1</valueType>
+		</Variable>
+		<VariableGroup>
+			<name>bestResult</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<Variable>
+				<name>about</name>
+				<keyType>4</keyType>
+				<value>0</value>
+				<valueType>3</valueType>
+			</Variable>
+			<Variable>
+				<name>head</name>
+				<keyType>4</keyType>
+				<value>0</value>
+				<valueType>3</valueType>
+			</Variable>
+		</VariableGroup>
+		<VariableGroup>
+			<name>comlinkList</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+		</VariableGroup>
+		<VariableGroup>
+			<name>domo</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<VariableGroup>
+				<name>autoItem</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>afk</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>autoBag</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>autoItem</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>caseDesign</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>caseKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>comlinkAutoTune</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>crystalCon</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>crystalNames</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>currentIteration</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentPos</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentShop</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentTunePos</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>debugVars</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>defaultShopInfo</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>dirs</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+					<VariableGroup>
+						<name>list</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+				</VariableGroup>
+				<Variable>
+					<name>goingLocker</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>goingShopping</name>
+					<keyType>4</keyType>
+					<value>true</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>initialRun</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>itemCase</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>itemKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>itemList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>4</valueType>
+					</Variable>
+				</VariableGroup>
+				<Variable>
+					<name>lockerDeposit</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>lockerDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lockerItemKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>lockerList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lockerOpen</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>lockerRun</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>makeCommand</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>makingLightsabers</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>playerID</name>
+					<keyType>4</keyType>
+					<value>Kexim</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>remodLevel</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>remodulate</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>repeatItem</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>shopList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>shoppingInterval</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>shoppingRun</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>totalShops</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>trashCan</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>tuneList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>workshopDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>cargoScan</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>currPlanet</name>
+					<keyType>4</keyType>
+					<value>Mandalore</value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>planets</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>pingChart</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>coords</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Arkania </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Perave System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Kashyyyk </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Mytaranor Sector </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Mon Cala </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Calamari System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Ryloth </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Gaulus Sector </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Tatooine </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Arkanis Sector </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Wroona </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Wroona System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Alderaan </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Alderaan System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Corellia </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Corellian System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>9</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Coruscant </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Corusca Sector </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>10</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Ithor </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Ottega System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>11</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Nal Hutta </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Y'Toub System </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>12</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value>Mandalore </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value>Mandalore Sector </value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>13</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>14</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>15</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>16</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>17</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>18</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>19</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>20</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>21</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>22</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>23</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>24</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>planet</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>system</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<VariableGroup>
+					<name>distances</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+		</VariableGroup>
+		<VariableGroup>
+			<name>lotj</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<VariableGroup>
+				<name>autoReload</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>ammoVar</name>
+					<keyType>4</keyType>
+					<value>ammo</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>containerVar</name>
+					<keyType>4</keyType>
+					<value>camtono</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoResearch</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>enabled</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>initialCount</name>
+					<keyType>4</keyType>
+					<value>20</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>researchList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>startOnPracticeEnd</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>cargoScan</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>planets</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>chat</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>commnetLastChannel</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>commnetLastMessage</name>
+					<keyType>4</keyType>
+					<value>You get my mail? When did you want to meet? I can also just drone you the remainder.</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>comlinkInfo</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>comlinks</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>[NewbTech] A starting comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>3268</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Alpha</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Beta</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked CEC</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>23</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Charlie</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked HKD</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>8114</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Republic</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Trade Fed</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>A compact comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled ARE</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>615</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Dawn</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>44</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Five</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>6265</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>73491</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Galactic Empire</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Luka</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>420</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled One</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>330</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Translation</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>5</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Alderaan</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>615</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Dawn</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>44</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Empire</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Luka</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>420</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Translation</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>5</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a sleek comlink labeled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>an RSC employee badge with built-in comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: [NewbTech] A starting comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>3268</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled ARE</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>615</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled Five</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>6265</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>73491</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled One</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>330</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a sleek comlink labeled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<Variable>
+					<name>currentChar</name>
+					<keyType>4</keyType>
+					<value>Kexim</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>devScript</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>flight</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>autoFly</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>chainNum</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>exitDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>flightProfiles</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<VariableGroup>
+							<name>entryDirs</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+						</VariableGroup>
+						<Variable>
+							<name>hatchCode</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>shipName</name>
+							<keyType>4</keyType>
+							<value>nauurkad</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<VariableGroup>
+					<name>hangars</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>hatchCode</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>hypertries</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>hyperTries</name>
+					<keyType>4</keyType>
+					<value>4</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>landgrabbing</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>landingPrefs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>naboo</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>ryloth</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<Variable>
+					<name>landingSiteNum</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>landingSites</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lastPlanet</name>
+					<keyType>4</keyType>
+					<value>mandalore</value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>planetChain</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>planetName</name>
+					<keyType>4</keyType>
+					<value>mandalore</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>reenterShip</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>shipName</name>
+					<keyType>4</keyType>
+					<value>nauurkad</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>galaxyMap</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>data</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>govToColor</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>A Neutral Government</name>
+							<keyType>4</keyType>
+							<value>#AAAAAA</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>Neutral Government</name>
+							<keyType>4</keyType>
+							<value>#AAAAAA</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>Red</name>
+							<keyType>4</keyType>
+							<value>#A94B16</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<Variable>
+						<name>labelAsPlanets</name>
+						<keyType>4</keyType>
+						<value>true</value>
+						<valueType>1</valueType>
+					</Variable>
+					<VariableGroup>
+						<name>planets</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+					<VariableGroup>
+						<name>systems</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>infoPanel</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>spaceTickTimers</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value>1237</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value>1238</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value>1239</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value>1240</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value>1241</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value>1242</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value>1243</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value>1244</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>9</name>
+						<keyType>3</keyType>
+						<value>1245</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>10</name>
+						<keyType>3</keyType>
+						<value>1246</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>11</name>
+						<keyType>3</keyType>
+						<value>1247</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>12</name>
+						<keyType>3</keyType>
+						<value>1248</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>13</name>
+						<keyType>3</keyType>
+						<value>1249</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>14</name>
+						<keyType>3</keyType>
+						<value>1250</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>15</name>
+						<keyType>3</keyType>
+						<value>1251</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>16</name>
+						<keyType>3</keyType>
+						<value>1252</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>17</name>
+						<keyType>3</keyType>
+						<value>1253</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>18</name>
+						<keyType>3</keyType>
+						<value>1254</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>19</name>
+						<keyType>3</keyType>
+						<value>1255</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>20</name>
+						<keyType>3</keyType>
+						<value>1256</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>21</name>
+						<keyType>3</keyType>
+						<value>1257</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>22</name>
+						<keyType>3</keyType>
+						<value>1258</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>layout</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>lowerInfoPanelHeight</name>
+					<keyType>4</keyType>
+					<value>55</value>
+					<valueType>3</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>mapper</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>current</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>vnum</name>
+						<keyType>4</keyType>
+						<value>429001</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+				<VariableGroup>
+					<name>last</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>vnum</name>
+						<keyType>4</keyType>
+						<value>429002</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>setup</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>eventHandlerKillIds</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value>5</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value>6</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value>7</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value>8</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value>9</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value>10</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value>11</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value>12</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>9</name>
+						<keyType>3</keyType>
+						<value>13</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>10</name>
+						<keyType>3</keyType>
+						<value>14</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>11</name>
+						<keyType>3</keyType>
+						<value>15</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>12</name>
+						<keyType>3</keyType>
+						<value>16</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>13</name>
+						<keyType>3</keyType>
+						<value>17</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>14</name>
+						<keyType>3</keyType>
+						<value>18</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>15</name>
+						<keyType>3</keyType>
+						<value>19</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>16</name>
+						<keyType>3</keyType>
+						<value>20</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>17</name>
+						<keyType>3</keyType>
+						<value>21</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>18</name>
+						<keyType>3</keyType>
+						<value>22</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>19</name>
+						<keyType>3</keyType>
+						<value>23</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>20</name>
+						<keyType>3</keyType>
+						<value>24</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>21</name>
+						<keyType>3</keyType>
+						<value>25</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>22</name>
+						<keyType>3</keyType>
+						<value>26</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>23</name>
+						<keyType>3</keyType>
+						<value>27</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>24</name>
+						<keyType>3</keyType>
+						<value>28</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>25</name>
+						<keyType>3</keyType>
+						<value>29</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>26</name>
+						<keyType>3</keyType>
+						<value>30</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>27</name>
+						<keyType>3</keyType>
+						<value>31</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>28</name>
+						<keyType>3</keyType>
+						<value>32</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>29</name>
+						<keyType>3</keyType>
+						<value>33</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>30</name>
+						<keyType>3</keyType>
+						<value>34</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>31</name>
+						<keyType>3</keyType>
+						<value>35</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>32</name>
+						<keyType>3</keyType>
+						<value>36</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>33</name>
+						<keyType>3</keyType>
+						<value>37</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>34</name>
+						<keyType>3</keyType>
+						<value>38</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>35</name>
+						<keyType>3</keyType>
+						<value>39</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>36</name>
+						<keyType>3</keyType>
+						<value>12</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>37</name>
+						<keyType>3</keyType>
+						<value>13</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>38</name>
+						<keyType>3</keyType>
+						<value>14</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>39</name>
+						<keyType>3</keyType>
+						<value>15</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>40</name>
+						<keyType>3</keyType>
+						<value>17</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>41</name>
+						<keyType>3</keyType>
+						<value>18</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>42</name>
+						<keyType>3</keyType>
+						<value>19</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>43</name>
+						<keyType>3</keyType>
+						<value>20</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>44</name>
+						<keyType>3</keyType>
+						<value>21</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>45</name>
+						<keyType>3</keyType>
+						<value>22</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>46</name>
+						<keyType>3</keyType>
+						<value>23</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>47</name>
+						<keyType>3</keyType>
+						<value>24</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>48</name>
+						<keyType>3</keyType>
+						<value>25</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>49</name>
+						<keyType>3</keyType>
+						<value>26</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>50</name>
+						<keyType>3</keyType>
+						<value>27</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>51</name>
+						<keyType>3</keyType>
+						<value>28</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>52</name>
+						<keyType>3</keyType>
+						<value>29</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>53</name>
+						<keyType>3</keyType>
+						<value>30</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>54</name>
+						<keyType>3</keyType>
+						<value>31</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>55</name>
+						<keyType>3</keyType>
+						<value>32</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>56</name>
+						<keyType>3</keyType>
+						<value>33</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>57</name>
+						<keyType>3</keyType>
+						<value>34</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>58</name>
+						<keyType>3</keyType>
+						<value>35</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>59</name>
+						<keyType>3</keyType>
+						<value>36</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>60</name>
+						<keyType>3</keyType>
+						<value>37</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>61</name>
+						<keyType>3</keyType>
+						<value>38</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>62</name>
+						<keyType>3</keyType>
+						<value>39</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>63</name>
+						<keyType>3</keyType>
+						<value>40</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>64</name>
+						<keyType>3</keyType>
+						<value>41</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>65</name>
+						<keyType>3</keyType>
+						<value>42</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>66</name>
+						<keyType>3</keyType>
+						<value>43</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>67</name>
+						<keyType>3</keyType>
+						<value>44</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>68</name>
+						<keyType>3</keyType>
+						<value>45</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>69</name>
+						<keyType>3</keyType>
+						<value>46</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>70</name>
+						<keyType>3</keyType>
+						<value>47</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>71</name>
+						<keyType>3</keyType>
+						<value>6</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>72</name>
+						<keyType>3</keyType>
+						<value>7</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>73</name>
+						<keyType>3</keyType>
+						<value>8</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>74</name>
+						<keyType>3</keyType>
+						<value>9</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>75</name>
+						<keyType>3</keyType>
+						<value>12</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>76</name>
+						<keyType>3</keyType>
+						<value>13</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>77</name>
+						<keyType>3</keyType>
+						<value>14</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>78</name>
+						<keyType>3</keyType>
+						<value>15</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>79</name>
+						<keyType>3</keyType>
+						<value>16</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>80</name>
+						<keyType>3</keyType>
+						<value>17</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>81</name>
+						<keyType>3</keyType>
+						<value>18</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>82</name>
+						<keyType>3</keyType>
+						<value>19</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>83</name>
+						<keyType>3</keyType>
+						<value>20</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>84</name>
+						<keyType>3</keyType>
+						<value>21</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+				<VariableGroup>
+					<name>gmcpEventHandlerFuncs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>systemMap</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>genLabels</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>genPoints</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>inRadarOutput</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>mapRange</name>
+					<keyType>4</keyType>
+					<value>2000</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>maskNextRadarOutput</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>radarItems</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>(STAR) Mandalore</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>23340</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>z</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>Mandalore</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>3340</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>5000</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>z</name>
+							<keyType>4</keyType>
+							<value>-10000</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>class</name>
+							<keyType>4</keyType>
+							<value>Kyramud-Type Battlecruiser</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>United</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>3340</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>5000</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>z</name>
+							<keyType>4</keyType>
+							<value>-10000</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>Keldabe</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+			</VariableGroup>
+		</VariableGroup>
+	</VariablePackage>
+</MudletPackage>
