@@ -1,0 +1,610 @@
+lotj = lotj or {}
+lotj.flight = lotj.flight or {}
+
+--[[
+Ideas:
+Repeat daisychain - Bus!
+Daisychain delay before launching again
+
+]]
+
+--Initializing Variables
+function lotj.flight.createFlightProfiles()
+  lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJFlight/")
+  echo("Flight profiles file doesn't exist. Attempting to create.\n")
+  local profileFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua")
+  if not profileFile then
+    file = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "w")
+    file:write("")
+    file:close()
+  end
+end
+
+function lotj.flight.createLandingPrefs()
+  lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJFlight/")
+  echo("Landing preferences file doesn't exist. Attempting to create.\n")
+  local profileFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua")
+  if not profileFile then
+    file = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", "w")
+    file:write("")
+    file:close()
+  end
+end
+
+function lotj.flight.saveProfileTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", lotj.flight.flightProfiles)
+end
+
+function lotj.flight.saveLandingPrefsTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.setVars()
+  lotj.flight.shipName = ""
+  lotj.flight.exitDirs = {}
+  lotj.flight.entryDirs = {}
+  lotj.flight.hatchCode = 0
+  lotj.flight.planetName = ""
+  lotj.flight.lastPlanet = ""
+  lotj.flight.planetChain = {}
+  lotj.flight.chainNum = 0
+  lotj.flight.autoFly = false
+  lotj.flight.landingSites = {}
+  lotj.flight.landingSiteNum = 0
+  lotj.flight.landgrabbing = false
+  lotj.flight.landPreference = -1
+  lotj.flight.hangars = {}
+  lotj.flight.reenterShip = false
+  lotj.flight.hypertries = 0
+  lotj.flight.reenterShip = false
+  lotj.flight.flightProfiles = {}
+  lotj.flight.landingPrefs = {}
+  local flightProfileFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "r")
+  local flightPrefsFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", "r")
+  if flightProfileFileCheck == nil then
+    lotj.flight.createFlightProfiles()
+  end 
+  if flightPrefsFileCheck == nil then
+    lotj.flight.createLandingPrefs()
+  end
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", lotj.flight.flightProfiles)
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.Init()
+  lotj.flight.setVars()
+  cecho("<green>LotJFlight Initialized.\n")
+end
+
+function lotj.flight.Clear()
+  lotj.flight.setVars()
+  cecho("<tomato>LotJFlight Cleared.\n")
+  lotj.flight.toggleOff()
+end
+
+--Setting ship information
+function lotj.flight.setShipName(matches)
+  lotj.flight.shipName = tostring(matches[2])
+  cecho("<green>Current ship set to "..lotj.flight.shipName.."\n")
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setEntryDirs(matches)
+  local rawEntryDirs = matches[2]
+  local splitDirs = ""
+  cecho("<green>Directions to enter the ship set to "..rawEntryDirs.."\n")
+  if string.find(rawEntryDirs, " ") then
+    splitDirs = string.split(rawEntryDirs, " ")
+  elseif string.find(rawEntryDirs, ",") then
+    splitDirs = string.split(rawEntryDirs, ",")
+  elseif string.find(rawEntryDirs, ";") then
+    splitDirs = string.split(rawEntryDirs, ";")
+  elseif string.lower(rawEntryDirs) == "none" then
+    cecho("<green>One room ship specified\n")
+    splitDirs = "none"
+  else
+    cecho("<red>Unrecognized directions given.\n")
+    lotj.flight.toggleOff()
+  end
+  lotj.flight.entryDirs = splitDirs
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setExitDirs(matches)
+  local rawExitDirs = matches[2]
+  local splitDirs = ""
+  cecho("<green>Directions to enter the ship set to "..rawExitDirs.."\n")
+  if string.find(rawExitDirs, " ") then
+    splitDirs = string.split(rawExitDirs, " ")
+  elseif string.find(rawExitDirs, ",") then
+    splitDirs = string.split(rawExitDirs, ",")
+  elseif string.find(rawExitDirs, ";") then
+    splitDirs = string.split(rawExitDirs, ";")
+  elseif string.lower(rawExitDirs) == "none" then
+    cecho("<green>One room ship specified\n")
+    splitDirs = "none"
+  else
+    cecho("<red>Unrecognized directions given.\n")
+    lotj.flight.toggleOff()
+  end
+  lotj.flight.exitDirs = splitDirs
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setHatchCode(matches)
+  lotj.flight.hatchCode = tonumber(matches[2])
+  cecho("<green>Hatch code set to "..lotj.flight.hatchCode)
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setLandingPref(matches)
+  local planetChoice = matches[2]
+  local padChoice = matches[3]
+  local matchFound = false
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    if string.match(v.planetName, planetChoice) then
+      lotj.flight.landingPrefs[i].padPref = padChoice
+      cecho("<green>Landing pad preference for "..planetChoice.." set to "..padChoice.."\n")
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("<yellow>Add planet "..planetChoice.." with landing preference pad "..padChoice.."\n")
+    local newPref = { planetName = planetChoice, padPref = padChoice }
+    lotj.flight.landingPrefs[#prefsTable+1] = newPref
+  end
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.listLandingPrefs()
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    cecho("<green>Planet: <gray>"..v.planetName.." <green>Pad: <gray>"..v.padPref.."\n")
+  end
+end
+
+function lotj.flight.checkSetup()
+  local ready = true
+  if lotj.flight.shipName == "" then
+    cecho("<red>No ship name specified. Please designate with 'shipname' alias.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif tonumber(lotj.flight.hatchCode) < 0 and lotj.flight.hatchCode > 99999 then
+    cecho("<red>Invalid hatch number specified. Please designate correct hatch number or use 0 for none with 'hatchcode' alias.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif lotj.flight.entryDirs == "" then
+    cecho("<red>No ship entrance path specified. Please designate entrance path with 'entrydir' alias. Use 'entrydir none' for a single room ship.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif lotj.flight.exitDirs == "" then
+    cecho("<red>No ship exit path specified. Please designate exit path with 'exitdir' alias. Use 'exitdir none' for a single room ship.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  end
+  if ready == false then
+    return false
+  else
+    return true
+  end
+end
+
+function lotj.flight.toggleReenter(matches)
+  if not matches or matches == "" then
+    if lotj.flight.reenterShip then
+      lotj.flight.reenterShip = false
+      cecho("<yellow>Will not re-enter ship upon arrival.\n")
+    else
+      lotj.flight.reenterShip = true
+      cecho("<yellow>Will re-enter ship upon arrival.\n")
+    end
+  elseif string.lower(matches[2]) == "on" then
+    lotj.flight.reenterShip = true
+    cecho("<yellow>Will re-enter ship upon arrival.\n")
+  elseif string.lower(matches[2]) == "off" then
+    lotj.flight.reenterShip = false
+    cecho("<yellow>Will not re-enter ship upon arrival.\n")
+  end
+end
+
+function lotj.flight.loadProfile(matches)
+  local shipChoice = tostring(matches[2])
+  local profileTable = lotj.flight.flightProfiles
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(shipChoice) then
+      cecho("<green>Loaded profile for "..v.shipName)
+      lotj.flight.shipName = v.shipName
+      lotj.flight.entryDirs = v.entryDirs
+      lotj.flight.exitDirs = v.exitDirs
+      lotj.flight.hatchCode = v.hatchCode
+      return
+    end
+  end
+  cecho("<yellow>Ship not found in profile list.\n")
+end
+
+function lotj.flight.saveProfile()
+  local newProfile = { shipName = "", entryDirs = {}, exitDirs = {}, hatchCode = 0 }
+  local profileTable = lotj.flight.flightProfiles
+  local matchFound = false
+  if not lotj.flight.checkSetup() then
+    return
+  end
+  newProfile.shipName = lotj.flight.shipName
+  newProfile.entryDirs = lotj.flight.entryDirs
+  newProfile.exitDirs = lotj.flight.exitDirs
+  newProfile.hatchCode = lotj.flight.hatchCode
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(newProfile.shipName) then
+      cecho("<green>Profile found for "..newProfile.shipName..". Updating with current info.\n")
+      profileTable[i] = newProfile
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("Saving new profile "..lotj.flight.shipName.."\n")
+    lotj.flight.flightProfiles[#profileTable+1] = newProfile
+  end
+  lotj.flight.saveProfileTable()
+end
+
+function lotj.flight.remProfile(matches)
+  local profileTable = lotj.flight.flightProfiles
+  local axedProfile = matches[2]
+  local matchFound = false
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(axedProfile) then
+      table.remove(i)
+      cecho("<yellow>Profile removed.")
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("<yellow>Profile not found.\n")
+  end
+end
+
+function lotj.flight.clearProfiles()
+  lotj.flight.flightProfiles = {}
+  lotj.flight.saveProfileTable()
+  cecho("<red>All flight profiles cleared.\n")
+end
+
+function lotj.flight.listProfiles()
+  cecho("<green>Listing all flight profiles:\n")
+  for i,v in pairs(lotj.flight.flightProfiles) do
+    if type(v.entryDirs) == "table" and type(v.exitDirs) == "table" then
+      cecho("<green>"..v.shipName..", <yellow>entry dirs: "..table.concat(v.entryDirs, ",")..", exit dirs: "..table.concat(v.exitDirs, ",").."\n")
+    elseif type(v.entryDirs) == "string" and type(v.exitDirs) == "string" then
+      cecho("<green>"..v.shipName..", <yellow>entry dirs: "..v.entryDirs..", exit dirs: "..v.exitDirs.."\n")
+    else
+      cecho("<green>"..v.shipName..", <yellow>Error displaying entry and exit dirs.\n")
+    end
+  end
+end
+    
+
+function lotj.flight.addChain(matches)
+  local newPlanet = matches[2]
+  local chainTable = lotj.flight.planetChain
+  lotj.flight.planetChain[#chainTable + 1] = newPlanet
+  cecho("<green>"..newPlanet.." added to daisychain list.\n")
+end
+
+function lotj.flight.remChain(matches)
+  local remPlanet = matches[2]
+  local chainTable = lotj.flight.planetChain
+  local matchFound = false
+  for i,v in pairs(chainTable) do
+    if string.match(string.lower(chainTable[i]), string.lower(remPlanet)) then
+      cecho("<yellow>"..remPlanet.." removed from chain.\n")
+      table.remove(lotj.flight.planetChain, i)
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("<yellow>"..remPlanet.." not found in chain.\n")
+  end
+end
+
+function lotj.flight.clearChain()
+  lotj.flight.planetChain = {}
+  cecho("<yellow>Planet daisychain cleared.\n")
+end
+
+function lotj.flight.listChain()
+  local chainTable = lotj.flight.planetChain
+  if #chainTable > 0 then
+    cecho("<green>Currently daisychaining planets:\n")
+    for i,v in pairs(lotj.flight.planetChain) do
+      if i == lotj.flight.chainNum then
+        cecho("<gray>->"..v.."<-\n")
+      else
+        cecho("<yellow_green>"..v.."\n")
+      end
+    end
+  else
+    cecho("<green>No planets in daisychain list.\n")
+  end
+end
+
+--Flying and landing
+function lotj.flight.beginFlight(matches)
+  lotj.flight.planetName = matches[2]
+  lotj.flight.Launch()
+end
+
+function lotj.flight.beginChain()
+  lotj.flight.chainNum = 1
+  lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+  lotj.flight.Launch()
+end
+
+function lotj.flight.Launch()
+  if not lotj.flight.checkSetup() then
+    return
+  end
+  send("refuel "..lotj.flight.shipName.." full")
+  lotj.flight.enterShip()
+  lotj.flight.toCockpit()
+  send("pilot")
+  send("autopilot off")
+  send("launch confirm")
+  send("shields on")
+  cecho("<green>Flying to "..lotj.flight.planetName.."\n")
+  for i,v in pairs(lotj.flight.landingPrefs) do
+    if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
+      if v.padChoice ~= nil then
+        cecho("<green>Using preferred pad number "..v.padChoice.."\n")
+        lotj.flight.landingPreference = v.padChoice
+      else
+        cecho("<yellow>No pad choice found.\n")
+      end
+    end
+  end
+  lotj.flight.toggleOn()
+end
+
+function lotj.flight.enterShip()
+  if hatchCode == 0 then
+    send("openhatch "..lotj.flight.shipName)
+  else
+    send("openhatch "..lotj.flight.shipName.." "..lotj.flight.hatchCode)
+  end
+  send("enter "..lotj.flight.shipName)
+  send("closehatch")
+end
+
+function lotj.flight.toCockpit()
+  if type(lotj.flight.entryDirs) == "string" then
+    --Do nothing
+  else
+    for i,v in pairs(lotj.flight.entryDirs) do
+      send(v)
+    end
+  end
+end
+
+function lotj.flight.calcPlanet()
+  expandAlias("calc "..lotj.flight.planetName, false)
+end
+
+function lotj.flight.calcDone()
+  lotj.flight.hyperTries = 1
+  send("hyperspace", false)
+end
+
+function lotj.flight.waitHyper()
+  lotj.flight.hyperTries = lotj.flight.hyperTries + 1
+  if lotj.flight.hyperTries >= 20 then
+    local coords = {-50000, 0, 50000}
+    send("course "..coords[math.random(3)].." "..coords[math.random(3)].." "..coords[math.random(3)])
+    lotj.flight.hyperTries = 15
+  end
+  tempTimer(10, [[send("hyperspace",false)]])
+end
+
+function lotj.flight.coursePlanet()
+  send("course '"..planetName.."'")
+end
+
+function lotj.flight.startLandGrab()
+  lotj.flight.landingSites = {}
+  enableTrigger("MatchLine")
+  enableTrigger("LandGrabEnd")
+end
+
+function lotj.flight.doLand()
+  send("land '"..lotj.flight.planetName.."'")
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
+      lotj.flight.landPreference = prefsTable[i].padPref
+      cecho("<green>Using preferred pad: "..lotj.flight.landPreference.."\n")
+    end
+  end
+end
+
+function lotj.flight.landGrab(matches)
+  local squelch = string.find(matches[2], "Possible choices for")
+  local landingSites = lotj.flight.landingSites
+  if (matches[2] ~= "" and squelch == nil) then
+    lotj.flight.landingSites[#landingSites+1] = string.trim(matches[2])
+  end
+end
+
+function lotj.flight.endLandGrab()
+  if not (lotj.flight.landgrabbing) then
+    lotj.flight.landgrabbing = true
+    cecho("<dodger_blue>Grabbing landing sites...\n")
+    lotj.flight.landingSiteNum = 0
+  else
+    lotj.flight.landgrabbing = false
+    disableTrigger("MatchLine")
+    disableTrigger("LandGrabEnd")
+    cecho("<green>Land grab finished.")
+    lotj.flight.landingSiteNum = 0
+    local padPreference = tonumber(lotj.flight.landPreference)
+    if padPreference > 0 then
+      lotj.flight.startLanding(padPreference)
+    else
+      lotj.flight.landNext()
+    end
+  end
+end
+
+function lotj.flight.landNext()
+  lotj.flight.landingSiteNum = lotj.flight.landingSiteNum + 1
+  lotj.flight.startLanding(lotj.flight.landingSiteNum)
+end
+
+
+function lotj.flight.startLanding(siteNum)
+  if tonumber(siteNum) > #lotj.flight.landingSites then
+    cecho("<yellow>Invalid landing location. Starting from beginning.")
+    siteNum = 1
+  end
+  send("land '"..lotj.flight.planetName.."' "..lotj.flight.landingSites[siteNum])
+end
+
+function lotj.flight.Landing()
+  send("shields on")
+  send("autopilot on")
+end
+
+function lotj.flight.endFlight()
+  if type(lotj.flight.exitDirs) == "string" then
+    --Do nothing
+  else
+    for i,v in pairs(lotj.flight.exitDirs) do
+      send(v)
+    end
+  end
+  send("openhatch")
+  send("leaveship")
+  send("closehatch "..lotj.flight.shipName)
+  send("refuel "..lotj.flight.shipName.." full")
+  send("ships sale")
+  lotj.flight.landingSites = {}
+  lotj.flight.lastPlanet = lotj.flight.planetName
+  lotj.flight.reenterCheck()
+  if #lotj.flight.planetChain > 0 then
+    lotj.flight.chainNum = lotj.flight.chainNum + 1
+    if lotj.flight.chainNum > #lotj.flight.planetChain then
+      cecho("<green>Planet daisychain complete!\n")
+      lotj.flight.toggleOff()
+    else
+      lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+      cecho("<yellow>Continuing daisychain. Flying to "..lotj.flight.planetName.."\n")
+      lotj.flight.Launch()
+    end
+  else
+    lotj.flight.toggleOff()
+  end
+end
+
+function lotj.flight.finishFlight(matches)
+  lotj.flight.planetName = string.trim(matches[2])
+  cecho("Finishing flight to "..lotj.flight.planetName.."\n")
+  if lotj.flight.checkSetup() then
+    lotj.flight.toggleOn()
+  end
+end
+
+function lotj.flight.reenterCheck()
+  if (lotj.flight.reenterShip) then
+    lotj.flight.enterShip()
+  end
+end
+
+function lotj.flight.flightStatus()
+  cecho("<gray>Flight status: ".. ((lotj.flight.autoFly==true and "<green>Enabled\n") or "<red>Disabled\n"))
+  cecho("<gray>Flying '<green>"..lotj.flight.shipName.."<gray>' (Hatch code: <ansi_cyan>"..lotj.flight.hatchCode.."<gray>)\n")
+  if lotj.flight.autoFly == true then
+    if lastPlanet ~= "" then
+      cecho("<yellow_green> Flying from: "..lotj.flight.lastPlanet.."\n")
+    end
+    cecho("<yellow_green> Destination planet: "..lotj.flight.planetName.."\n")
+    echo("\n")
+  end
+  if #lotj.flight.entryDirs ~= 0 and #lotj.flight.exitDirs ~= 0 then
+    cecho("<gray>Entry directions: "..lotj.flight.entryDirs.."\n")
+    cecho("<gray>Exit directions: "..lotj.flight.exitDirs.."\n")
+  else
+    cecho("<yellow>Entry and/or exit directions not set.\n")
+  end
+  echo("\n")
+  if lotj.flight.reenterShip == true then
+    cecho("<green> Will re-enter ship when flight is complete.\n")
+  end
+  if #lotj.flight.planetChain > 0 then
+    lotj.flight.listChain()
+  end
+end
+
+
+--Toggles for Off and On
+function lotj.flight.toggleOn()
+  lotj.flight.autoFly = true
+  enableTrigger("LotJAutoFlight")
+  cecho("<green>Auto Flight activated.\n")
+end
+
+function lotj.flight.toggleOff()
+  lotj.flight.autoFly = false
+  disableTrigger("LotJAutoFlight")
+  cecho("<yellow>Auto Flight deactivated.\n")
+end
+
+function lotj.flight.flyAuto(matches)
+  if (matches[2] == "on") then
+    lotj.flight.toggleOn()
+  elseif (matches[2] == "off") then
+    lotj.flight.toggleOff()
+  else
+    if(lotj.flight.autoFly == true) then
+      lotj.flight.toggleOff()
+    else
+      lotj.flight.toggleOn()
+    end
+  end
+end
+
+function lotj.flight.Help()
+  cecho("<green>Automatic flight commands:\n")
+  cecho("<yellow_green>-------------------------------------\n")
+  cecho("<yellow_green>flyto <planet>                     - Begin a flight to given planet, while standing in front of ship\n")
+  cecho("<yellow_green>flyfinish <planet>                 - Finish a flight already in progress to given planet\n")
+  cecho("<yellow_green>flychain <planet>                  - Adds a planet to daisychain to in case your ship needs to land to refuel\n")
+  cecho("<yellow_green>clearchain                         - Clears the planet daisychain list\n")
+  cecho("<yellow_green>remchain <planet>                  - Removes a planet from the daisychain list\n")
+  cecho("<yellow_green>flystart                           - Begins flying the daisychain list\n")
+  echo("\n")
+  cecho("<green>Ship parameter commands:\n")
+  cecho("<yellow_green>-------------------------------------\n")
+  cecho("<yellow_green>hatchcode <#>                      - Designates the hatch number. 0 for none\n")
+  cecho("<yellow_green>entrydir <path>                    - Designates the entry path. Can accept 'n n n', 'n,n,n' or 'n;n;n'\n")
+  cecho("<yellow_green>exitdir <path>                     - Designates the exit path. Can accept 'n n n', 'n,n,n' or 'n;n;n'\n")
+  cecho("<yellow_green>landingpref <#>                    - Designates the landing preference (top down, 0 for auto.)\n")
+  cecho("<yellow_green>shipname <shipname>                - Designates the ship's name\n")
+  echo("\n")
+  cecho("<green>Ship and landing preference profiles:\n")
+  cecho("<yellow_green>-------------------------------------\n")
+  cecho("<yellow_green>saveflightprofile                  - Saves current ship's variables to disk for later loading\n")
+  cecho("<yellow_green>loadflightprofile <shipname>       - Loads a ship's variables\n")
+  cecho("<yellow_green>remflightprofile <shipname>        - Removes a ship from the profiles list\n")
+  cecho("<yellow_green>clearflightprofiles                - Removes all profiles from the profiles list\n")
+  cecho("<yellow_green>landpref <planet> <pad #>          - Specifies which pad you would prefer to land on for specified planet\n")
+  echo("\n")
+  cecho("<green>Various switches:\n")
+  cecho("<yellow_green>-------------------------------------\n")
+  cecho("<yellow_green>flystatus                          - Display current status of flight\n")
+  cecho("<yellow_green>flyauto on/off                     - Enable or disable automatic flight\n")
+  cecho("<yellow_green>flyclear                           - Clears all current fly variables\n")
+  cecho("<yellow_green>flyreenter                         - Re-enter your ship at the end of a flight\n")
+  cecho("<yellow_green>flyhelp                            - Display this help menu\n")
+  cecho("\n")
+end
+
+registerAnonymousEventHandler("sysLoadEvent", lotj.flight.Init)
