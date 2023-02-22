@@ -1,0 +1,276 @@
+function buildshipSetParts()
+  buildshipParts = buildshipParts or { hull = "hull", circuits = "circuits", weapons = "weapons", engines = "engines"}
+end
+
+function buildshipClearVars()
+  buildshipQueue = {}
+  buildshipParts = buildshipParts or { hull = "hull", circuits = "circuits", weapons = "weapons", engines = "engines"}
+  buildshipCurrPos = 1
+  buildshipCurrShip = ""
+  buildshipCurrPart = ""
+  buildshipSpam = false
+  buildshipAuto = false
+end
+
+function buildshipInit()
+  buildshipCurrPos = 1
+  buildshipCurrShip = ""
+  buildshipSpam = false
+  buildshipAntiLoop = 0
+  metaAntiLoop = 0
+  buildshipSetParts()
+end
+
+function buildshipClear()
+  buildshipClearVars()
+  cecho("<yellow>Buildship variables cleared.<reset>\n")
+end
+
+function buildshipFirstInit()
+  buildshipClearVars()
+  buildshipInit()
+  cecho("<green>LotJBuildship Initialized.<reset>\n")
+end
+
+function buildshipAdd(matches)
+  local bsNewShip = tostring(matches[2])
+  buildshipQueue[#buildshipQueue + 1] = tostring(bsNewShip)
+  cecho("<green>"..bsNewShip.." added to queue!<reset>\n")
+end
+
+function buildshipRemove(matches)
+  local bsRemove = matches[2]
+  if type(bsRemove) == number then -- We're deleting based on index.
+    table.remove(tonumber(bsRemove))
+    cecho("<yellow>Removed ship at index "..bsRemove.."<reset>\n")
+  else
+    for i,v in pairs(buildshipQueue) do
+      if string.match(v, bsRemove) then
+        table.remove(buildshipQueue, i)
+        cecho("<yellow>Removed entry "..v.."<reset>\n")
+      end
+    end
+  end
+end
+
+function buildshipUpdate(matches)
+  if matches[4] then
+    buildshipFinished = string.lower(tostring(matches[4]))
+  else
+    buildshipFinished = string.lower(tostring(matches[2]))
+  end
+  for i,v in pairs(buildshipQueue) do
+    if string.find(buildshipFinished, v) then
+      if i == buildshipCurrPos then
+        buildshipNext()
+        return
+      else
+        if string.find(buildshipFinished, buildshipCurrShip) then
+          buildshipNext()
+          return
+        else
+          table.remove(buildshipQueue, i)
+          cecho("\n<green>"..buildshipFinished.." complete. Removed from table.<reset>\n")
+          return
+        end
+      end
+    end
+  end
+  cecho("<red>"..buildshipFinished.." not found in table!<reset>\n")
+end
+
+function buildshipStart()
+  buildshipInit()
+  buildshipCurrPos = 1
+  buildshipCurrShip = buildshipQueue[1]
+  buildshipCurrPart = buildshipParts.hull
+  cecho("<green>Beginning ship construction!<reset>\n")
+  buildshipAuto = false
+  buildshipSetAuto()
+  buildshipSpam = false
+  buildshipGagSpam()
+  buildshipAFK = false
+  buildshipBotting = gmcp.Char.Info.botting
+  send("get 25 "..buildshipParts.hull)
+  send("buildship "..buildshipCurrShip.." "..buildshipParts.hull)
+end
+
+function buildshipContinue()
+  send("buildship "..buildshipCurrShip.." "..buildshipCurrPart)
+  buildshipBotting = gmcp.Char.Info.botting
+end
+
+function buildshipGetParts()
+  send("get 25 "..buildshipCurrPart)
+  buildshipContinue()
+end
+
+function buildshipNext()
+  buildshipCurrPos = buildshipCurrPos+1
+  if buildshipCurrPos > #buildshipQueue then
+    buildshipComplete()
+    return
+  end
+  send("drop all."..buildshipCurrPart)
+  buildshipCurrShip = buildshipQueue[buildshipCurrPos]
+  buildshipCurrPart = buildshipParts.hull
+  send("get 25 "..buildshipCurrPart)
+  buildshipContinue()
+end
+
+function buildshipNextPart()
+  send("drop all."..buildshipCurrPart)
+  if buildshipCurrPart == buildshipParts.hull then
+    buildshipCurrPart = buildshipParts.circuits
+  elseif buildshipCurrPart == buildshipParts.circuits then
+    buildshipCurrPart = buildshipParts.weapons
+  elseif buildshipCurrPart == buildshipParts.weapons then
+    buildshipCurrPart = buildshipParts.engines
+  else
+    buildshipCurrPart = buildshipParts.hull
+    buildshipAntiLoop = buildshipAntiLoop+1
+    if buildshipAntiLoop == 2 then
+      metaAntiLoop = metaAntiLoop +1
+      buildshipAntiLoop = 0
+      if metaAntiLoop == 2 then
+        cecho("<red>Error in changing parts. Aborting.")
+        buildshipComplete()
+        return
+      else
+        buildshipNext()
+      end
+    end
+  end
+  send("get 25 "..buildshipCurrPart)
+  buildshipContinue()
+end
+
+function buildshipPartName(matches)
+  local buildshipOP = tostring(matches[2])
+  local buildshipNewPart = tostring(matches[3])
+  
+  if buildshipOP == "hull" then
+    buildshipParts.hull = buildshipNewPart
+  elseif buildshipOP == "circuits" or buildshipOP == "circuit" then
+    buildshipParts.circuits = buildshipNewPart
+  elseif buildshipOP == "weapons" or buildshipOP == "weapon" then
+    buildshipParts.weapons = buildshipNewPart
+  elseif buildshipOP == "engines" or buildshipOP == "engine" then
+    buildshipParts.engines = buildshipNewPart
+  else
+    cecho("<red>Part name not recognized. Valid parts are hull, circuits, weapons, and engines<reset>\n")
+    return
+  end
+  cecho("<green>Key word for "..buildshipOP.." changed to "..buildshipNewPart.."<reset>\n")
+end
+
+function buildshipGagSpam()
+  if buildshipSpam == false then
+    enableTrigger("BuildshipSpam")
+    cecho("<green>Shipbuilding spam gagged.<reset>\n")
+    buildshipSpam = true
+  else
+    disableTrigger("BuildshipSpam")
+    cecho("<green>Shipbuilding spam shown.<reset>\n")
+    buildshipSpam = false
+  end
+end
+
+function buildshipSetAuto()
+  if buildshipAuto == false then
+    enableTrigger("Shipbuilding")
+    cecho("<green>Ship construction will continue automatically.<reset>\n")
+    buildshipAuto = true
+  else
+    disableTrigger("Shipbuilding")
+    cecho("<yellow>Ship construction will not continue.<reset>\n")
+    buildshipAuto = false
+  end
+end
+
+function buildshipList()
+  if #buildshipQueue < 1 then
+    cecho("<yellow>No ships added to buildship queue.<reset>\n")
+    return
+  end
+  for i,v in pairs(buildshipQueue) do
+    if i == buildshipCurrPos then
+      cecho("<white>"..i..": <green>"..v.." <yellow><-\n")
+    else
+      cecho("<white>"..i..": <green>"..v.."\n")
+    end
+  end
+end
+
+function buildshipReturnFromAFK()
+  if buildshipAFK then
+    send("afk")
+    send("bot start")
+    buildshipBotting = true
+  else
+    send("bot start")
+    buildshipBotting = true
+  end
+  buildshipContinue()
+end
+
+function buildshipFollow(matches)
+  send("follow "..matches[2])
+  buildshipContinue()
+end
+
+function buildshipShowParts()
+  cecho("<white>Hull    : <green>"..buildshipParts.hull.."<reset>\n")
+  cecho("<white>Circuits: <green>"..buildshipParts.circuits.."<reset>\n")
+  cecho("<white>Weapons : <green>"..buildshipParts.weapons.."<reset>\n")
+  cecho("<white>Engines : <green>"..buildshipParts.engines.."<reset>\n")
+end
+
+function buildshipComplete()
+  send("drop all."..buildshipCurrPart)
+  buildshipSpam = true
+  buildshipGagSpam()
+  buildAuto = true
+  buildshipSetAuto()
+  cecho("<green>Ship construction complete.<reset>\n")
+  if buildshipBotting == true then
+    send("bot stop")
+    send("afk")
+  end
+end
+
+function buildshipAutoFollow(matches)
+  if buildshipAFK then
+    send("afk")
+    send("follow "..matches[2])
+    send("afk")
+  else
+    send("follow "..matches[2])
+    buildshipContinue()
+  end
+end
+
+function buildshipGroupFollowers()
+    if buildshipAFK then
+    send("afk")
+    send("group all")
+    send("afk")
+  else
+    send("group all")
+    buildshipContinue()
+  end
+end
+
+function buildshipHelp()
+  cecho("<lawn_green>buildadd <ship>- Add a ship to the build queue\n")
+  cecho("<lawn_green>buildclear - Clear the ship queue\n")
+  cecho("<lawn_green>buildlist - Display the build queue\n")
+  cecho("<lawn_green>buildship - Builds current ship\n")
+  cecho("<lawn_green>buildstart - Begin building first ship in list\n")
+  cecho("<lawn_green>buildnext - Skip to next ship in the list\n")
+  cecho("<lawn_green>buildnextpart - Skip to next part in current ship\n")
+  cecho("<lawn_green>buildpartname <part name> <new name> - Change the name of a part name to match the item you pick up\n")
+  cecho("<lawn_green>buildpartslist - Display the relations between parts and their pickup names\n")
+  cecho("<lawn_green>buildauto - Turn automatic building on or off.\n")
+  cecho("<lawn_green>buildspam - Turn the build spam filters on or off.\n")
+end

@@ -1,0 +1,615 @@
+function upgradeInit()
+  upgradeList = {}
+  upgradeItem = ""
+  upgradeTempProfile = { name = "", mods = {} }
+  autoUpgrade = false
+  upgradeCurrPart = 0
+  upgradeCurrShip = 0
+  upgradeProfiles = {}
+  local upgradeFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJUpgradeship/upgradeprofiles.lua", "r")
+  if upgradeFileCheck == nil then
+    lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJUpgradeship/")
+    echo("Upgradeprofiles file doesn't exist. Attempting to create.\n")
+    local upgradeFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJUpgradeship/upgradeprofiles.lua")
+    if not upgradeFile then
+      file = io.open(getMudletHomeDir().."/ScriptFiles/LotJUpgradeship/upgradeprofiles.lua", "w")
+      file:write("")
+      file:close()
+    end
+  end 
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJUpgradeship/upgradeprofiles.lua", upgradeProfiles)
+  tunePrefix = ""
+  tuneStartNum = 1
+  tuneCurrPos = 1
+  tuneEndNum = 1
+  cecho("<green>LotJUpgradeship Initialized.<reset>\n")
+end
+
+function upgradeSaveTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJUpgradeship/upgradeprofiles.lua", upgradeProfiles)
+end
+
+function upgradeProfileName(matches)
+  if not matches or matches == "" then
+    cecho("<yellow>Profile name set to '"..upgradeTempProfile.name.."'<reset>\n")
+    return
+  end
+  upgradeTempProfile.name = string.trim(matches[2])
+  cecho("<yellow>Profile name set to '"..upgradeTempProfile.name.."'<reset>\n")
+end
+
+function upgradeProfilePartAdd(matches)
+   local upgradeTempMods = matches[2]
+   local upgradeAddItems = {}
+   --if string.find(upgradeTempMods, ",", 0, true) then
+   if string.match(upgradeTempMods, ",") then
+      upgradeAddItems = string.split(upgradeTempMods, ",")
+   --elseif string.find(upgradeTempMods, " ", 0, true) then
+   elseif string.match(upgradeTempMods, " ") then
+      upgradeAddItems = string.split(upgradeTempMods, " ")
+   else
+      cecho("<red>Usage: upgradeprofilepartadd <part> <amount><reset>\n")
+      return
+   end
+  local upgradePart = { name = "", amount = 0 }
+  local upgradeSkip = true
+  for i, v in ipairs(upgradeAddItems) do
+      if upgradeSkip then
+         upgradeSkip = false
+         upgradePart.name = string.trim(v)
+      else
+         upgradeSkip = true
+         v = string.trim(v)
+         upgradePart.amount = tonumber(v)
+      if not upgradePart.amount then
+         cecho("<red>Usage: upgradeprofilepartadd <part> <amount><reset>\n")
+         return
+      end
+      upgradeTempProfile.mods[#upgradeTempProfile.mods+1] = upgradePart
+      cecho("<yellow>("..upgradePart.name..","..upgradePart.amount..") added to current profile.<reset>\n")
+      upgradePart = { name = "", amount = 0 }
+      end
+   end
+end
+
+function upgradeProfilePartRem(matches)
+  local upgradeTempRem = matches[2]
+  if not upgradeTempRem or upgradeTempRem == "" then
+    cecho("<red>Usage: upgradeProfilePartRem <item/#><reset>\n")
+    return
+  end
+  for i, v in ipairs(upgradeTempProfile.mods) do
+   string.trim(upgradeTempRem)
+    if (tonumber(upgradeTempRem) == i) or (string.lower(upgradeTempRem) == string.lower(v.name)) then
+      cecho("<yellow>Removed '" .. v.name .. "' from profile part list.<reset>\n")
+      table.remove(upgradeTempProfile.mods, i)
+      if (upgradeCurrPart > i) then         -- if our position in the part list is higher than what we remove
+        upgradeCurrPart = upgradeCurrPart - 1   -- decrement the pointer to follow the current item
+      end
+    else
+      if (#upgradeTempProfile.mods == i) then
+        cecho("<red>Part '" .. upgradeTempRem .. "' not found in profile part list.<reset>\n")
+      end
+    end
+  end
+end
+
+function upgradeProfilePartClear()
+  upgradeTempProfile.mods = {}
+  upgradeTempProfile.name = ""
+  cecho("<yellow>Current profile part list cleared.<reset>\n")
+end
+
+function upgradeProfilePartList()
+  cecho("<gray>Current profile part list: \n")
+  local modlist = upgradeTempProfile.mods
+  cecho("<gray>| <red>" .. upgradeTempProfile.name .. "<gray> |\n")
+  for k, j in ipairs(modlist) do
+    cecho("<gray>| <cyan>" .. j.name .. " ".. ((j.amount<0 and "") or "+").. j.amount .. "<reset>\n")
+  end
+  echo("\n")
+end
+
+function upgradeProfileSave()
+  if upgradeTempProfile.name == "" or #upgradeTempProfile.mods == 0 then
+    cecho("<red>Current profile is incomplete, unable to save.<reset>\n")
+    return
+  end
+  upgradeProfiles[#upgradeProfiles+1] = upgradeTempProfile
+  cecho("<yellow>Profile '"..upgradeTempProfile.name.."' saved.<reset>\n")
+  upgradeSaveTable()
+  upgradeTempProfile = { name = "", mods = {} }
+end
+
+function upgradeProfileLoad(matches)
+  if not matches or matches == "" then
+    cecho("<red>Usage: upgradeProfileLoad <name/#><reset>\n")
+    return
+  end
+  local upgradeTempProfileName = matches[2]
+  if not upgradeProfiles then
+    cecho("<red>Profile list is empty! Unable to load.<reset>\n")
+    return
+  end
+  for i, v in ipairs(upgradeProfiles) do
+   string.trim(upgradeTempProfileName) 
+   if (tonumber(upgradeTempProfileName) == i) or (string.lower(upgradeTempProfileName) == string.lower(v.name)) then
+        upgradeTempProfile = v
+        cecho("<yellow>Profile '"..upgradeTempProfile.name.."' loaded.<reset>\n")
+        return
+    else
+      if (#upgradeProfiles == i) then
+        cecho("<red>Profile '" .. upgradeTempProfileName .. "' not found in profiles list.<reset>\n")
+      end
+    end
+  end
+end
+
+function upgradeProfileRem(matches)
+  if not matches or matches == "" then
+    cecho("<red>Usage: upgradeProfileRem <name/#><reset>\n")
+    return
+  end
+  local upgradeTempProfileRem = matches[2]
+  for i,v in ipairs(upgradeProfiles) do
+   string.trim(upgradeTempProfileRem)
+    if (tonumber(upgradeTempProfileRem) == i) or (string.lower(upgradeTempProfileRem == string.lower(v.name))) then
+      cecho("<yellow>Removed '" .. v.name .. "' from profiles list.<reset>\n")
+      table.remove(upgradeProfiles, i)
+    else
+      if (#upgradeTempProfile.mods == i) then
+        cecho("<red>Part '" .. upgradeTempProfileRem .. "' not found in profiles list.<reset>\n")
+      end
+    end
+  end
+end
+
+function upgradeProfileList()
+  cecho("<gray>Current profiles list: <reset>\n")
+  for i,v in ipairs(upgradeProfiles) do
+    local modlist = v.mods
+    cecho("<gray>" .. i.." | <red>" .. v.name .. "<gray> |<reset>\n")
+    for k, j in ipairs(modlist) do
+      cecho("<gray>  | <cyan>" .. j.name .. " ".. ((j.amount<0 and "") or "+").. j.amount .. "<reset>\n")
+    end
+    echo("\n")
+  end
+end
+
+function upgradePush()
+  if upgradeTempProfile.name == "" then
+    cecho("<red>Current profile is missing a name, unable to push it onto the work list.<reset>\n")
+    return
+  end
+  if not upgradeTempProfile.mods then
+    cecho("<red>Current profile's mod list is empty, unable to push it onto the work list.<reset>\n")
+    return
+  end
+  upgradeList[#upgradeList+1] = upgradeTempProfile
+  cecho("<yellow>Profile '"..upgradeTempProfile.name.."' pushed onto the upgradeList work list.<reset>\n")
+  upgradeTempProfile = { name = "", mods = {} }
+end
+
+function upgradeLoad(matches)
+  if not matches or matches == "" then
+    cecho("<red>Usage: upgradeLoad <ship> <profile/#><reset>\n")
+    return
+  end
+  local upgradeTempProfileName = matches[2]
+  local addItems = {}
+  if string.find(upgradeTempProfileName, ",", 0, true) then
+    addItems = string.split(upgradeTempProfileName, ",")
+  elseif string.find(upgradeTempProfileName, " ", 0, true) then
+    addItems = string.split(upgradeTempProfileName, " ")
+  else
+  cecho("<red>Usage: upgradeLoad <ship> <profile/#><reset>\n")
+    return
+  end
+  local ship = { name = "", mods = {} }
+  local skip = true
+  for k, j in ipairs(addItems) do
+    if skip then
+      skip = false
+      ship.name = string.trim(j)
+    else
+      skip = true
+      local found = false
+      for i, v in ipairs(upgradeProfiles) do
+        j = string.trim(j)
+        if (tonumber(j) == i) or (string.lower(j) == string.lower(v.name)) then
+          found = true
+          ship.mods = table.deepcopy(v.mods)
+          upgradeList[#upgradeList+1] = ship
+          cecho("<yellow>Ship '"..ship.name.."' added to queue using profile '"..v.name.."'.<reset>\n")
+          ship = { name = "", mods = {} }
+        end -- if
+      end -- for
+      if not found then
+            cecho("<red>Profile '" .. j .. "' not found in profiles list.<reset>\n")
+      else
+        found = false
+      end -- if
+    end -- if
+  end -- for
+end
+
+function upgradeAdd(matches)
+  if not matches or matches == "" then
+    cecho("<red>Usage: upgradeAdd <ship> <parameters><reset>\n")
+    return
+  end
+  local upgradeTempPartAdd = matches[2]
+  local addItems = {}
+  if string.find(upgradeTempPartAdd, ",", 0, true) then
+    addItems = string.split(upgradeTempPartAdd, ",")
+  elseif string.find(upgradeTempPartAdd, " ", 0, true) then
+    addItems = string.split(upgradeTempPartAdd, " ")
+  else
+    cecho("<red>Usage: upgradeAdd <ship> <parameters><reset>\n")
+    return
+  end
+  local ship = { name = string.trim(line), mods = {} }
+  local mod = { name = "", amount = 0 }
+  local skip = true
+  for i, v in ipairs(addItems) do
+    if skip then
+      skip = false
+      mod.name = string.trim(v)
+    else
+      skip = true
+       v = string.trim(v)
+      mod.amount = tonumber(v)
+      if not mod.amount then
+        cecho("<red>Usage: upgradeAdd <ship> <parameters><reset>\n")
+        return
+      end
+      ship.mods[#ship.mods+1] = mod
+      mod = { name = "", amount = 0 }
+    end
+  end
+  upgradeList[#upgradeList+1] = ship
+  cecho("<yellow>Added '"..ship.name.."' to upgrade list using custom profile.<reset>\n")
+end
+
+function upgradeRem(matches)
+  if not matches or matches == "" then
+    cecho("<red>Usage: upgradeRem <name/#><reset>\n")
+    return
+  end
+  local upgradeTempProfileRem = matches[2]
+  for i, v in ipairs(upgradeList) do
+   string.trim(upgradeTempProfileRem)
+    if (tonumber(upgradeTempProfileRem) == i) or (string.lower(upgradeTempProfileRem == string.lower(v.name))) then
+      cecho("<yellow>Removed '" .. v.name .. "' from upgrade list.<reset>\n")
+      table.remove(upgradeList, i)
+      return
+    else
+      if (#upgradeList == i) then
+        cecho("<red>Ship '" .. upgradeTempProfileRem .. "' not found in upgrade list.<reset>\n")
+      end
+    end
+  end
+end
+
+function upgradePrint()
+  cecho("<gray>Current upgrade list: \n")
+  for i, v in ipairs(upgradeList) do
+    local modlist = v.mods
+    cecho("<gray>" .. i.." | " .. ((upgradeCurrShip == i and "<green>") or "<red>") .. v.name .. "<gray> | <reset>\n")
+    for k, j in ipairs(modlist) do
+      cecho((((upgradeCurrPart == k and upgradeCurrShip == i) and "<green>") or "<cyan>") .. j.name .. "<gray> " .. (((upgradeCurrPart == k and upgradeCurrShip == i) and "<green>") or "<cyan>") .. ((j.amount<0 and "") or "+")..j.amount .. "<gray> | <reset>\n")
+    end
+    echo("\n")
+  end
+end
+
+function upgradeClear()
+  upgradeList = {}
+  upgradeCurrPart = 0
+  upgradeCurrShip = 0
+  cecho("<yellow>Current upgrade list cleared.<reset>\n")
+end
+
+function upgradeShip(matches)
+  if not matches or matches == "" then -- entered nothing
+    if (upgradeCurrShip > 0) and (upgradeCurrPart > 0) then -- we're using a list
+      if (getUpgradePartAmount() > 0) then -- part amount is over 0
+        send("upgradeship "..getUpgradeShipName().." "..getUpgradePartName().." "..getUpgradePartAmount())
+      elseif (getUpgradePartAmount() < 0) then -- part amount is under 0
+        send("dismantle "..getUpgradeShipName().." "..getUpgradePartName().." "..math.abs(getUpgradePartAmount()))
+      elseif string.lower(getUpgradePartName()) == "tune" or string.lower(getUpgradePartName()) == "tuneship" then -- tune the ship
+        send("tuneship "..getUpgradeShipName())
+      else -- should never get here, but just in case someone entered 0 as an amount, skip to the next part
+        upgradeNextPart()
+      end
+    else -- we're not using a list
+      disableUpgrade()
+    end
+  else -- entered one item
+    if string.trim(matches) == "" then -- clean up blank arguments messing up things
+      upgradeShip()
+      return
+    end
+    upgradeItem = string.trim(matches)
+    upgradeCurrShip = 0
+    upgradeCurrPart = 0
+    send("upgradeship "..upgradeItem)
+  end
+  enableTrigger("Upgrade")
+end
+
+function upgradeStart()
+  upgradeCurrShip = 0
+  upgradeCurrPart = 0
+  upgradeItem = ""
+  enableUpgrade()
+  upgradeNext()
+end
+
+function upgradeNext()
+  if upgradeItem ~= "" then -- we're not using the list
+    upgradeShip()
+    return
+  else -- we are using a list
+    upgradeCurrShip = upgradeCurrShip + 1
+    if upgradeCurrShip > #upgradeList then -- we're at the end of the list
+      cecho("<yellow>Auto upgrade finished.<reset>\n")
+      disableUpgrade()
+    else -- we're in the middle of the list
+      upgradeCurrPart = 0
+      upgradeNextPart()
+    end
+  end
+end
+
+function upgradeNextPart()
+  upgradeCurrPart = upgradeCurrPart + 1
+  if upgradeCurrPart > #getUpgradeShipMods() then -- we're at the end of the list
+      upgradeNext()
+  else -- we're in the middle of the list
+      upgradeShip()
+  end
+end
+
+function getUpgradeShip()
+  if #upgradeList == 0 or upgradeCurrShip == 0 then
+    return {}
+  end
+  return upgradeList[upgradeCurrShip]
+end
+
+function getUpgradeShipName()
+  if not getUpgradeShip() then
+    return ""
+  end
+  return getUpgradeShip().name
+end
+
+function getUpgradeShipMods()
+  if not getUpgradeShip() then
+    return {}
+  end
+  return getUpgradeShip().mods
+end
+
+function getUpgradePart()
+  if #upgradeList == 0 or upgradeCurrShip == 0 then
+    return ""
+  end
+  local ship = upgradeList[upgradeCurrShip]
+  if not ship.mods or #ship.mods == 0 or upgradeCurrPart == 0 then
+    return ""
+  end
+  return ship.mods[upgradeCurrPart]
+end
+
+function getUpgradePartName()
+  return getUpgradePart().name
+end
+
+function getUpgradePartAmount()
+  return getUpgradePart().amount
+end
+
+function upgradeClear()
+  upgradeList = {}
+  upgradeCurrShip = 0
+  upgradeCurrPart = 0
+  upgradeItem = ""
+  cecho("<yellow>Upgrade list cleared.<reset>\n")
+  disableUpgrade()
+end
+
+function upgradeAuto(matches)
+  local upgradeAutoOpt = string.trim(matches[2])
+  if not upgradeAutoOpt or upgradeAutoOpt == "" then
+    if autoUpgrade then
+      disableUpgrade()
+    else
+      enableUpgrade()
+    end
+  elseif string.lower(upgradeAutoOpt) == "on" then
+    enableUpgrade()
+  else
+    disableUpgrade()
+  end
+end
+
+function enableUpgrade()
+  if autoUpgrade then
+    return
+  end
+  autoUpgrade = true
+  enableTrigger("Upgrading")
+  cecho("<yellow>Auto upgrade enabled.<reset>\n")
+end
+
+function disableUpgrade()
+  if not autoUpgrade then
+    return
+  end
+  autoUpgrade = false
+  disableTrigger("Upgrading")
+  cecho("<yellow>Auto upgrade disabled.<reset>\n")
+end
+
+function upgradeHelp(matches)
+  local found = false
+  if matches == "" then -- show general help
+    cecho("<white>LotJUpgrade v 1.0 by Johnson. Enter 'upgradehelp <command>' for more detailed information.<reset>\n")
+    for a, b in ipairs(upgradecommands) do -- commands
+      local command = b
+      cecho("<gray>" .. string.format("%-20s", command.name).." : "..command.desc)
+    end
+    print("")
+  else -- entered something
+    local upgradeTempHelp = matches[2]
+    cecho("<white>LotJUpgrade v 1.0 by Johnson. Enter 'upgradehelp' for more general information.<reset>\n")
+    for a, b in ipairs(upgradecommands) do -- scroll through commands
+      string.trim(upgradeTempHelp)
+      if (string.lower(b.name) == string.lower(upgradeTempHelp)) then -- found our argument
+        found = true
+        cecho("<gray>" .. b.name .. " : " .. b.desc.."<reset>\n")
+        cecho("<gray>Available arguments:<reset>\n")
+        if #b.args == 0 then -- no arguments
+          cecho("<gray>   None.")
+        else -- arguments to print
+          for i, k in ipairs(b.args) do
+            cecho("<gray>" .. string.format("%20s", k.name).." : " .. k.desc.."<reset>\n")
+          end -- end print arguments
+        end -- end no arguments
+        print("")
+      end -- end found command
+    end -- end scroll commands
+    if not found then
+      cecho("<gray>Command '"..upgradeTempHelp.."' not found.<reset>\n")
+    end
+  end -- end no input
+end
+
+
+function setupTune(matches)
+   tunePrefix = tostring(matches[2])
+   tuneStartNum = tonumber(matches[3])
+   tuneEndNum = tonumber(matches[4])
+   tuneCurrPos = tuneStartNum
+   cecho("Ship prefix: " .. tunePrefix .. "<reset>\n")
+   cecho("Tuning ships from " .. tuneStartNum .. " to " .. tuneEndNum .. "<reset>\n")
+   startTune()
+   tuneCurrPos = tuneStartNum+1
+end
+
+function startTune()
+   local i = tonumber(tuneCurrPos)
+   tuneCurrPos = string.format("%02d", i)
+   send("tuneship " .. tunePrefix .. tuneCurrPos .. "<reset>\n")
+end
+
+function doTune()
+   local i = tonumber(tuneCurrPos)
+   tuneCurrPos = string.format("%02d", i)
+   if i <= tuneEndNum then
+      send("tuneship " .. tunePrefix .. tuneCurrPos .. "<reset>\n")
+      tuneCurrPos = tonumber(i+1)
+   else
+      cecho("<green>Tuning complete!<reset>\n")
+   end -- if
+end -- function
+
+function tuneStartFail()
+   local i = tonumber(tuneCurrPos)
+   tuneCurrPos = string.format("%02d", i)
+   if i <= tuneEndNum then
+      send("tuneship " .. tunePrefix .. tuneCurrPos .. "<reset>\n")
+   else
+      cecho("<green>Tuning complete!<reset>\n")
+   end -- if
+end -- function
+
+function tuneEndFail()
+   local i = tonumber(tuneCurrPos-1)
+   tuneCurrPos = string.format("%02d", i)
+   if i <= tuneEndNum then
+      send("tuneship " .. tunePrefix .. tuneCurrPos .. "<reset>\n")
+   else
+      cecho("<green>Tuning complete!")
+   end -- if
+end -- function
+
+upgradecommands = { { name = "upgradeProfileName", desc = "Changes the name of the profile to be added.\n",
+                         args = { { name = "<none>", desc = "Displays the current profile's name.\n" },
+                                  { name = "<name>", desc = "Specifies the name of the current profile."}, }
+                          },
+               { name = "upgradeProfilePartAdd", desc = "Adds a part to the profile's part list.\n",
+                        args = { { name = "<name> <amount>", desc = "Adds a part to the profile's part list.\n"}, }
+                          },
+               { name = "upgradeProfilePartRem", desc = "Removes a part from the profile's part list.\n",
+                        args = { { name = "<name>", desc = "Removes a part matching the given name from the profile's part list.\n"},
+                                 { name = "<number>", desc = "Removes the list # from the profile's part list.\n"}, }
+                          },
+               { name = "upgradeProfilePartClear", desc = "Deletes the current profile's part list.\n",
+                        args = { }
+                          },
+               { name = "upgradeProfilePartList", desc = "Displays the current profile's part list.\n",
+                        args = { }
+                          },
+               { name = "upgradeProfileSave", desc = "Saves the current profile into memory.\n",
+                        args = { }
+                          },
+               { name = "upgradeProfileLoad", desc = "Loads a saved profile into the current profile slot.\n",
+                        args = { { name = "<name>", desc = "Loads the profile matching the given name into the current profile slot.\n"}, 
+                                 { name = "<number>", desc = "Loads the profile in the given # into the current profile slot.\n"}, }
+                          },
+               { name = "upgradeProfileRem", desc = "Removes a profile from memory.\n",
+                        args = { { name = "<name>", desc = "Removes the profile matching the given name from memory.\n"},
+                                 { name = "<number>", desc = "Removes the profile located at the given number from memory.\n"},  }
+                          },
+               { name = "upgradeProfileList", desc = "Displays the list of saved profiles.\n",
+                        args = { }
+                          },
+               { name = "upgradePush", desc = "Adds the current profile into the upgradeList queue without saving it to memory.\n",
+                        args = { }
+                          },
+               { name = "upgradeLoad", desc = "Loads a ship to the upgradeList queue using a saved profile.\n",
+                        args = { { name = "<ship> <profile>", desc = "Adds <ship> to the upgradeList queue using the given <profile> modification list.\n"}, 
+                                 { name = "<ship> <number>", desc = "Adds <ship> to the upgradeList queue using the profile located at <number>.\n"}, }
+                          },
+               { name = "upgradeAdd", desc = "Adds a ship to the upgradeList queue using a custom profile.\n",
+                        args = { { name = "<ship> <part1> <amount1> <part2> <amount2>", desc = "Adds <ship> to the upgradeList queue using the given modification list.\n"}, 
+                                 { name = "<ship> <part1>,<amount1>,<part2>,<amount2>", desc = "Adds <ship> to the upgradeList queue using the given modification list.\n"}, }
+                          },
+               { name = "upgradeRem", desc = "Removes a ship from the upgradeList queue.\n",
+                        args = { { name = "<name>", desc = "Removes all ships matching the given name from the upgradeList queue.\n"}, 
+                                 { name = "<number>", desc = "Removes the ship located at the given number from the upgradeList queue.\n"}, }
+                          },
+               { name = "upgradeList", desc = "Displays the current upgradeList queue.\n",
+                        args = { }
+                          },
+               { name = "upgradeClear", desc = "Deletes the current upgradeList queue.\n",
+                        args = { }
+                          },
+               { name = "upgrade", desc = "Performs an upgrade based on the current script position, or a new upgrade based on string given.\n",
+                        args = { { name = "<none>", desc = "Performs an upgrade based on the current script positions.\n"}, 
+                                 { name = "<ship> <item> <amount>", desc = "Performs a new upgrade independent from the script.\n"},  }
+                          },
+               { name = "upgradeStart", desc = "Begins upgrading from the beginning of the current upgradeList queue.\n",
+                        args = { }
+                          },
+               { name = "upgradeNext", desc = "Begins upgrade the next ship in the upgradeList queue.\n",
+                        args = { }
+                          },
+               { name = "upgradeNextPart", desc = "Skips to the next part in the current ship.\n",
+                        args = { }
+                          },
+               { name = "upgradeAuto", desc = "Toggles automatic upgrading on or off.\n",
+                        args = { { name = "<none>", desc = "Toggles automatic upgrading on or off.\n"},
+                                 { name = "<on/off>", desc = "Turns automatic upgrading on or off based on given command.\n"}, }
+                          },
+
+               { name = "upgradehelp", desc = "Display this help file.\n",
+                        args = { { name = "<command>", desc = "Display more detailed help information on the given command.\n"} }
+                          },
+               { name = "buildHelp", desc = "Display help file for shipbuilding commands.\n",
+                        args = { { name = "<command>", desc = "Display more detailed help information on the given command.\n"} }
+                          },
+                           }

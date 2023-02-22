@@ -1,0 +1,328 @@
+function cargoHelp()
+end
+
+function cargoCheckPlanet()
+  currentPlanet = gmcp.Room.Info.planet
+end
+
+function cargoAddPlanet(matches)
+  local planetChoice = matches[2]
+  local buyCargo = matches[3]
+  local sellCargo = matches[4]
+  local tempCargo = { planet = planetChoice, buying = buyCargo, selling = sellCargo }
+  local newPos = #cargoInfo+1
+  cargoInfo[newPos] = tempCargo
+  cecho("<lawn_green>New planet inserted successfully. Planet: "..planetChoice.." Buying: "..buyCargo.." Selling: "..sellCargo.."\n")
+end
+
+function cargoStart()
+  enableTrigger("LotJCargo")
+  currAccount = 0
+  if checkFlightVars() == false then -- Calling checkFlightVars() from LotJFlight to check that ship is set up properly
+    cargoStop()
+    return
+  end
+  cargoShipName = shipName
+  
+  if #cargoInfo == 0 then
+    cecho("<tomato>No planets in cargo list! Use 'cargoplanet' to add a planet")
+    return
+  end
+  if #cargoInfo < 3 then
+    cecho("<yellow>Less than 3 planets added to the list. Not a showstopper but most routes have 3 planets!")
+  end
+  
+  --Get our current planet
+  currentPlanet = gmcp.Room.Info.planet
+  if currentPlanet == "nil" then
+    cecho("<tomato>Cargostart must be run while on a planet!")
+    return
+  end
+  
+  getBankAccounts()
+  
+  --Check contents of cargo
+  --if #cargoContents == 0 then
+    getCargo()
+    --return
+  --end
+  
+  --[[if emptyCargo == "true" then
+    loadCargo()
+    emptyCargo = "false"
+    getCargoDestination()
+    return
+  end
+   
+  --See if we're already on a planet in the list
+  getCargoDestination()]]
+end
+
+function findSellingPlanet()
+  cecho("<tomato>Cargo pods not empty. Checking where to sell...\n")
+  for i,v in pairs(cargoContents) do
+    if (v.contents ~= "Empty") or (v.amount ~= 0) then -- It's not. We need to figure out what it is and where to sell it
+      local tempCargo = string.lower(v.contents)
+      for a,b in pairs(cargoInfo) do
+        if string.match(tempCargo, b.selling) then -- We've found our planet
+          cargoDestination = b.planet
+          cecho("<green>Matching planet found: "..b.planet.."\n")
+          if string.match(currentPlanet, v.planet) then
+            cecho("Currently on planet!")
+            readyCargo()
+            tempTimer(0.1, [[ sellCargo() ]])
+          else
+            getCargoDestination()
+            return
+          end
+        else -- It's not in the list probably
+          noMatch = "true"
+        end
+      end
+    end
+  end
+  if noMatch == "true" then
+    cecho("<tomato>Sell location not found. Please sell your cargo and try again.")
+    return
+  else
+    getCargoDestination()
+  end
+end
+
+function getCargoDestination()
+  local noMatch = "false"
+  destinationFound = "false"
+  if cargoDestination == "" then
+    echo("Checking for cargo destination.\n")
+    for i,v in pairs(cargoInfo) do
+      if string.match(currentPlanet, v.planet) then -- We're already on a planet in the list.
+        cecho("<lawn_green>Already on planet in route! Determining next planet\n")
+        for a,b in pairs(cargoInfo) do
+          if string.match(v.buying, b.selling) then
+            cargoDestination = b.planet
+            destinationIndex = a
+            cecho("<lawn_green>Cargo match found!\n")
+            destinationFound = "true"
+          else
+            noMatch = "true"
+          end
+        end
+      end
+    end
+    if cargoDestination == "" then
+        cargoDestination = cargoInfo[1].planet
+        destinationIndex = 1
+        destinationFound = "true"
+    end
+  cecho("<lawn_green>Desination planet: "..cargoDestination.."\n")
+  end
+  expandAlias("flyto "..cargoDestination)
+end
+
+function readyCargo()
+  send("gold", false)
+  currentPlanet = gmcp.Room.Info.planet
+  for i,v in pairs(cargoInfo) do
+    if string.match(v.planet, currentPlanet) then
+      index = i
+    end
+  end
+  currentBuying = cargoInfo[index].buying
+  currentSelling = cargoInfo[index].selling
+  if currentSelling == "" or currentSelling == " " or currentSelling == nil then --Something's messed up
+    getCargo()
+    return
+  end
+  if index+1 > #cargoInfo then
+    cargoDestination = cargoInfo[1].planet
+  else
+    cargoDestination = cargoInfo[index+1].planet
+  end
+  if emptyCargo == "true" then
+    loadCargo()
+    emptyCargo = "false"
+    getCargoDestination()
+  else
+    enableTrigger("CargoBuySell")
+  end
+end
+
+function loadCargo()
+  local totalMax = 0
+  for i,v in pairs(cargoContents) do
+    totalMax = totalMax + tonumber(cargoContents[i].max)
+  end
+  send("buycargo "..shipName.." "..currentBuying.." all")
+end
+
+function buyCargo()
+  send("buycargo "..cargoShipName.." "..currentBuying.. " all")
+end
+
+function sellCargo()
+  if cargoBankRun == true then
+    if string.match(cargoBankPlanet, currentPlanet) then
+      cargoDoBankRun()
+      return
+    end
+  end
+  if currentSelling == "" or currentSelling == " " or currentSelling == nil then
+    readyCargo()
+    return
+  end
+  send("sellcargo "..cargoShipName.." "..currentSelling.." all")
+end
+
+function cargoSellingDone()
+  expandAlias("flyto "..cargoDestination)
+end
+
+
+function getCargo()
+  enableTrigger("CargoGrab")
+  send("listcargo "..shipName)
+end
+
+function storeCargo(matches)
+  local cargoPodID = tonumber(matches[2])
+  local cargoPodContents = tostring(matches[3])
+  if cargoPodContents == "(Empty)" then
+    cargoPodContents = "Empty"
+  end
+  local cargoPodAmount = tonumber(matches[4])
+  local cargoPodMaximum = tonumber(matches[5])
+  local newPos = #cargoContents+1
+  local tempContents = { id=cargoPodID, contents = cargoPodContents, amount = cargoPodAmount, max = cargoPodMaximum }
+  cargoContents[newPos] = tempContents
+end
+  
+function cargoGrabDone()
+  local totalCargo = 0
+  disableTrigger("CargoGrab")
+  for i,v in pairs(cargoContents) do
+    totalCargo = totalCargo + cargoContents[i].amount
+  end
+  if totalCargo == 0 then
+    emptyCargo = "true"
+  else
+    findSellingPlanet()
+  end
+  readyCargo()
+end
+  
+
+function cargoStop()
+  disableTrigger("LotJCargo")
+  disableTrigger("CargoGrab")
+  cecho("<yellow>LotJCargo disabled.")
+end
+
+function cargoListRoute()
+  for i,v in pairs(cargoInfo) do
+    cecho(i..": ".."<green>Planet: "..v.planet..",<yellow> Buying: "..v.buying..", Selling: "..v.selling.."\n")
+  end
+end
+
+function cargoCheckBankRun(matches)
+  cargoTotalCredits = tonumber(matches[2])
+  if cargoTotalCredits >= 1600000 then
+    cargoBankRun = true
+  end
+end
+
+function cargoDoBankRun()
+  if #bankDirs == 0 or #cargoBankAccountList == 0 then
+    cecho("<red>No bank route set! Continuing cargo run!\n")
+    sellCargo()
+  else
+    for i,v in pairs(bankDirs[1]) do
+      send(v)
+    end
+    local timerCount = #bankDirs[1]
+    tempTimer(timerCount,[[ cargoBankDeposit() ]])
+  end
+end
+
+function cargoBankDeposit()
+  local depositAmount = 1500000
+  currAccount = currAccount+1
+  if currAccount > #cargoBankAccountList then
+    currAccount = 1
+  end
+  local bankAccount = cargoBankAccountList[currAccount]
+  send("bank "..bankAccount.." deposit "..depositAmount)
+  cargoBankRun = false
+  for i,v in pairs(padDirs[1]) do
+    send(v)
+  end
+  local timerCount = #padDirs[1]
+  tempTimer(timerCount, [[ sellCargo() ]])
+end
+
+function getBankAccounts()
+  enableTrigger("BankAccountGrab")
+  send("bank list", false)
+end
+
+function cargoBankAccountGrabStop()
+  disableTrigger("BankAccountGrab")
+end
+
+function cargoAddBankAccount(matches)
+  local cargoBankAccount = matches[2]
+  cargoBankAccountList[#cargoBankAccountList+1] = cargoBankAccount
+  cecho("\n<green>Bank account added: "..cargoBankAccount.."\n")
+end
+
+function cargoSetBankDirs(matches)
+  local rawBankDirs = matches[2]
+  splitBankDirs = string.split(rawBankDirs, ",")
+  bankDirs[1] = splitBankDirs
+  cecho("<green>Bank dirs set: ")
+  for i,v in pairs(bankDirs[1]) do
+    cecho("<yellow>"..v.." ")
+  end
+  echo("\n")
+end
+
+function cargoSetPadDirs(matches)
+  local rawPadDirs = matches[2]
+  splitPadDirs = string.split(rawPadDirs, ",")
+  padDirs[1] = splitPadDirs
+  cecho("<green>Pad dirs set: ")
+  for i,v in pairs(padDirs[1]) do
+    cecho("<yellow>"..v.." ")
+  end
+  echo("\n")
+end
+
+function cargoSetBankPlanet(matches)
+  cargoBankPlanet = tostring(matches[2])
+  cecho("<green>Planet for bank run: "..cargoBankPlanet.."\n")
+end
+  
+function cargoClear()
+  cargoVarReset()
+  cecho("<tomato>Cargo variables cleared!\n")
+end
+
+function cargoInit()
+  cargoVarReset()
+  cecho("<green>LotJCargo Initialized.\n")
+end
+
+function cargoVarReset()
+  bankDirs = {}
+  padDirs = {}
+  cargoBankAccountList = {}
+  cargoCreditLimit = 0
+  cargoShipName = ""
+  cargoInfo = {}
+  currentPlanet = ""
+  cargoContents = {}
+  cargoDestination = ""
+  currentBuying = ""
+  currentSelling = ""
+  timesSold = 0
+  emptyCargo = "false"
+end
