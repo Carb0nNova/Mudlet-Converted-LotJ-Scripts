@@ -672,6 +672,8 @@ function lotj.flight.setEntryDirs(matches)
     splitDirs = string.split(rawEntryDirs, ",")
   elseif string.find(rawEntryDirs, ";") then
     splitDirs = string.split(rawEntryDirs, ";")
+  elseif string.match(rawEntryDirs, "^.$") then
+    splitDirs = rawEntryDirs
   elseif string.lower(rawEntryDirs) == "none" then
     cecho("&lt;green&gt;One room ship specified\n")
     splitDirs = "none"
@@ -693,6 +695,8 @@ function lotj.flight.setExitDirs(matches)
     splitDirs = string.split(rawExitDirs, ",")
   elseif string.find(rawExitDirs, ";") then
     splitDirs = string.split(rawExitDirs, ";")
+  elseif string.match(rawExitDirs, "^.$") then
+    splitDirs = rawExitDirs
   elseif string.lower(rawExitDirs) == "none" then
     cecho("&lt;green&gt;One room ship specified\n")
     splitDirs = "none"
