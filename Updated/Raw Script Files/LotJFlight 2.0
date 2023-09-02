@@ -1,5 +1,8 @@
 lotj = lotj or {}
 lotj.flight = lotj.flight or {}
+--Updated by @Domovoi for Mudlet
+
+registerAnonymousEventHandler("sysInstall", "lotj.flight.Installed")
 
 --[[
 Ideas:
@@ -7,6 +10,14 @@ Repeat daisychain - Bus!
 Daisychain delay before launching again
 
 ]]
+
+function lotj.flight.Installed(_, name)
+  if name == "LotjFlight2" then
+    cecho("LotjFlight Installed! Running first time init!\m")
+    lotj.flight.Init()
+  end
+end
+  
 
 --Initializing Variables
 function lotj.flight.createFlightProfiles()
@@ -57,6 +68,7 @@ function lotj.flight.setVars()
   lotj.flight.reenterShip = false
   lotj.flight.hypertries = 0
   lotj.flight.reenterShip = false
+  lotj.flight.taxiChain = false
   lotj.flight.flightProfiles = {}
   lotj.flight.landingPrefs = {}
   local flightProfileFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "r")
@@ -122,8 +134,8 @@ function lotj.flight.setExitDirs(matches)
     splitDirs = string.split(rawExitDirs, ",")
   elseif string.find(rawExitDirs, ";") then
     splitDirs = string.split(rawExitDirs, ";")
-  elseif string.match(rawEntryDirs, "^.$") then
-    splitDirs = rawEntryDirs
+  elseif string.match(rawExitDirs, "^.$") then
+    splitDirs = rawExitDirs
   elseif string.lower(rawExitDirs) == "none" then
     cecho("<green>One room ship specified\n")
     splitDirs = "none"
@@ -339,7 +351,12 @@ function lotj.flight.beginFlight(matches)
   lotj.flight.Launch()
 end
 
-function lotj.flight.beginChain()
+function lotj.flight.beginChain(matches)
+  if matches[2] then
+    lotj.flight.taxiChain = true
+  else
+    lotj.flight.taxiChain = false
+  end
   lotj.flight.chainNum = 1
   lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
   lotj.flight.Launch()
@@ -349,13 +366,12 @@ function lotj.flight.Launch()
   if not lotj.flight.checkSetup() then
     return
   end
-  send("refuel "..lotj.flight.shipName.." full")
-  lotj.flight.enterShip()
-  lotj.flight.toCockpit()
-  send("pilot")
-  send("autopilot off")
-  send("launch confirm")
-  send("shields on")
+  if not lotj.flight.taxiChain then
+    send("refuel "..lotj.flight.shipName.." full")
+    lotj.flight.enterShip()
+    lotj.flight.toCockpit()
+  end
+  tempTimer(1, [[lotj.flight.takeOff()]])
   cecho("<green>Flying to "..lotj.flight.planetName.."\n")
   for i,v in pairs(lotj.flight.landingPrefs) do
     if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
@@ -364,10 +380,20 @@ function lotj.flight.Launch()
         lotj.flight.landingPreference = v.padChoice
       else
         cecho("<yellow>No pad choice found.\n")
+        lotj.flight.landingPreference = 1
       end
     end
   end
   lotj.flight.toggleOn()
+end
+
+function lotj.flight.takeOff()
+  if not gmcp.Ship.Info.piloting then
+    send("pilot")
+  end
+  send("autopilot off")
+  send("launch confirm")
+  send("shields on")
 end
 
 function lotj.flight.enterShip()
@@ -410,7 +436,7 @@ function lotj.flight.waitHyper()
 end
 
 function lotj.flight.coursePlanet()
-  send("course '"..planetName.."'")
+  send("course '"..lotj.flight.planetName.."'")
 end
 
 function lotj.flight.startLandGrab()
@@ -477,35 +503,40 @@ function lotj.flight.Landing()
   send("autopilot on")
 end
 
-function lotj.flight.endFlight()
-  if type(lotj.flight.exitDirs) == "string" then
-    --Do nothing
-  else
+function lotj.flight.refuel()
+  if type(lotj.flight.exitDirs) ~= "string" then
     for i,v in pairs(lotj.flight.exitDirs) do
       send(v)
     end
   end
-  send("openhatch")
-  send("leaveship")
-  send("closehatch "..lotj.flight.shipName)
-  send("refuel "..lotj.flight.shipName.." full")
-  send("ships sale")
-  lotj.flight.landingSites = {}
-  lotj.flight.lastPlanet = lotj.flight.planetName
-  lotj.flight.reenterCheck()
-  if #lotj.flight.planetChain > 0 then
-    lotj.flight.chainNum = lotj.flight.chainNum + 1
-    if lotj.flight.chainNum > #lotj.flight.planetChain then
-      cecho("<green>Planet daisychain complete!\n")
-      lotj.flight.toggleOff()
-    else
-      lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
-      cecho("<yellow>Continuing daisychain. Flying to "..lotj.flight.planetName.."\n")
-      lotj.flight.Launch()
+    send("openhatch")
+    send("leaveship")
+    send("closehatch "..lotj.flight.shipName)
+    send("refuel "..lotj.flight.shipName.." full")
+    send("ships sale")
+    lotj.flight.landingSites = {}
+    lotj.flight.lastPlanet = lotj.flight.planetName
+    lotj.flight.reenterCheck()
+end
+
+function lotj.flight.endFlight()
+    if not lotj.flight.taxiChain then
+      lotj.flight.refuel()
     end
-  else
-    lotj.flight.toggleOff()
-  end
+    if #lotj.flight.planetChain > 0 then
+        lotj.flight.chainNum = lotj.flight.chainNum + 1
+        if lotj.flight.chainNum > #lotj.flight.planetChain then
+          --lotj.flight.refuel() --Possible excess refueling
+          cecho("<green>Planet daisychain complete!\n")
+          lotj.flight.toggleOff()
+        else
+          lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+          cecho("<yellow>Continuing daisychain. Flying to "..lotj.flight.planetName.."\n")
+          lotj.flight.Launch()
+        end
+    else
+      lotj.flight.toggleOff()
+    end
 end
 
 function lotj.flight.finishFlight(matches)
@@ -584,6 +615,7 @@ function lotj.flight.Help()
   cecho("<yellow_green>clearchain                         - Clears the planet daisychain list\n")
   cecho("<yellow_green>remchain <planet>                  - Removes a planet from the daisychain list\n")
   cecho("<yellow_green>flystart                           - Begins flying the daisychain list\n")
+  cecho("<yellow_green>flystart taxi                      - Begins flying the daisychain list in a taxi (no need to exit and refuel)\n")
   echo("\n")
   cecho("<green>Ship parameter commands:\n")
   cecho("<yellow_green>-------------------------------------\n")
