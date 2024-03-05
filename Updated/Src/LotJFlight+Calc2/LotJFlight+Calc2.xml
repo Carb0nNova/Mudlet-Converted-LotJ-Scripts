@@ -1,0 +1,4215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>LotJCalc</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<TriggerGroup isActive="no" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>ShowPlanets</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>ShowplanetSuccess</name>
+					<script>lotj.calc.showplanetSuccess()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You use the datapad to lookup the information\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>ShowplanetFailure</name>
+					<script>lotj.calc.showplanetFailure()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^No such planet\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<TriggerGroup isActive="no" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>CalcCaps</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>PlanetCap</name>
+					<script>lotj.calc.planetCheck(matches)</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Planet\: (.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>SystemCap</name>
+					<script>lotj.calc.setSystem(matches)</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Starsystem\: (.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>CoordCap</name>
+					<script>lotj.calc.setCoordinates(matches)</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Coordinates\: (.*) (.*) (.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>CalcEnd</name>
+					<script>deleteLine()
+lotj.calc.capFinished()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Use 'SHOWPLANET &lt;planet&gt; NEWS' for current events.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>GagAll</name>
+					<script>deleteLine()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+		</TriggerGroup>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>LotJFlight</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<TriggerGroup isActive="no" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>LotJAutoFlight</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LaunchComp</name>
+					<script>lotj.flight.calcPlanet()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Launch complete\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>CalcDone</name>
+					<script>lotj.flight.calcDone()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*)Hyperspace calculations have been completed(.*)$</string>
+						<string>^You can't figure out which lever to use\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>HyperComp</name>
+					<script>lotj.flight.coursePlanet()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Hyperjump complete\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>OrbitObtained</name>
+					<script>lotj.flight.doLand()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You begin orbiting (.*)\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandStarted</name>
+					<script>lotj.flight.Landing()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You begin to land on (.*)\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandComp</name>
+					<script>lotj.flight.endFlight()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Landing sequence complete\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Proximity</name>
+					<script>lotj.flight.waitHyper()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You are too close to (.*) to make the jump to lightspeed\!$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandSiteLocked</name>
+					<script>lotj.flight.landNext()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Restricted Landing pad\. Limited to clans members and ships only\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LeftShip</name>
+					<script>lotj.flight.reenterCheck()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You exit the ship\.$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandGrabStart</name>
+					<script>lotj.flight.startLandGrab()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^Possible choices for (.*)\:$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Squadron</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>SquadronLaunched</name>
+					<script>fighterGrab(matches[3])</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(?P&lt;fightertype&gt;.+?) '(?P&lt;fightername&gt;.+?)' launches from a hangar on (?P&lt;hangartype&gt;.+?) '(?P&lt;hangarname&gt;.+?)'\,(.*)$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>SqudronView</name>
+					<script>fighterShow()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(L\[(.*)\]\:P\[(.*)\] )?(?P&lt;fightertype&gt;.+?) '(?P&lt;fightername&gt;.+?)'((\s+[\d-]+\s[\d-]+\s[\d-]+|\s+Prox\: \d+))?$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>LandGrab</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>MatchLine</name>
+					<script>lotj.flight.landGrab(matches)</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^(.*) (\(Max: (.*)\)|\(All Sizes\))$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>LandGrabEnd</name>
+					<script>lotj.flight.endLandGrab()</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+				</Trigger>
+			</TriggerGroup>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>RefuelMessage</name>
+				<script>selectString(line, 1)
+replace( " Tank already full. " )</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^What would be the point of refuelling when your tanks are already full\?$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+	<TimerPackage />
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>LotJCalc</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>Calculate</name>
+				<script>lotj.calc.startCalc(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^(calc|calculate) (.*)$</regex>
+			</Alias>
+			<Alias isActive="no" isFolder="no">
+				<name>CoordCapStart</name>
+				<script>spaceCapStart()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^rad$</regex>
+			</Alias>
+			<Alias isActive="no" isFolder="no">
+				<name>CoordCalc</name>
+				<script>spaceCapCalc(matches[2])</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^lcal (.*)$</regex>
+			</Alias>
+		</AliasGroup>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>LotJFlight</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyToArg</name>
+				<script>lotj.flight.beginFlight(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyto (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyFinish</name>
+				<script>lotj.flight.finishFlight(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyfinish (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyStatus</name>
+				<script>lotj.flight.flightStatus()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flystatus$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyAuto</name>
+				<script>lotj.flight.flyAuto(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyauto( +(.*))?$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyClear</name>
+				<script>lotj.flight.Clear()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyclear$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FlyHelp</name>
+				<script>lotj.flight.Help()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flyhelp$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>FighterClear</name>
+				<script>fighterClear()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^fighterclear$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>ExitDir</name>
+				<script>lotj.flight.setExitDirs(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^exitdir (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>EntryDir</name>
+				<script>lotj.flight.setEntryDirs(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^entrydir (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>LandingPref</name>
+				<script>lotj.flight.setLandingPref(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^landingpref (.*) (\d)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>HatchCode</name>
+				<script>lotj.flight.setHatchCode(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^hatchcode (.*)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>ShipName</name>
+				<script>lotj.flight.setShipName(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^shipname (.*)$</regex>
+			</Alias>
+			<AliasGroup isActive="yes" isFolder="yes">
+				<name>Daisychain Aliases</name>
+				<script></script>
+				<command></command>
+				<packageName></packageName>
+				<regex></regex>
+				<Alias isActive="yes" isFolder="no">
+					<name>AddChain</name>
+					<script>lotj.flight.addChain(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^flychain (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ClearChain</name>
+					<script>lotj.flight.clearChain()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^clearchain$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>RemChain</name>
+					<script>lotj.flight.remChain(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^remchain (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ListChain</name>
+					<script>lotj.flight.listChain()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^listchain$</regex>
+				</Alias>
+			</AliasGroup>
+			<AliasGroup isActive="yes" isFolder="yes">
+				<name>Profile Aliases</name>
+				<script></script>
+				<command></command>
+				<packageName></packageName>
+				<regex></regex>
+				<Alias isActive="yes" isFolder="no">
+					<name>SaveProfile</name>
+					<script>lotj.flight.saveProfile()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^saveflightprofile$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>LoadProfile</name>
+					<script>lotj.flight.loadProfile(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^loadflightprofile (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>RemProfile</name>
+					<script>lotj.flight.remProfile(matches)</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^remflightprofile (.*)$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ClearProfiles</name>
+					<script>lotj.flight.clearProfiles()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^clearflightprofiles$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>ListProfiles</name>
+					<script>lotj.flight.listProfiles()</script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^listflightprofiles$</regex>
+				</Alias>
+			</AliasGroup>
+			<Alias isActive="yes" isFolder="no">
+				<name>List Landing Prefs</name>
+				<script>lotj.flight.listLandingPrefs()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^listprefs$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Flystart</name>
+				<script>lotj.flight.beginChain(matches)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^flystart( taxi)?$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+	<ActionPackage />
+	<ScriptPackage>
+		<Script isActive="yes" isFolder="no">
+			<name>LotJFlight2</name>
+			<packageName></packageName>
+			<script>lotj = lotj or {}
+lotj.flight = lotj.flight or {}
+--Updated by @Domovoi for Mudlet
+
+registerAnonymousEventHandler("sysInstall", "lotj.flight.Installed")
+
+--[[
+Ideas:
+Repeat daisychain - Bus!
+Daisychain delay before launching again
+
+]]
+
+function lotj.flight.Installed(_, name)
+  if name == "LotjFlight2" then
+    cecho("LotjFlight Installed! Running first time init!\m")
+    lotj.flight.Init()
+  end
+end
+  
+
+--Initializing Variables
+function lotj.flight.createFlightProfiles()
+  lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJFlight/")
+  echo("Flight profiles file doesn't exist. Attempting to create.\n")
+  local profileFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua")
+  if not profileFile then
+    file = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "w")
+    file:write("")
+    file:close()
+  end
+end
+
+function lotj.flight.createLandingPrefs()
+  lfs.mkdir(getMudletHomeDir().."/ScriptFiles/LotJFlight/")
+  echo("Landing preferences file doesn't exist. Attempting to create.\n")
+  local profileFile, err_msg = lfs.attributes(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua")
+  if not profileFile then
+    file = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", "w")
+    file:write("")
+    file:close()
+  end
+end
+
+function lotj.flight.saveProfileTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", lotj.flight.flightProfiles)
+end
+
+function lotj.flight.saveLandingPrefsTable()
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.setVars()
+  lotj.flight.shipName = ""
+  lotj.flight.exitDirs = {}
+  lotj.flight.entryDirs = {}
+  lotj.flight.hatchCode = 0
+  lotj.flight.planetName = ""
+  lotj.flight.lastPlanet = ""
+  lotj.flight.planetChain = {}
+  lotj.flight.chainNum = 0
+  lotj.flight.autoFly = false
+  lotj.flight.landingSites = {}
+  lotj.flight.landingSiteNum = 0
+  lotj.flight.landgrabbing = false
+  lotj.flight.landPreference = -1
+  lotj.flight.hangars = {}
+  lotj.flight.reenterShip = false
+  lotj.flight.hypertries = 0
+  lotj.flight.reenterShip = false
+  lotj.flight.taxiChain = false
+  lotj.flight.flightProfiles = {}
+  lotj.flight.landingPrefs = {}
+  local flightProfileFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", "r")
+  local flightPrefsFileCheck = io.open(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", "r")
+  if flightProfileFileCheck == nil then
+    lotj.flight.createFlightProfiles()
+  end 
+  if flightPrefsFileCheck == nil then
+    lotj.flight.createLandingPrefs()
+  end
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJFlight/flightprofiles.lua", lotj.flight.flightProfiles)
+  table.load(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.Init()
+  lotj.flight.setVars()
+  cecho("&lt;green&gt;LotJFlight Initialized.\n")
+end
+
+function lotj.flight.Clear()
+  lotj.flight.setVars()
+  cecho("&lt;tomato&gt;LotJFlight Cleared.\n")
+  lotj.flight.toggleOff()
+end
+
+--Setting ship information
+function lotj.flight.setShipName(matches)
+  lotj.flight.shipName = tostring(matches[2])
+  cecho("&lt;green&gt;Current ship set to "..lotj.flight.shipName.."\n")
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setEntryDirs(matches)
+  local rawEntryDirs = matches[2]
+  local splitDirs = ""
+  cecho("&lt;green&gt;Directions to enter the ship set to "..rawEntryDirs.."\n")
+  if string.find(rawEntryDirs, " ") then
+    splitDirs = string.split(rawEntryDirs, " ")
+  elseif string.find(rawEntryDirs, ",") then
+    splitDirs = string.split(rawEntryDirs, ",")
+  elseif string.find(rawEntryDirs, ";") then
+    splitDirs = string.split(rawEntryDirs, ";")
+  elseif string.match(rawEntryDirs, "^.$") then
+    splitDirs = rawEntryDirs
+  elseif string.lower(rawEntryDirs) == "none" then
+    cecho("&lt;green&gt;One room ship specified\n")
+    splitDirs = "none"
+  else
+    cecho("&lt;red&gt;Unrecognized directions given.\n")
+    lotj.flight.toggleOff()
+  end
+  lotj.flight.entryDirs = splitDirs
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setExitDirs(matches)
+  local rawExitDirs = matches[2]
+  local splitDirs = ""
+  cecho("&lt;green&gt;Directions to enter the ship set to "..rawExitDirs.."\n")
+  if string.find(rawExitDirs, " ") then
+    splitDirs = string.split(rawExitDirs, " ")
+  elseif string.find(rawExitDirs, ",") then
+    splitDirs = string.split(rawExitDirs, ",")
+  elseif string.find(rawExitDirs, ";") then
+    splitDirs = string.split(rawExitDirs, ";")
+  elseif string.match(rawExitDirs, "^.$") then
+    splitDirs = rawExitDirs
+  elseif string.lower(rawExitDirs) == "none" then
+    cecho("&lt;green&gt;One room ship specified\n")
+    splitDirs = "none"
+  else
+    cecho("&lt;red&gt;Unrecognized directions given.\n")
+    lotj.flight.toggleOff()
+  end
+  lotj.flight.exitDirs = splitDirs
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setHatchCode(matches)
+  lotj.flight.hatchCode = tonumber(matches[2])
+  cecho("&lt;green&gt;Hatch code set to "..lotj.flight.hatchCode)
+  lotj.flight.checkSetup()
+end
+
+function lotj.flight.setLandingPref(matches)
+  local planetChoice = matches[2]
+  local padChoice = matches[3]
+  local matchFound = false
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    if string.match(v.planetName, planetChoice) then
+      lotj.flight.landingPrefs[i].padPref = padChoice
+      cecho("&lt;green&gt;Landing pad preference for "..planetChoice.." set to "..padChoice.."\n")
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("&lt;yellow&gt;Add planet "..planetChoice.." with landing preference pad "..padChoice.."\n")
+    local newPref = { planetName = planetChoice, padPref = padChoice }
+    lotj.flight.landingPrefs[#prefsTable+1] = newPref
+  end
+  table.save(getMudletHomeDir().."/ScriptFiles/LotJFlight/landingprefs.lua", lotj.flight.landingPrefs)
+end
+
+function lotj.flight.listLandingPrefs()
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    cecho("&lt;green&gt;Planet: &lt;gray&gt;"..v.planetName.." &lt;green&gt;Pad: &lt;gray&gt;"..v.padPref.."\n")
+  end
+end
+
+function lotj.flight.checkSetup()
+  local ready = true
+  if lotj.flight.shipName == "" then
+    cecho("&lt;red&gt;No ship name specified. Please designate with 'shipname' alias.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif tonumber(lotj.flight.hatchCode) &lt; 0 and lotj.flight.hatchCode &gt; 99999 then
+    cecho("&lt;red&gt;Invalid hatch number specified. Please designate correct hatch number or use 0 for none with 'hatchcode' alias.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif lotj.flight.entryDirs == "" then
+    cecho("&lt;red&gt;No ship entrance path specified. Please designate entrance path with 'entrydir' alias. Use 'entrydir none' for a single room ship.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  elseif lotj.flight.exitDirs == "" then
+    cecho("&lt;red&gt;No ship exit path specified. Please designate exit path with 'exitdir' alias. Use 'exitdir none' for a single room ship.\n")
+    lotj.flight.toggleOff()
+    ready = false
+  end
+  if ready == false then
+    return false
+  else
+    return true
+  end
+end
+
+function lotj.flight.toggleReenter(matches)
+  if not matches or matches == "" then
+    if lotj.flight.reenterShip then
+      lotj.flight.reenterShip = false
+      cecho("&lt;yellow&gt;Will not re-enter ship upon arrival.\n")
+    else
+      lotj.flight.reenterShip = true
+      cecho("&lt;yellow&gt;Will re-enter ship upon arrival.\n")
+    end
+  elseif string.lower(matches[2]) == "on" then
+    lotj.flight.reenterShip = true
+    cecho("&lt;yellow&gt;Will re-enter ship upon arrival.\n")
+  elseif string.lower(matches[2]) == "off" then
+    lotj.flight.reenterShip = false
+    cecho("&lt;yellow&gt;Will not re-enter ship upon arrival.\n")
+  end
+end
+
+function lotj.flight.loadProfile(matches)
+  local shipChoice = tostring(matches[2])
+  local profileTable = lotj.flight.flightProfiles
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(shipChoice) then
+      cecho("&lt;green&gt;Loaded profile for "..v.shipName)
+      lotj.flight.shipName = v.shipName
+      lotj.flight.entryDirs = v.entryDirs
+      lotj.flight.exitDirs = v.exitDirs
+      lotj.flight.hatchCode = v.hatchCode
+      return
+    end
+  end
+  cecho("&lt;yellow&gt;Ship not found in profile list.\n")
+end
+
+function lotj.flight.saveProfile()
+  local newProfile = { shipName = "", entryDirs = {}, exitDirs = {}, hatchCode = 0 }
+  local profileTable = lotj.flight.flightProfiles
+  local matchFound = false
+  if not lotj.flight.checkSetup() then
+    return
+  end
+  newProfile.shipName = lotj.flight.shipName
+  newProfile.entryDirs = lotj.flight.entryDirs
+  newProfile.exitDirs = lotj.flight.exitDirs
+  newProfile.hatchCode = lotj.flight.hatchCode
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(newProfile.shipName) then
+      cecho("&lt;green&gt;Profile found for "..newProfile.shipName..". Updating with current info.\n")
+      profileTable[i] = newProfile
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("Saving new profile "..lotj.flight.shipName.."\n")
+    lotj.flight.flightProfiles[#profileTable+1] = newProfile
+  end
+  lotj.flight.saveProfileTable()
+end
+
+function lotj.flight.remProfile(matches)
+  local profileTable = lotj.flight.flightProfiles
+  local axedProfile = matches[2]
+  local matchFound = false
+  for i,v in pairs(profileTable) do
+    if string.lower(v.shipName) == string.lower(axedProfile) then
+      table.remove(i)
+      cecho("&lt;yellow&gt;Profile removed.")
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("&lt;yellow&gt;Profile not found.\n")
+  end
+end
+
+function lotj.flight.clearProfiles()
+  lotj.flight.flightProfiles = {}
+  lotj.flight.saveProfileTable()
+  cecho("&lt;red&gt;All flight profiles cleared.\n")
+end
+
+function lotj.flight.listProfiles()
+  cecho("&lt;green&gt;Listing all flight profiles:\n")
+  for i,v in pairs(lotj.flight.flightProfiles) do
+    if type(v.entryDirs) == "table" and type(v.exitDirs) == "table" then
+      cecho("&lt;green&gt;"..v.shipName..", &lt;yellow&gt;entry dirs: "..table.concat(v.entryDirs, ",")..", exit dirs: "..table.concat(v.exitDirs, ",").."\n")
+    elseif type(v.entryDirs) == "string" and type(v.exitDirs) == "string" then
+      cecho("&lt;green&gt;"..v.shipName..", &lt;yellow&gt;entry dirs: "..v.entryDirs..", exit dirs: "..v.exitDirs.."\n")
+    else
+      cecho("&lt;green&gt;"..v.shipName..", &lt;yellow&gt;Error displaying entry and exit dirs.\n")
+    end
+  end
+end
+    
+
+function lotj.flight.addChain(matches)
+  local newPlanet = matches[2]
+  local chainTable = lotj.flight.planetChain
+  lotj.flight.planetChain[#chainTable + 1] = newPlanet
+  cecho("&lt;green&gt;"..newPlanet.." added to daisychain list.\n")
+end
+
+function lotj.flight.remChain(matches)
+  local remPlanet = matches[2]
+  local chainTable = lotj.flight.planetChain
+  local matchFound = false
+  for i,v in pairs(chainTable) do
+    if string.match(string.lower(chainTable[i]), string.lower(remPlanet)) then
+      cecho("&lt;yellow&gt;"..remPlanet.." removed from chain.\n")
+      table.remove(lotj.flight.planetChain, i)
+      matchFound = true
+    end
+  end
+  if matchFound == false then
+    cecho("&lt;yellow&gt;"..remPlanet.." not found in chain.\n")
+  end
+end
+
+function lotj.flight.clearChain()
+  lotj.flight.planetChain = {}
+  cecho("&lt;yellow&gt;Planet daisychain cleared.\n")
+end
+
+function lotj.flight.listChain()
+  local chainTable = lotj.flight.planetChain
+  if #chainTable &gt; 0 then
+    cecho("&lt;green&gt;Currently daisychaining planets:\n")
+    for i,v in pairs(lotj.flight.planetChain) do
+      if i == lotj.flight.chainNum then
+        cecho("&lt;gray&gt;-&gt;"..v.."&lt;-\n")
+      else
+        cecho("&lt;yellow_green&gt;"..v.."\n")
+      end
+    end
+  else
+    cecho("&lt;green&gt;No planets in daisychain list.\n")
+  end
+end
+
+--Flying and landing
+function lotj.flight.beginFlight(matches)
+  lotj.flight.planetName = matches[2]
+  lotj.flight.Launch()
+end
+
+function lotj.flight.beginChain(matches)
+  if matches[2] then
+    lotj.flight.taxiChain = true
+  else
+    lotj.flight.taxiChain = false
+  end
+  lotj.flight.chainNum = 1
+  lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+  lotj.flight.enterShip()
+  lotj.flight.toCockpit()
+  lotj.flight.Launch()
+end
+
+function lotj.flight.Launch()
+  if not lotj.flight.checkSetup() then
+    return
+  end
+  if not lotj.flight.taxiChain then
+    send("refuel "..lotj.flight.shipName.." full")
+    lotj.flight.enterShip()
+    lotj.flight.toCockpit()
+  end
+  tempTimer(1, [[lotj.flight.takeOff()]])
+  cecho("&lt;green&gt;Flying to "..lotj.flight.planetName.."\n")
+  for i,v in pairs(lotj.flight.landingPrefs) do
+    if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
+      if v.padChoice ~= nil then
+        cecho("&lt;green&gt;Using preferred pad number "..v.padChoice.."\n")
+        lotj.flight.landingPreference = v.padChoice
+      else
+        cecho("&lt;yellow&gt;No pad choice found.\n")
+        lotj.flight.landingPreference = 1
+      end
+    end
+  end
+  lotj.flight.toggleOn()
+end
+
+function lotj.flight.takeOff()
+  if not gmcp.Ship.Info.piloting then
+    send("pilot")
+  end
+  send("autopilot off")
+  send("launch confirm")
+  send("shields on")
+end
+
+function lotj.flight.enterShip()
+  if hatchCode == 0 then
+    send("openhatch "..lotj.flight.shipName)
+  else
+    send("openhatch "..lotj.flight.shipName.." "..lotj.flight.hatchCode)
+  end
+  send("enter "..lotj.flight.shipName)
+  send("closehatch")
+end
+
+function lotj.flight.toCockpit()
+  if type(lotj.flight.entryDirs) == "string" then
+    --Do nothing
+  else
+    for i,v in pairs(lotj.flight.entryDirs) do
+      send(v)
+    end
+  end
+end
+
+function lotj.flight.calcPlanet()
+  expandAlias("calc "..lotj.flight.planetName, false)
+end
+
+function lotj.flight.calcDone()
+  lotj.flight.hyperTries = 1
+  send("hyperspace", false)
+end
+
+function lotj.flight.waitHyper()
+  lotj.flight.hyperTries = lotj.flight.hyperTries + 1
+  if lotj.flight.hyperTries &gt;= 20 then
+    local coords = {-50000, 0, 50000}
+    send("course "..coords[math.random(3)].." "..coords[math.random(3)].." "..coords[math.random(3)])
+    lotj.flight.hyperTries = 15
+  end
+  tempTimer(10, [[send("hyperspace",false)]])
+end
+
+function lotj.flight.coursePlanet()
+  send("course '"..lotj.flight.planetName.."'")
+end
+
+function lotj.flight.startLandGrab()
+  lotj.flight.landingSites = {}
+  enableTrigger("MatchLine")
+  enableTrigger("LandGrabEnd")
+end
+
+function lotj.flight.doLand()
+  send("land '"..lotj.flight.planetName.."'")
+  local prefsTable = lotj.flight.landingPrefs
+  for i,v in pairs(prefsTable) do
+    if string.match(string.lower(v.planetName), string.lower(lotj.flight.planetName)) then
+      lotj.flight.landPreference = prefsTable[i].padPref
+      cecho("&lt;green&gt;Using preferred pad: "..lotj.flight.landPreference.."\n")
+    end
+  end
+end
+
+function lotj.flight.landGrab(matches)
+  local squelch = string.find(matches[2], "Possible choices for")
+  local landingSites = lotj.flight.landingSites
+  if (matches[2] ~= "" and squelch == nil) then
+    lotj.flight.landingSites[#landingSites+1] = string.trim(matches[2])
+  end
+end
+
+function lotj.flight.endLandGrab()
+  if not (lotj.flight.landgrabbing) then
+    lotj.flight.landgrabbing = true
+    cecho("&lt;dodger_blue&gt;Grabbing landing sites...\n")
+    lotj.flight.landingSiteNum = 0
+  else
+    lotj.flight.landgrabbing = false
+    disableTrigger("MatchLine")
+    disableTrigger("LandGrabEnd")
+    cecho("&lt;green&gt;Land grab finished.")
+    lotj.flight.landingSiteNum = 0
+    local padPreference = tonumber(lotj.flight.landPreference)
+    if padPreference &gt; 0 then
+      lotj.flight.startLanding(padPreference)
+    else
+      lotj.flight.landNext()
+    end
+  end
+end
+
+function lotj.flight.landNext()
+  lotj.flight.landingSiteNum = lotj.flight.landingSiteNum + 1
+  lotj.flight.startLanding(lotj.flight.landingSiteNum)
+end
+
+
+function lotj.flight.startLanding(siteNum)
+  if tonumber(siteNum) &gt; #lotj.flight.landingSites then
+    cecho("&lt;yellow&gt;Invalid landing location. Starting from beginning.")
+    siteNum = 1
+  end
+  send("land '"..lotj.flight.planetName.."' "..lotj.flight.landingSites[siteNum])
+end
+
+function lotj.flight.Landing()
+  send("shields on")
+  send("autopilot on")
+end
+
+function lotj.flight.refuel()
+  if type(lotj.flight.exitDirs) ~= "string" then
+    for i,v in pairs(lotj.flight.exitDirs) do
+      send(v)
+    end
+  end
+    send("openhatch")
+    send("leaveship")
+    send("closehatch "..lotj.flight.shipName)
+    send("refuel "..lotj.flight.shipName.." full")
+    send("ships sale")
+    lotj.flight.landingSites = {}
+    lotj.flight.lastPlanet = lotj.flight.planetName
+    lotj.flight.reenterCheck()
+end
+
+function lotj.flight.endFlight()
+    if not lotj.flight.taxiChain then
+      lotj.flight.refuel()
+    end
+    if #lotj.flight.planetChain &gt; 0 then
+        lotj.flight.chainNum = lotj.flight.chainNum + 1
+        if lotj.flight.chainNum &gt; #lotj.flight.planetChain then
+          --lotj.flight.refuel() --Possible excess refueling
+          cecho("&lt;green&gt;Planet daisychain complete!\n")
+          lotj.flight.toggleOff()
+        else
+          lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+          cecho("&lt;yellow&gt;Continuing daisychain. Flying to "..lotj.flight.planetName.."\n")
+          lotj.flight.Launch()
+        end
+    else
+      lotj.flight.toggleOff()
+    end
+end
+
+function lotj.flight.finishFlight(matches)
+  lotj.flight.planetName = string.trim(matches[2])
+  cecho("Finishing flight to "..lotj.flight.planetName.."\n")
+  if lotj.flight.checkSetup() then
+    lotj.flight.toggleOn()
+  end
+end
+
+function lotj.flight.reenterCheck()
+  if (lotj.flight.reenterShip) then
+    lotj.flight.enterShip()
+  end
+end
+
+function lotj.flight.flightStatus()
+  cecho("&lt;gray&gt;Flight status: ".. ((lotj.flight.autoFly==true and "&lt;green&gt;Enabled\n") or "&lt;red&gt;Disabled\n"))
+  cecho("&lt;gray&gt;Flying '&lt;green&gt;"..lotj.flight.shipName.."&lt;gray&gt;' (Hatch code: &lt;ansi_cyan&gt;"..lotj.flight.hatchCode.."&lt;gray&gt;)\n")
+  if lotj.flight.autoFly == true then
+    if lastPlanet ~= "" then
+      cecho("&lt;yellow_green&gt; Flying from: "..lotj.flight.lastPlanet.."\n")
+    end
+    cecho("&lt;yellow_green&gt; Destination planet: "..lotj.flight.planetName.."\n")
+    echo("\n")
+  end
+  if #lotj.flight.entryDirs ~= 0 and #lotj.flight.exitDirs ~= 0 then
+    cecho("&lt;gray&gt;Entry directions: "..lotj.flight.entryDirs.."\n")
+    cecho("&lt;gray&gt;Exit directions: "..lotj.flight.exitDirs.."\n")
+  else
+    cecho("&lt;yellow&gt;Entry and/or exit directions not set.\n")
+  end
+  echo("\n")
+  if lotj.flight.reenterShip == true then
+    cecho("&lt;green&gt; Will re-enter ship when flight is complete.\n")
+  end
+  if #lotj.flight.planetChain &gt; 0 then
+    lotj.flight.listChain()
+  end
+end
+
+
+--Toggles for Off and On
+function lotj.flight.toggleOn()
+  lotj.flight.autoFly = true
+  enableTrigger("LotJAutoFlight")
+  cecho("&lt;green&gt;Auto Flight activated.\n")
+end
+
+function lotj.flight.toggleOff()
+  lotj.flight.autoFly = false
+  disableTrigger("LotJAutoFlight")
+  cecho("&lt;yellow&gt;Auto Flight deactivated.\n")
+end
+
+function lotj.flight.flyAuto(matches)
+  if (matches[2] == "on") then
+    lotj.flight.toggleOn()
+  elseif (matches[2] == "off") then
+    lotj.flight.toggleOff()
+  else
+    if(lotj.flight.autoFly == true) then
+      lotj.flight.toggleOff()
+    else
+      lotj.flight.toggleOn()
+    end
+  end
+end
+
+function lotj.flight.Help()
+  cecho("&lt;green&gt;Automatic flight commands:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;flyto &lt;planet&gt;                     - Begin a flight to given planet, while standing in front of ship\n")
+  cecho("&lt;yellow_green&gt;flyfinish &lt;planet&gt;                 - Finish a flight already in progress to given planet\n")
+  cecho("&lt;yellow_green&gt;flychain &lt;planet&gt;                  - Adds a planet to daisychain to in case your ship needs to land to refuel\n")
+  cecho("&lt;yellow_green&gt;clearchain                         - Clears the planet daisychain list\n")
+  cecho("&lt;yellow_green&gt;remchain &lt;planet&gt;                  - Removes a planet from the daisychain list\n")
+  cecho("&lt;yellow_green&gt;flystart                           - Begins flying the daisychain list\n")
+  echo("\n")
+  cecho("&lt;green&gt;Ship parameter commands:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;hatchcode &lt;#&gt;                      - Designates the hatch number. 0 for none\n")
+  cecho("&lt;yellow_green&gt;entrydir &lt;path&gt;                    - Designates the entry path. Can accept 'n n n', 'n,n,n' or 'n;n;n'\n")
+  cecho("&lt;yellow_green&gt;exitdir &lt;path&gt;                     - Designates the exit path. Can accept 'n n n', 'n,n,n' or 'n;n;n'\n")
+  cecho("&lt;yellow_green&gt;landingpref &lt;#&gt;                    - Designates the landing preference (top down, 0 for auto.)\n")
+  cecho("&lt;yellow_green&gt;shipname &lt;shipname&gt;                - Designates the ship's name\n")
+  echo("\n")
+  cecho("&lt;green&gt;Ship and landing preference profiles:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;saveflightprofile                  - Saves current ship's variables to disk for later loading\n")
+  cecho("&lt;yellow_green&gt;loadflightprofile &lt;shipname&gt;       - Loads a ship's variables\n")
+  cecho("&lt;yellow_green&gt;remflightprofile &lt;shipname&gt;        - Removes a ship from the profiles list\n")
+  cecho("&lt;yellow_green&gt;clearflightprofiles                - Removes all profiles from the profiles list\n")
+  cecho("&lt;yellow_green&gt;landpref &lt;planet&gt; &lt;pad #&gt;          - Specifies which pad you would prefer to land on for specified planet\n")
+  echo("\n")
+  cecho("&lt;green&gt;Various switches:\n")
+  cecho("&lt;yellow_green&gt;-------------------------------------\n")
+  cecho("&lt;yellow_green&gt;flystatus                          - Display current status of flight\n")
+  cecho("&lt;yellow_green&gt;flyauto on/off                     - Enable or disable automatic flight\n")
+  cecho("&lt;yellow_green&gt;flyclear                           - Clears all current fly variables\n")
+  cecho("&lt;yellow_green&gt;flyreenter                         - Re-enter your ship at the end of a flight\n")
+  cecho("&lt;yellow_green&gt;flyhelp                            - Display this help menu\n")
+  cecho("\n")
+end
+
+registerAnonymousEventHandler("sysLoadEvent", lotj.flight.Init)</script>
+			<eventHandlerList />
+		</Script>
+		<Script isActive="yes" isFolder="no">
+			<name>LotjCalc2</name>
+			<packageName></packageName>
+			<script>lotj = lotj or {}
+lotj.calc = lotj.calc or {}
+
+registerAnonymousEventHandler("sysInstall", "lotj.calc.Installed")
+
+function lotj.calc.Installed(_, name)
+  if name == "LotjCalc" then
+    cecho("LotjCalc Installed! Running first time init!\m")
+    lotj.calc.Init()
+  end
+end
+
+function lotj.calc.clearVariables()
+    lotj.calc.planets = {}
+    lotj.calc.planetname = ""
+    lotj.calc.systemname = ""
+    lotj.calc.coordX = 0
+    lotj.calc.coordY = 0
+    lotj.calc.coordZ = 0
+
+    lotj.calc.spaceCoords = {}
+end
+
+function lotj.calc.startCalc(matches)
+    local sentArg = matches[3]
+
+    if sentArg == "" then -- we entered "calc" with no args, so pass it through
+        send("calculate")
+        return
+    end
+    if sentArg == "stop" then -- entered "calc stop", pass it through
+        planetname = ""
+        send("calculate stop")
+        return
+    end
+    if string.findPattern(sentArg, "local", 0, true) then -- we entered calc local x y z, pass it through
+        planetname = "local"
+        send("calculate "..matches[2])
+        return
+    end
+    if string.findPattern(sentArg, "%'[%d-]* [%d-]*%'", 0, false) then -- we entered an uncharted sector in 'x y' x y z format
+        -- set our planetname to the x y coordinates
+        local xstart, xend = string.findPattern(sentArg, "%'[%d-]+", 0, false)
+        local xcoord = string.sub(sentArg, xstart+1, xend)
+        local ystart, yend = string.findPattern(sentArg, "[%d-]+%'", xend, false)
+        local ycoord = string.sub(sentArg, ystart, yend-1)
+        --cecho("xstart: "..xstart.." xend: "..xend.." xcoord: "..xcoord)
+        --cecho("ystart: "..ystart.." yend: "..yend.." ycoord: "..ycoord)
+
+        --planetname = (..xcoord.., " ", ..ycoord..)
+        --cecho(GetVariable("planetname"))
+        send("calculate "..sentArg)
+        return
+    end
+    -- add option to enter calc x y x y z for uncharted sectors here
+    if (sentArg ~= nil and sentArg ~= "stop") then -- we entered a standard planetname
+        lotj.calc.planetName = string.trim(sentArg)
+        cecho("\n&lt;yellow&gt;Calculating hyperspace trajectory to "..lotj.calc.planetName.."\n")
+        enableTrigger("ShowPlanets")
+        send("showplanet "..lotj.calc.planetName, false)
+    else
+        print("Invalid planet name!\n")
+    end
+    
+    
+    
+end
+
+function lotj.calc.showplanetSuccess()
+    enableTrigger("CalcCaps")
+end
+
+function lotj.calc.showplanetFailure()
+	toggleCalcOff()
+	disableTrigger("CalcCaps")
+	cecho("&lt;red&gt;Planet lookup failed.\n")
+end
+
+function lotj.calc.planetCheck(matches)
+    if (matches ~= nil) then
+        if string.lower(planetname) == string.lower(matches[2]) then
+            planetName = trostring(matches[2])
+            return true
+        end
+    else
+        cecho("&lt;red&gt;Invalid planet found.\n")
+        lotj.calc.toggleCalcOff()
+        disableTrigger("CalcCaps")
+        return false
+    end
+end
+
+function lotj.calc.setSystem(matches)
+    lotj.calc.systemName = matches[2]
+end
+
+function lotj.calc.setCoordinates(matches)
+    lotj.calc.coordX = matches[2]
+    lotj.calc.coordY = matches[3]
+    lotj.calc.coordZ = matches[4]
+end
+
+function lotj.calc.capFinished()
+	local newX = lotj.calc.coordX + 500
+	lotj.calc.toggleCalcOff()
+	disableTrigger("CalcCaps")
+	cecho("\n&lt;green&gt;System found: " .. lotj.calc.systemName .. "\n")
+    cecho("&lt;green&gt;Coordinates found: " .. lotj.calc.coordX .. ", " .. lotj.calc.coordY .. ", " .. lotj.calc.coordZ .. "\n")
+    cecho("&lt;green&gt;Calculating to " .. newX .. " " .. lotj.calc.coordY .. " " .. lotj.calc.coordZ.."\n")
+	send("calculate \"" .. lotj.calc.systemName .. "\" " .. newX .. " " .. lotj.calc.coordY .. " " .. lotj.calc.coordZ, false)
+end
+
+
+function lotj.calc.toggleCalcOff()
+   disableTrigger("CalcCaps")
+   disableTrigger("ShowPlanets")
+end
+</script>
+			<eventHandlerList />
+		</Script>
+	</ScriptPackage>
+	<KeyPackage />
+	<VariablePackage>
+		<HiddenVariables />
+		<Variable>
+			<name>autoTransition</name>
+			<keyType>4</keyType>
+			<value>false</value>
+			<valueType>1</valueType>
+		</Variable>
+		<VariableGroup>
+			<name>bestResult</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<Variable>
+				<name>about</name>
+				<keyType>4</keyType>
+				<value>0</value>
+				<valueType>3</valueType>
+			</Variable>
+			<Variable>
+				<name>head</name>
+				<keyType>4</keyType>
+				<value>0</value>
+				<valueType>3</valueType>
+			</Variable>
+		</VariableGroup>
+		<VariableGroup>
+			<name>comlinkList</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+		</VariableGroup>
+		<VariableGroup>
+			<name>domo</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<VariableGroup>
+				<name>autoConnect</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>reconnecterOn</name>
+					<keyType>4</keyType>
+					<value>true</value>
+					<valueType>1</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoDub</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>dubNumber</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>gender</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>memList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>originalRace</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>planet</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>race</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>shortPlanet</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>shortRace</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>tempNumber</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>weLooked</name>
+					<keyType>4</keyType>
+					<value>true</value>
+					<valueType>1</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoHeal</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoItem</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>afk</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>autoBag</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>autoItem</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>caseDesign</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>caseKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>comlinkAutoTune</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>crystalCon</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>crystalNames</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>currentIteration</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentPos</name>
+					<keyType>4</keyType>
+					<value>2</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentShop</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentTunePos</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>debugVars</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>defaultShopInfo</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>dirs</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+					<VariableGroup>
+						<name>list</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+				</VariableGroup>
+				<Variable>
+					<name>drinkCon</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>goingLocker</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>goingShopping</name>
+					<keyType>4</keyType>
+					<value>true</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>initialRun</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>itemCase</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>itemKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>itemList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lockerDeposit</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>lockerDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lockerItemKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>lockerList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lockerOpen</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>lockerRun</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>makeCommand</name>
+					<keyType>4</keyType>
+					<value>makecircuit</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>makingLightsabers</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>makingMedpacs</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>playerID</name>
+					<keyType>4</keyType>
+					<value>Strike</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>remodLevel</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>remodulate</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>repeatItem</name>
+					<keyType>4</keyType>
+					<value>10</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>shopList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>shoppingInterval</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>shoppingRun</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>totalShops</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>trashCan</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>tuneList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>workshopDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoKicker</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoResearch</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>bulkArmor</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>audibleAlert</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>currentAttempt</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentBestPiece</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentBestResult</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentCoating</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentCover</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentDesc</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentGoal</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentGoodCount</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentIndex</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentKeepBest</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentKeyword</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentMaterial</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentMaxAttempts</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>currentStep</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currentWearloc</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>droidName</name>
+					<keyType>4</keyType>
+					<value>none</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>fetchAttempt</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>list</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lotjArmorConnect</name>
+					<keyType>4</keyType>
+					<value>true</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>maxFetchAttempts</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>prodReady</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>toonName</name>
+					<keyType>4</keyType>
+					<value>Caelus</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>cargoScan</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>currPlanet</name>
+					<keyType>4</keyType>
+					<value>Ryloth</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>currSystem</name>
+					<keyType>4</keyType>
+					<value>Gaulus Sector</value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>planets</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>charSpecific</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>Caelus</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>gptMadness</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>apiEndpoint</name>
+							<keyType>4</keyType>
+							<value>https://api.openai.com/v1/chat/completions</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>apiKey</name>
+							<keyType>4</keyType>
+							<value>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</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>contentResponse</name>
+							<keyType>4</keyType>
+							<value>emote $n suddenly narrows his eyes, blinking rapidly as if he's struggling to focus on something unseen. His brow furrows in confusion and frustration, rubbing at his eyes with the heel of his hand. Without warning, the metal plate at the side of his head emits a sharp, audible spark, accompanied by a brief fizzling sound. He flinches slightly at the noise, then, after a moment, his eyes clear, and he looks around calmly, no longer appearing disoriented or blinded by an invisible force.</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>eventHandlersRegistered</name>
+							<keyType>4</keyType>
+							<value>false</value>
+							<valueType>1</valueType>
+						</Variable>
+						<VariableGroup>
+							<name>fullResponse</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+							<VariableGroup>
+								<name>choices</name>
+								<keyType>4</keyType>
+								<value></value>
+								<valueType>5</valueType>
+								<VariableGroup>
+									<name>1</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>finish_reason</name>
+										<keyType>4</keyType>
+										<value>stop</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>index</name>
+										<keyType>4</keyType>
+										<value>0</value>
+										<valueType>3</valueType>
+									</Variable>
+									<VariableGroup>
+										<name>message</name>
+										<keyType>4</keyType>
+										<value></value>
+										<valueType>5</valueType>
+										<Variable>
+											<name>content</name>
+											<keyType>4</keyType>
+											<value>emote $n suddenly narrows his eyes, blinking rapidly as if he's struggling to focus on something unseen. His brow furrows in confusion and frustration, rubbing at his eyes with the heel of his hand. Without warning, the metal plate at the side of his head emits a sharp, audible spark, accompanied by a brief fizzling sound. He flinches slightly at the noise, then, after a moment, his eyes clear, and he looks around calmly, no longer appearing disoriented or blinded by an invisible force.</value>
+											<valueType>4</valueType>
+										</Variable>
+										<Variable>
+											<name>role</name>
+											<keyType>4</keyType>
+											<value>assistant</value>
+											<valueType>4</valueType>
+										</Variable>
+									</VariableGroup>
+								</VariableGroup>
+							</VariableGroup>
+							<Variable>
+								<name>created</name>
+								<keyType>4</keyType>
+								<value>1709498030</value>
+								<valueType>3</valueType>
+							</Variable>
+							<Variable>
+								<name>id</name>
+								<keyType>4</keyType>
+								<value>chatcmpl-8ymoo6Bey4FUUjEK16ZhK1PTqXPpW</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>model</name>
+								<keyType>4</keyType>
+								<value>gpt-4-0125-preview</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>object</name>
+								<keyType>4</keyType>
+								<value>chat.completion</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>system_fingerprint</name>
+								<keyType>4</keyType>
+								<value>fp_70b2088885</value>
+								<valueType>4</valueType>
+							</Variable>
+							<VariableGroup>
+								<name>usage</name>
+								<keyType>4</keyType>
+								<value></value>
+								<valueType>5</valueType>
+								<Variable>
+									<name>completion_tokens</name>
+									<keyType>4</keyType>
+									<value>107</value>
+									<valueType>3</valueType>
+								</Variable>
+								<Variable>
+									<name>prompt_tokens</name>
+									<keyType>4</keyType>
+									<value>290</value>
+									<valueType>3</valueType>
+								</Variable>
+								<Variable>
+									<name>total_tokens</name>
+									<keyType>4</keyType>
+									<value>397</value>
+									<valueType>3</valueType>
+								</Variable>
+							</VariableGroup>
+						</VariableGroup>
+						<Variable>
+							<name>headacheType</name>
+							<keyType>4</keyType>
+							<value>This temporary malfunction should be an expression of impaired vision</value>
+							<valueType>4</valueType>
+						</Variable>
+						<VariableGroup>
+							<name>headers</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+							<Variable>
+								<name>Authorization</name>
+								<keyType>4</keyType>
+								<value>Bearer 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</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>Content-Type</name>
+								<keyType>4</keyType>
+								<value>application/json</value>
+								<valueType>4</valueType>
+							</Variable>
+						</VariableGroup>
+						<Variable>
+							<name>insanityType</name>
+							<keyType>4</keyType>
+							<value>This temporary insanity should be an expression of delirium.</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>madnessRequested</name>
+							<keyType>4</keyType>
+							<value>true</value>
+							<valueType>1</valueType>
+						</Variable>
+						<Variable>
+							<name>requestBody</name>
+							<keyType>4</keyType>
+							<value>{"temperature":1,"messages":[{"content":"You are an AI assistant providing actions for a sci-fi roleplaying game.","role":"system"},{"content":"Create a scenario involving a male character with a malfunctioning brain implant. Describe the character's action as follows: first, a negative effect occurs; then the implant violently and audibly sparks, indicating an automatic reset. This metal plate is visible and is already known to the observer so can be referred to as 'the metal plate'. After this, the character returns to normal. Focus more on the effect rather than the character hitting the implant to fix it. The action should be in the third person, present tense, and start with 'emote $n'. Use '$n' or pronouns (preferred) for any third-person references following 'emote.' The description should be from an observer's perspective, showing only the character's actions and expressions. Allow the observer to infer why the character is acting this way. The character should not be interacting with props or objects unless they are pulling out an item they carry. The scenario should imply that the character was previously idle, with no indication of ongoing or interrupted activity such as 'stops' or 'stops mid-stride'. Avoid suggesting that the character resumes a previous action or is moving purposefully. The action must conclude within the description. Provide a single, concise example with no semicolons.","role":"user"},{"content":"This temporary malfunction should be an expression of impaired vision","role":"user"}],"model":"gpt-4-turbo-preview"}</value>
+							<valueType>4</valueType>
+						</Variable>
+						<VariableGroup>
+							<name>requestData</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+							<VariableGroup>
+								<name>messages</name>
+								<keyType>4</keyType>
+								<value></value>
+								<valueType>5</valueType>
+								<VariableGroup>
+									<name>1</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>content</name>
+										<keyType>4</keyType>
+										<value>You are an AI assistant providing actions for a sci-fi roleplaying game.</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>role</name>
+										<keyType>4</keyType>
+										<value>system</value>
+										<valueType>4</valueType>
+									</Variable>
+								</VariableGroup>
+								<VariableGroup>
+									<name>2</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>content</name>
+										<keyType>4</keyType>
+										<value>Create a scenario involving a male character with a malfunctioning brain implant. Describe the character's action as follows: first, a negative effect occurs; then the implant violently and audibly sparks, indicating an automatic reset. This metal plate is visible and is already known to the observer so can be referred to as 'the metal plate'. After this, the character returns to normal. Focus more on the effect rather than the character hitting the implant to fix it. The action should be in the third person, present tense, and start with 'emote $n'. Use '$n' or pronouns (preferred) for any third-person references following 'emote.' The description should be from an observer's perspective, showing only the character's actions and expressions. Allow the observer to infer why the character is acting this way. The character should not be interacting with props or objects unless they are pulling out an item they carry. The scenario should imply that the character was previously idle, with no indication of ongoing or interrupted activity such as 'stops' or 'stops mid-stride'. Avoid suggesting that the character resumes a previous action or is moving purposefully. The action must conclude within the description. Provide a single, concise example with no semicolons.</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>role</name>
+										<keyType>4</keyType>
+										<value>user</value>
+										<valueType>4</valueType>
+									</Variable>
+								</VariableGroup>
+								<VariableGroup>
+									<name>3</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>content</name>
+										<keyType>4</keyType>
+										<value>This temporary malfunction should be an expression of impaired vision</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>role</name>
+										<keyType>4</keyType>
+										<value>user</value>
+										<valueType>4</valueType>
+									</Variable>
+								</VariableGroup>
+							</VariableGroup>
+							<Variable>
+								<name>model</name>
+								<keyType>4</keyType>
+								<value>gpt-4-turbo-preview</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>temperature</name>
+								<keyType>4</keyType>
+								<value>1</value>
+								<valueType>3</valueType>
+							</Variable>
+						</VariableGroup>
+						<VariableGroup>
+							<name>requestInsanity</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+							<VariableGroup>
+								<name>messages</name>
+								<keyType>4</keyType>
+								<value></value>
+								<valueType>5</valueType>
+								<VariableGroup>
+									<name>1</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>content</name>
+										<keyType>4</keyType>
+										<value>You are an AI assistant providing actions for a sci-fi roleplaying game.</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>role</name>
+										<keyType>4</keyType>
+										<value>system</value>
+										<valueType>4</valueType>
+									</Variable>
+								</VariableGroup>
+								<VariableGroup>
+									<name>2</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>content</name>
+										<keyType>4</keyType>
+										<value>Create a scenario involving a male character experiencing a malfunctioning brain implant leading to the temporary insanity. Describe the character's action as follows: first, a negative effect occurs; then the implant violently and audibly sparks, indicating an automatic reset. This metal plate is visible and is already known to the observer so can be referred to as 'the metal plate'. After this, the character returns to normal. Focus more on the effect rather than the character hitting the implant to fix it. The action should be in the third person, present tense, and start with 'emote $n'. Use '$n' or pronouns (preferred) for any third-person references following 'emote.' The description should be from an observer's perspective, showing only the character's actions and expressions. Allow the observer to infer why the character is acting this way. The character should not be interacting with props or objects unless they are pulling out an item they carry. The scenario should imply that the character was previously idle, with no indication of ongoing or interrupted activity such as 'stops' or 'stops mid-stride'. Avoid suggesting that the character resumes a previous action or is moving purposefully. The action must conclude within the description. Provide a single, concise example with no semicolons.</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>role</name>
+										<keyType>4</keyType>
+										<value>user</value>
+										<valueType>4</valueType>
+									</Variable>
+								</VariableGroup>
+								<VariableGroup>
+									<name>3</name>
+									<keyType>3</keyType>
+									<value></value>
+									<valueType>5</valueType>
+									<Variable>
+										<name>content</name>
+										<keyType>4</keyType>
+										<value>This temporary insanity should be an expression of delirium.</value>
+										<valueType>4</valueType>
+									</Variable>
+									<Variable>
+										<name>role</name>
+										<keyType>4</keyType>
+										<value>user</value>
+										<valueType>4</valueType>
+									</Variable>
+								</VariableGroup>
+							</VariableGroup>
+							<Variable>
+								<name>model</name>
+								<keyType>4</keyType>
+								<value>gpt-4-turbo-preview</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>temperature</name>
+								<keyType>4</keyType>
+								<value>1</value>
+								<valueType>3</valueType>
+							</Variable>
+						</VariableGroup>
+						<Variable>
+							<name>responseHandled</name>
+							<keyType>4</keyType>
+							<value>true</value>
+							<valueType>1</valueType>
+						</Variable>
+					</VariableGroup>
+					<Variable>
+						<name>timer</name>
+						<keyType>4</keyType>
+						<value>1815</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>devScript</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>leveling</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>lommiteDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value>e;e</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value>e;e;e;ne</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value>ne;ne</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value>ne;ne</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value>ne;ne;ne</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value>ne;n;n</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value>n;n;n</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value>n</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>9</name>
+						<keyType>3</keyType>
+						<value>n;n;n</value>
+						<valueType>4</valueType>
+					</Variable>
+					<Variable>
+						<name>10</name>
+						<keyType>3</keyType>
+						<value>s;s;s;s;s;s;s;s;s;sw;sw;sw;sw;sw;sw;sw;sw;sw;w;w;w;w;w</value>
+						<valueType>4</valueType>
+					</Variable>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>misc</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>sabacc</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>spaceSafety</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>tagArmor</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+		</VariableGroup>
+		<VariableGroup>
+			<name>lotj</name>
+			<keyType>4</keyType>
+			<value></value>
+			<valueType>5</valueType>
+			<VariableGroup>
+				<name>autoReload</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>ammoVar</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>containerVar</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>autoResearch</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>researchList</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>cargoScan</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>planets</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>chat</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>commnetLastChannel</name>
+					<keyType>4</keyType>
+					<value>1138</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>commnetLastMessage</name>
+					<keyType>4</keyType>
+					<value>Looking to talk to somebody</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>comlinkInfo</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>comlinks</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>[NewbTech] A starting comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>3268</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Alpha</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Beta</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked CEC</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>23</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Charlie</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked HKD</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>8114</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Republic</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a comlink marked Trade Fed</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>A compact comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled ARE</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>615</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Dawn</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>44</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Five</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>6265</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>73491</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Galactic Empire</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Luka</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>420</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled One</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>330</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a compact hand-held comlink labelled Translation</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>5</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Alderaan</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>615</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Dawn</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>44</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Empire</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Luka</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>420</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a handheld commlink marked Translation</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>5</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>a sleek comlink labeled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>an RSC employee badge with built-in comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: [NewbTech] A starting comlink</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>3268</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled ARE</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>615</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled Five</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>6265</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>73491</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled One</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>330</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a compact hand-held comlink labelled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>Current comlink: a sleek comlink labeled Public</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>channel</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>encryption</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<Variable>
+					<name>currentChar</name>
+					<keyType>4</keyType>
+					<value>Strike</value>
+					<valueType>4</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>devScript</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+			</VariableGroup>
+			<VariableGroup>
+				<name>flight</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>autoFly</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>chainNum</name>
+					<keyType>4</keyType>
+					<value>4</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>entryDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>exitDirs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>flightProfiles</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<VariableGroup>
+							<name>entryDirs</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+							<Variable>
+								<name>1</name>
+								<keyType>3</keyType>
+								<value>u</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>2</name>
+								<keyType>3</keyType>
+								<value>n</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>3</name>
+								<keyType>3</keyType>
+								<value>n</value>
+								<valueType>4</valueType>
+							</Variable>
+						</VariableGroup>
+						<VariableGroup>
+							<name>exitDirs</name>
+							<keyType>4</keyType>
+							<value></value>
+							<valueType>5</valueType>
+							<Variable>
+								<name>1</name>
+								<keyType>3</keyType>
+								<value>s</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>2</name>
+								<keyType>3</keyType>
+								<value>s</value>
+								<valueType>4</valueType>
+							</Variable>
+							<Variable>
+								<name>3</name>
+								<keyType>3</keyType>
+								<value>d</value>
+								<valueType>4</valueType>
+							</Variable>
+						</VariableGroup>
+						<Variable>
+							<name>hatchCode</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>shipName</name>
+							<keyType>4</keyType>
+							<value>nauurkad</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>entryDirs</name>
+							<keyType>4</keyType>
+							<value>none</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>exitDirs</name>
+							<keyType>4</keyType>
+							<value>none</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>hatchCode</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>shipName</name>
+							<keyType>4</keyType>
+							<value>piitravel05</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<VariableGroup>
+					<name>hangars</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>hatchCode</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>hypertries</name>
+					<keyType>4</keyType>
+					<value>0</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>hyperTries</name>
+					<keyType>4</keyType>
+					<value>7</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>landgrabbing</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>landingPreference</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>landingPrefs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>naboo</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>ryloth</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>coruscant</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>corellia</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>mandalore</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>2</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>kashyyyk</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>1</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>Arkania</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>padPref</name>
+							<keyType>4</keyType>
+							<value>3</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>planetName</name>
+							<keyType>4</keyType>
+							<value>mon cala</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+				<Variable>
+					<name>landingSiteNum</name>
+					<keyType>4</keyType>
+					<value>1</value>
+					<valueType>3</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>landingSites</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>lastPlanet</name>
+					<keyType>4</keyType>
+					<value>corellia</value>
+					<valueType>4</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>planetChain</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>planetName</name>
+					<keyType>4</keyType>
+					<value>mon cala</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>reenterShip</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>shipName</name>
+					<keyType>4</keyType>
+					<value>pub01</value>
+					<valueType>4</valueType>
+				</Variable>
+				<Variable>
+					<name>taxiChain</name>
+					<keyType>4</keyType>
+					<value>true</value>
+					<valueType>1</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>galaxyMap</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>data</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>govToColor</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>A Neutral Government</name>
+							<keyType>4</keyType>
+							<value>#AAAAAA</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>Neutral Government</name>
+							<keyType>4</keyType>
+							<value>#AAAAAA</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>Red</name>
+							<keyType>4</keyType>
+							<value>#A94B16</value>
+							<valueType>4</valueType>
+						</Variable>
+					</VariableGroup>
+					<Variable>
+						<name>labelAsPlanets</name>
+						<keyType>4</keyType>
+						<value>true</value>
+						<valueType>1</valueType>
+					</Variable>
+					<VariableGroup>
+						<name>planets</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+					<VariableGroup>
+						<name>systems</name>
+						<keyType>4</keyType>
+						<value></value>
+						<valueType>5</valueType>
+					</VariableGroup>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>infoPanel</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>spaceTickTimers</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value>10578</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value>10579</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value>10580</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value>10581</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value>10582</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value>10583</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value>10584</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value>10585</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>9</name>
+						<keyType>3</keyType>
+						<value>10586</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>10</name>
+						<keyType>3</keyType>
+						<value>10587</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>11</name>
+						<keyType>3</keyType>
+						<value>10588</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>12</name>
+						<keyType>3</keyType>
+						<value>10589</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>13</name>
+						<keyType>3</keyType>
+						<value>10590</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>14</name>
+						<keyType>3</keyType>
+						<value>10591</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>15</name>
+						<keyType>3</keyType>
+						<value>10592</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>16</name>
+						<keyType>3</keyType>
+						<value>10593</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>17</name>
+						<keyType>3</keyType>
+						<value>10594</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>18</name>
+						<keyType>3</keyType>
+						<value>10595</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>19</name>
+						<keyType>3</keyType>
+						<value>10596</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>20</name>
+						<keyType>3</keyType>
+						<value>10597</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>21</name>
+						<keyType>3</keyType>
+						<value>10598</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>22</name>
+						<keyType>3</keyType>
+						<value>10599</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>layout</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<Variable>
+					<name>lowerInfoPanelHeight</name>
+					<keyType>4</keyType>
+					<value>55</value>
+					<valueType>3</valueType>
+				</Variable>
+			</VariableGroup>
+			<VariableGroup>
+				<name>mapper</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>current</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>vnum</name>
+						<keyType>4</keyType>
+						<value>35465</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+				<VariableGroup>
+					<name>last</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>vnum</name>
+						<keyType>4</keyType>
+						<value>35464</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>setup</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>eventHandlerKillIds</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<Variable>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value>54</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value>55</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value>56</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>4</name>
+						<keyType>3</keyType>
+						<value>57</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>5</name>
+						<keyType>3</keyType>
+						<value>18</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>6</name>
+						<keyType>3</keyType>
+						<value>19</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>7</name>
+						<keyType>3</keyType>
+						<value>20</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>8</name>
+						<keyType>3</keyType>
+						<value>21</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>9</name>
+						<keyType>3</keyType>
+						<value>22</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>10</name>
+						<keyType>3</keyType>
+						<value>23</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>11</name>
+						<keyType>3</keyType>
+						<value>24</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>12</name>
+						<keyType>3</keyType>
+						<value>25</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>13</name>
+						<keyType>3</keyType>
+						<value>26</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>14</name>
+						<keyType>3</keyType>
+						<value>27</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>15</name>
+						<keyType>3</keyType>
+						<value>28</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>16</name>
+						<keyType>3</keyType>
+						<value>29</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>17</name>
+						<keyType>3</keyType>
+						<value>30</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>18</name>
+						<keyType>3</keyType>
+						<value>31</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>19</name>
+						<keyType>3</keyType>
+						<value>32</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>20</name>
+						<keyType>3</keyType>
+						<value>33</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>21</name>
+						<keyType>3</keyType>
+						<value>34</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>22</name>
+						<keyType>3</keyType>
+						<value>35</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>23</name>
+						<keyType>3</keyType>
+						<value>36</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>24</name>
+						<keyType>3</keyType>
+						<value>37</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>25</name>
+						<keyType>3</keyType>
+						<value>38</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>26</name>
+						<keyType>3</keyType>
+						<value>39</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>27</name>
+						<keyType>3</keyType>
+						<value>40</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>28</name>
+						<keyType>3</keyType>
+						<value>41</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>29</name>
+						<keyType>3</keyType>
+						<value>42</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>30</name>
+						<keyType>3</keyType>
+						<value>43</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>31</name>
+						<keyType>3</keyType>
+						<value>44</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>32</name>
+						<keyType>3</keyType>
+						<value>45</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>33</name>
+						<keyType>3</keyType>
+						<value>46</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>34</name>
+						<keyType>3</keyType>
+						<value>47</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>35</name>
+						<keyType>3</keyType>
+						<value>48</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>36</name>
+						<keyType>3</keyType>
+						<value>49</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>37</name>
+						<keyType>3</keyType>
+						<value>50</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>38</name>
+						<keyType>3</keyType>
+						<value>51</value>
+						<valueType>3</valueType>
+					</Variable>
+					<Variable>
+						<name>39</name>
+						<keyType>3</keyType>
+						<value>52</value>
+						<valueType>3</valueType>
+					</Variable>
+				</VariableGroup>
+				<VariableGroup>
+					<name>gmcpEventHandlerFuncs</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+			</VariableGroup>
+			<VariableGroup>
+				<name>systemMap</name>
+				<keyType>4</keyType>
+				<value></value>
+				<valueType>5</valueType>
+				<VariableGroup>
+					<name>genLabels</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<VariableGroup>
+					<name>genPoints</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+				</VariableGroup>
+				<Variable>
+					<name>inRadarOutput</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<Variable>
+					<name>mapRange</name>
+					<keyType>4</keyType>
+					<value>2000</value>
+					<valueType>3</valueType>
+				</Variable>
+				<Variable>
+					<name>maskNextRadarOutput</name>
+					<keyType>4</keyType>
+					<value>false</value>
+					<valueType>1</valueType>
+				</Variable>
+				<VariableGroup>
+					<name>radarItems</name>
+					<keyType>4</keyType>
+					<value></value>
+					<valueType>5</valueType>
+					<VariableGroup>
+						<name>1</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>(STAR) Horuset</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>-6030</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>4000</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>z</name>
+							<keyType>4</keyType>
+							<value>22080</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>2</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>Korriban</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>z</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+					<VariableGroup>
+						<name>3</name>
+						<keyType>3</keyType>
+						<value></value>
+						<valueType>5</valueType>
+						<Variable>
+							<name>name</name>
+							<keyType>4</keyType>
+							<value>Nindzu</value>
+							<valueType>4</valueType>
+						</Variable>
+						<Variable>
+							<name>x</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>y</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+						<Variable>
+							<name>z</name>
+							<keyType>4</keyType>
+							<value>0</value>
+							<valueType>3</valueType>
+						</Variable>
+					</VariableGroup>
+				</VariableGroup>
+			</VariableGroup>
+		</VariableGroup>
+	</VariablePackage>
+</MudletPackage>

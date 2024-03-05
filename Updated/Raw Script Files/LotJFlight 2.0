@@ -359,6 +359,8 @@ function lotj.flight.beginChain(matches)
   end
   lotj.flight.chainNum = 1
   lotj.flight.planetName = lotj.flight.planetChain[lotj.flight.chainNum]
+  lotj.flight.enterShip()
+  lotj.flight.toCockpit()
   lotj.flight.Launch()
 end
 
@@ -615,7 +617,6 @@ function lotj.flight.Help()
   cecho("<yellow_green>clearchain                         - Clears the planet daisychain list\n")
   cecho("<yellow_green>remchain <planet>                  - Removes a planet from the daisychain list\n")
   cecho("<yellow_green>flystart                           - Begins flying the daisychain list\n")
-  cecho("<yellow_green>flystart taxi                      - Begins flying the daisychain list in a taxi (no need to exit and refuel)\n")
   echo("\n")
   cecho("<green>Ship parameter commands:\n")
   cecho("<yellow_green>-------------------------------------\n")

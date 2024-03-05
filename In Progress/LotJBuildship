@@ -1,203 +1,206 @@
 lotj = lotj or {}
-lotj.buildship = lotj.buildship or {}
+lotj.buildShip = lotj.buildShip or {}
+lotj.global = lotj.global or {}
 
-function lotj.buildship.SetParts()
-  lotj.buildship.Parts = lotj.buildship.Parts or { hull = "hull", circuits = "circuits", weapons = "weapons", engines = "engines"}
+function lotj.buildShip.SetParts()
+  lotj.buildShip.Parts = lotj.buildShip.Parts or { hull = "hull", circuits = "circuits", weapons = "weapons", engines = "engines"}
 end
 
-function lotj.buildship.ClearVars()
-  lotj.buildship.Queue = {}
-  lotj.buildship.Parts = lotj.buildship.Parts or { hull = "hull", circuits = "circuits", weapons = "weapons", engines = "engines"}
-  lotj.buildship.CurrPos = 1
-  lotj.buildship.CurrShip = ""
-  lotj.buildship.CurrPart = ""
-  lotj.buildship.Spam = false
-  lotj.buildship.Auto = false
+function lotj.buildShip.ClearVars()
+  lotj.buildShip.Queue = {}
+  lotj.buildShip.Parts = lotj.buildShip.Parts or { hull = "hull", circuits = "circuits", weapons = "weapons", engines = "engines"}
+  lotj.buildShip.CurrPos = 1
+  lotj.buildShip.CurrShip = ""
+  lotj.buildShip.CurrPart = ""
+  lotj.buildShip.Spam = false
+  lotj.buildShip.Auto = false
 end
 
-function lotj.buildship.Init()
-  lotj.buildship.CurrPos = 1
-  lotj.buildship.CurrShip = ""
-  lotj.buildship.Spam = false
-  lotj.buildship.AntiLoop = 0
-  lotj.buildship.metaAntiLoop = 0
-  lotj.buildship.SetParts()
+function lotj.buildShip.Init()
+  lotj.buildShip.Queue = {}
+  lotj.buildShip.CurrPos = 1
+  lotj.buildShip.CurrShip = ""
+  lotj.buildShip.Spam = false
+  lotj.buildShip.AntiLoop = 0
+  lotj.buildShip.metaAntiLoop = 0
+  lotj.buildShip.SetParts()
+  cecho("<green>LotjBuildShip Initialized.<reset>\n")
 end
 
-function lotj.buildship.Clear()
-  lotj.buildship.ClearVars()
+function lotj.buildShip.Clear()
+  lotj.buildShip.ClearVars()
   cecho("<yellow>Buildship variables cleared.<reset>\n")
 end
 
-function lotj.buildship.FirstInit()
-  lotj.buildship.ClearVars()
-  lotj.buildship.Init()
+function lotj.buildShip.FirstInit()
+  lotj.buildShip.ClearVars()
+  lotj.buildShip.Init()
   cecho("<green>LotJBuildship Initialized.<reset>\n")
 end
 
-function lotj.buildship.Add(matches)
+function lotj.buildShip.Add(matches)
+  local queueLength = #lotj.buildShip.Queue
   local bsNewShip = tostring(matches[2])
-  lotj.buildship.Queue[#lotj.buildship.Queue + 1] = tostring(bsNewShip)
+  lotj.buildShip.Queue[queueLength + 1] = tostring(bsNewShip)
   cecho("<green>"..bsNewShip.." added to queue!<reset>\n")
 end
 
-function lotj.buildship.Remove(matches)
+function lotj.buildShip.Remove(matches)
   local bsRemove = matches[2]
   if type(bsRemove) == number then -- We're deleting based on index.
     table.remove(tonumber(bsRemove))
     cecho("<yellow>Removed ship at index "..bsRemove.."<reset>\n")
   else
-    for i,v in pairs(lotj.buildship.Queue) do
+    for i,v in pairs(lotj.buildShip.Queue) do
       if string.match(v, bsRemove) then
-        table.remove(lotj.buildship.Queue, i)
+        table.remove(lotj.buildShip.Queue, i)
         cecho("<yellow>Removed entry "..v.."<reset>\n")
       end
     end
   end
 end
 
-function lotj.buildship.Update(matches)
+function lotj.buildShip.Update(matches)
   if matches[4] then
-    lotj.buildship.Finished = string.lower(tostring(matches[4]))
+    lotj.buildShip.Finished = string.lower(tostring(matches[4]))
   else
-    lotj.buildship.Finished = string.lower(tostring(matches[2]))
+    lotj.buildShip.Finished = string.lower(tostring(matches[2]))
   end
-  for i,v in pairs(lotj.buildship.Queue) do
-    if string.find(lotj.buildship.Finished, v) then
-      if i == lotj.buildship.CurrPos then
-        lotj.buildship.Next()
+  for i,v in pairs(lotj.buildShip.Queue) do
+    if string.find(lotj.buildShip.Finished, v) then
+      if i == lotj.buildShip.CurrPos then
+        lotj.buildShip.Next()
         return
       else
-        if string.find(lotj.buildship.Finished, lotj.buildship.CurrShip) then
-          lotj.buildship.Next()
+        if string.find(lotj.buildShip.Finished, lotj.buildShip.CurrShip) then
+          lotj.buildShip.Next()
           return
         else
-          table.remove(lotj.buildship.Queue, i)
-          cecho("\n<green>"..lotj.buildship.Finished.." complete. Removed from table.<reset>\n")
+          table.remove(lotj.buildShip.Queue, i)
+          cecho("\n<green>"..lotj.buildShip.Finished.." complete. Removed from table.<reset>\n")
           return
         end
       end
     end
   end
-  cecho("<red>"..lotj.buildship.Finished.." not found in table!<reset>\n")
+  cecho("<red>"..lotj.buildShip.Finished.." not found in table!<reset>\n")
 end
 
-function lotj.buildship.Start()
-  lotj.buildship.Init()
-  lotj.buildship.CurrPos = 1
-  lotj.buildship.CurrShip = lotj.buildship.Queue[1]
-  lotj.buildship.CurrPart = lotj.buildship.Parts.hull
+function lotj.buildShip.Start()
+  lotj.buildShip.CurrPos = 1
+  lotj.buildShip.CurrShip = lotj.buildShip.Queue[lotj.buildShip.CurrPos]
+  lotj.buildShip.CurrPart = lotj.buildShip.Parts.hull
   cecho("<green>Beginning ship construction!<reset>\n")
-  lotj.buildship.Auto = false
-  lotj.buildship.SetAuto()
-  lotj.buildship.Spam = false
-  lotj.buildship.GagSpam()
-  lotj.buildship.AFK = false
-  lotj.buildship.Botting = gmcp.Char.Info.botting
-  send("get 25 "..lotj.buildship.Parts.hull)
-  send("buildship "..lotj.buildship.CurrShip.." "..lotj.buildship.Parts.hull)
+  lotj.buildShip.Auto = false
+  lotj.buildShip.SetAuto()
+  lotj.buildShip.Spam = false
+  lotj.buildShip.GagSpam()
+  lotj.global.AFK = false
+  lotj.buildShip.Botting = gmcp.Char.Info.botting
+  send("get 5 "..lotj.buildShip.Parts.hull)
+  send("buildship "..lotj.buildShip.CurrShip.." "..lotj.buildShip.Parts.hull)
 end
 
-function lotj.buildship.Continue()
-  send("buildship "..lotj.buildship.CurrShip.." "..lotj.buildship.CurrPart)
-  lotj.buildship.Botting = gmcp.Char.Info.botting
+function lotj.buildShip.Continue()
+  send("buildship "..lotj.buildShip.CurrShip.." "..lotj.buildShip.CurrPart)
+  lotj.buildShip.Botting = gmcp.Char.Info.botting
 end
 
-function lotj.buildship.GetParts()
-  send("get 25 "..lotj.buildship.CurrPart)
-  lotj.buildship.Continue()
+function lotj.buildShip.GetParts()
+  send("get 5 "..lotj.buildShip.CurrPart)
+  lotj.buildShip.Continue()
 end
 
-function lotj.buildship.Next()
-  lotj.buildship.CurrPos = lotj.buildship.CurrPos+1
-  if lotj.buildship.CurrPos > #lotj.buildship.Queue then
-    lotj.buildship.Complete()
+function lotj.buildShip.Next()
+  lotj.buildShip.CurrPos = lotj.buildShip.CurrPos+1
+  if lotj.buildShip.CurrPos > #lotj.buildShip.Queue then
+    lotj.buildShip.Complete()
     return
   end
-  send("drop all."..lotj.buildship.CurrPart)
-  lotj.buildship.CurrShip = lotj.buildship.Queue[lotj.buildship.CurrPos]
-  lotj.buildship.CurrPart = lotj.buildship.Parts.hull
-  send("get 25 "..lotj.buildship.CurrPart)
-  lotj.buildship.Continue()
+  send("drop all."..lotj.buildShip.CurrPart)
+  lotj.buildShip.CurrShip = lotj.buildShip.Queue[lotj.buildShip.CurrPos]
+  lotj.buildShip.CurrPart = lotj.buildShip.Parts.hull
+  send("get 5 "..lotj.buildShip.CurrPart)
+  lotj.buildShip.Continue()
 end
 
-function lotj.buildship.NextPart()
-  send("drop all."..lotj.buildship.CurrPart)
-  if lotj.buildship.CurrPart == lotj.buildship.Parts.hull then
-    lotj.buildship.CurrPart = lotj.buildship.Parts.circuits
-  elseif lotj.buildship.CurrPart == lotj.buildship.Parts.circuits then
-    lotj.buildship.CurrPart = lotj.buildship.Parts.weapons
-  elseif lotj.buildship.CurrPart == lotj.buildship.Parts.weapons then
-    lotj.buildship.CurrPart = lotj.buildship.Parts.engines
+function lotj.buildShip.NextPart()
+  send("drop all."..lotj.buildShip.CurrPart)
+  if lotj.buildShip.CurrPart == lotj.buildShip.Parts.hull then
+    lotj.buildShip.CurrPart = lotj.buildShip.Parts.circuits
+  elseif lotj.buildShip.CurrPart == lotj.buildShip.Parts.circuits then
+    lotj.buildShip.CurrPart = lotj.buildShip.Parts.weapons
+  elseif lotj.buildShip.CurrPart == lotj.buildShip.Parts.weapons then
+    lotj.buildShip.CurrPart = lotj.buildShip.Parts.engines
   else
-    lotj.buildship.CurrPart = lotj.buildship.Parts.hull
-    lotj.buildship.AntiLoop = lotj.buildship.AntiLoop+1
-    if lotj.buildship.AntiLoop == 2 then
-      lotj.buildship.metaAntiLoop = lotj.buildship.metaAntiLoop +1
-      lotj.buildship.AntiLoop = 0
-      if lotj.buildship.metaAntiLoop == 2 then
+    lotj.buildShip.CurrPart = lotj.buildShip.Parts.hull
+    lotj.buildShip.AntiLoop = lotj.buildShip.AntiLoop+1
+    if lotj.buildShip.AntiLoop == 2 then
+      lotj.buildShip.metaAntiLoop = lotj.buildShip.metaAntiLoop +1
+      lotj.buildShip.AntiLoop = 0
+      if lotj.buildShip.metaAntiLoop == 2 then
         cecho("<red>Error in changing parts. Aborting.")
-        lotj.buildship.Complete()
+        lotj.buildShip.Complete()
         return
       else
-        lotj.buildship.Next()
+        lotj.buildShip.Next()
       end
     end
   end
-  send("get 25 "..lotj.buildship.CurrPart)
-  lotj.buildship.Continue()
+  send("get 5 "..lotj.buildShip.CurrPart)
+  lotj.buildShip.Continue()
 end
 
-function lotj.buildship.PartName(matches)
-  local lotj.buildship.OP = tostring(matches[2])
-  local lotj.buildship.NewPart = tostring(matches[3])
+function lotj.buildShip.PartName(matches)
+  local buildshipOP = tostring(matches[2])
+  local buildshipNewPart = tostring(matches[3])
   
-  if lotj.buildship.OP == "hull" then
-    lotj.buildship.Parts.hull = lotj.buildship.NewPart
-  elseif lotj.buildship.OP == "circuits" or lotj.buildship.OP == "circuit" then
-    lotj.buildship.Parts.circuits = lotj.buildship.NewPart
-  elseif lotj.buildship.OP == "weapons" or lotj.buildship.OP == "weapon" then
-    lotj.buildship.Parts.weapons = lotj.buildship.NewPart
-  elseif lotj.buildship.OP == "engines" or lotj.buildship.OP == "engine" then
-    lotj.buildship.Parts.engines = lotj.buildship.NewPart
+  if buildshipOP == "hull" then
+    lotj.buildShip.Parts.hull = buildshipNewPart
+  elseif buildshipOP == "circuits" or buildshipOP == "circuit" then
+    lotj.buildShip.Parts.circuits = buildshipNewPart
+  elseif buildshipOP == "weapons" or buildshipOP == "weapon" then
+    lotj.buildShip.Parts.weapons = buildshipNewPart
+  elseif buildshipOP == "engines" or buildshipOP == "engine" then
+    lotj.buildShip.Parts.engines = buildshipNewPart
   else
     cecho("<red>Part name not recognized. Valid parts are hull, circuits, weapons, and engines<reset>\n")
     return
   end
-  cecho("<green>Key word for "..lotj.buildship.OP.." changed to "..lotj.buildship.NewPart.."<reset>\n")
+  cecho("<green>Key word for "..buildshipOP.." changed to "..buildshipNewPart.."<reset>\n")
 end
 
-function lotj.buildship.GagSpam()
-  if lotj.buildship.Spam == false then
+function lotj.buildShip.GagSpam()
+  if lotj.buildShip.Spam == false then
     enableTrigger("BuildshipSpam")
     cecho("<green>Shipbuilding spam gagged.<reset>\n")
-    lotj.buildship.Spam = true
+    lotj.buildShip.Spam = true
   else
     disableTrigger("BuildshipSpam")
     cecho("<green>Shipbuilding spam shown.<reset>\n")
-    lotj.buildship.Spam = false
+    lotj.buildShip.Spam = false
   end
 end
 
-function lotj.buildship.SetAuto()
-  if lotj.buildship.Auto == false then
+function lotj.buildShip.SetAuto()
+  if lotj.buildShip.Auto == false then
     enableTrigger("Shipbuilding")
     cecho("<green>Ship construction will continue automatically.<reset>\n")
-    lotj.buildship.Auto = true
+    lotj.buildShip.Auto = true
   else
     disableTrigger("Shipbuilding")
     cecho("<yellow>Ship construction will not continue.<reset>\n")
-    lotj.buildship.Auto = false
+    lotj.buildShip.Auto = false
   end
 end
 
-function lotj.buildship.List()
-  if #lotj.buildship.Queue < 1 then
+function lotj.buildShip.List()
+  if #lotj.buildShip.Queue < 1 then
     cecho("<yellow>No ships added to buildship queue.<reset>\n")
     return
   end
-  for i,v in pairs(lotj.buildship.Queue) do
-    if i == lotj.buildship.CurrPos then
+  for i,v in pairs(lotj.buildShip.Queue) do
+    if i == lotj.buildShip.CurrPos then
       cecho("<white>"..i..": <green>"..v.." <yellow><-\n")
     else
       cecho("<white>"..i..": <green>"..v.."\n")
@@ -205,66 +208,66 @@ function lotj.buildship.List()
   end
 end
 
-function lotj.buildship.ReturnFromAFK()
-  if lotj.buildship.AFK then
+function lotj.buildShip.ReturnFromAFK()
+  if lotj.global.AFK then
     send("afk")
     send("bot start")
-    lotj.buildship.Botting = true
+    lotj.buildShip.Botting = true
   else
     send("bot start")
-    lotj.buildship.Botting = true
+    lotj.buildShip.Botting = true
   end
-  lotj.buildship.Continue()
+  lotj.buildShip.Continue()
 end
 
-function lotj.buildship.Follow(matches)
+function lotj.buildShip.Follow(matches)
   send("follow "..matches[2])
-  lotj.buildship.Continue()
+  lotj.buildShip.Continue()
 end
 
-function lotj.buildship.ShowParts()
-  cecho("<white>Hull    : <green>"..lotj.buildship.Parts.hull.."<reset>\n")
-  cecho("<white>Circuits: <green>"..lotj.buildship.Parts.circuits.."<reset>\n")
-  cecho("<white>Weapons : <green>"..lotj.buildship.Parts.weapons.."<reset>\n")
-  cecho("<white>Engines : <green>"..lotj.buildship.Parts.engines.."<reset>\n")
+function lotj.buildShip.ShowParts()
+  cecho("<white>Hull    : <green>"..lotj.buildShip.Parts.hull.."<reset>\n")
+  cecho("<white>Circuits: <green>"..lotj.buildShip.Parts.circuits.."<reset>\n")
+  cecho("<white>Weapons : <green>"..lotj.buildShip.Parts.weapons.."<reset>\n")
+  cecho("<white>Engines : <green>"..lotj.buildShip.Parts.engines.."<reset>\n")
 end
 
-function lotj.buildship.Complete()
-  send("drop all."..lotj.buildship.CurrPart)
-  lotj.buildship.Spam = true
-  lotj.buildship.GagSpam()
+function lotj.buildShip.Complete()
+  send("drop all."..lotj.buildShip.CurrPart)
+  lotj.buildShip.Spam = true
+  lotj.buildShip.GagSpam()
   buildAuto = true
-  lotj.buildship.SetAuto()
+  lotj.buildShip.SetAuto()
   cecho("<green>Ship construction complete.<reset>\n")
-  if lotj.buildship.Botting == true then
+  if lotj.buildShip.Botting == true then
     send("bot stop")
     send("afk")
   end
 end
 
-function lotj.buildship.AutoFollow(matches)
-  if lotj.buildship.AFK then
+function lotj.buildShip.AutoFollow(matches)
+  if lotj.global.AFK then
     send("afk")
     send("follow "..matches[2])
     send("afk")
   else
     send("follow "..matches[2])
-    lotj.buildship.Continue()
+    lotj.buildShip.Continue()
   end
 end
 
-function lotj.buildship.GroupFollowers()
-    if lotj.buildship.AFK then
+function lotj.buildShip.GroupFollowers()
+    if lotj.global.AFK then
     send("afk")
     send("group all")
     send("afk")
   else
     send("group all")
-    lotj.buildship.Continue()
+    lotj.buildShip.Continue()
   end
 end
 
-function lotj.buildship.Help()
+function lotj.buildShip.Help()
   cecho("<lawn_green>buildadd <ship>- Add a ship to the build queue\n")
   cecho("<lawn_green>buildclear - Clear the ship queue\n")
   cecho("<lawn_green>buildlist - Display the build queue\n")
