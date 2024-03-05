@@ -349,7 +349,6 @@ end
 function lotj.flight.beginFlight(matches)
   lotj.flight.planetName = matches[2]
   lotj.flight.Launch()
-  lotj.flight.taxiChain = false -- We're going to assume we're not in a daisychain if this is used
 end
 
 function lotj.flight.beginChain(matches)
@@ -643,13 +642,6 @@ function lotj.flight.Help()
   cecho("<yellow_green>flyreenter                         - Re-enter your ship at the end of a flight\n")
   cecho("<yellow_green>flyhelp                            - Display this help menu\n")
   cecho("\n")
-  cecho("<green>Daisy chaining:\n")
-  cecho("<yellow_green>-------------------------------------\n")
-  cecho("flychain <planet>                                - Add a planet to your daisychain. (Start with the first destination)<reset>\n")
-  cecho("listchain                                        - List your daisychain<reset>\n")
-  cecho("clearchain                                       - Clear the daisychain<reset>\n")
-  cecho("remchain <planet>                                - Remove a planet from the daisychain\n")
-  cecho("flystart (taxi)                                  - Start the daisychain. Specify 'taxi' and you won't get out when you land.\n")
 end
 
 registerAnonymousEventHandler("sysLoadEvent", lotj.flight.Init)
